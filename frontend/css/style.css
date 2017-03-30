@@ -32,7 +32,6 @@
 .transaksi-namakasir{margin-left: 75px;}
 .panel-default {border-color: #f5f5f5;}
 .transaksi-clock{margin-left: 74px;}
-.logobasic-center > .logos-shadow{position: relative; left: -47px; top: 10px; box-shadow: 0px 0px 3px #bfbfbf; margin-bottom: 20px; float: right; } 
 .custom-innerstyles{padding: 20px;border: 1px solid #dddddd;height: 188px; }
 /* === NOTIFIER HEADING ===*/
 .heading-notifier-transaction{font-size: 17px; color: red; position: relative; top: -2px; }
@@ -42,22 +41,11 @@
 .transaksi-namakasir{margin-left: 75px;}
 .panel-default {border-color: #f5f5f5;}
 .transaksi-clock{margin-left: 74px;}
-.logobasic-center > .logos-shadow{
-    position: relative;
-    left: -47px;
-    top: 10px;
-    box-shadow: 0px 0px 3px #bfbfbf;
-    margin-bottom: 20px;
-    float: right;
-}
+/*========== CUSTOM BOX SHADOW DAHSBOARD CAHSIER ==========*/
+.logobasic-center .logos-shadow{box-shadow: 0px 0px 3px #bfbfbf; } 
 .custom-innerstyles{
     padding: 20px;border: 1px solid #f5f5f5;background: #f5f5f5;
 }
-#adding-services{
-    margin-top: 25px;
-}
-.error{
-	font-size: 13px;
-	color:red;
-}
-.show-elem{display: block !important; } .hidden-elem{display: none; } 
+#adding-services{margin-top: 25px; } 
+.error{font-size: 13px; color:red; }
+.show-elem{display: block !important; } .hidden-elem{display: none; }
