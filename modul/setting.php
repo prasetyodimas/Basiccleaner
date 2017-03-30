@@ -1,0 +1,170 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.click-menu-helper1').click(function(){
+			$('.show-content1').slideToggle('slow');
+			$('.show-content2').hide('slow');
+		});
+		$('.click-menu-helper2').click(function(){
+			$('.show-content2').slideToggle('slow');
+			$('.show-content1').hide('slow');
+		});
+        $('.click-menu-helper3').click(function(){
+            $('.show-content3').slideToggle('slow');
+            $('.show-content1').hide('slow');
+        });
+         $('.click-menu-helper4').click(function(){
+            $('.show-content4').slideToggle('slow');
+            $('.show-content1').hide('slow');
+        });
+	});
+</script>
+<style type="text/css">
+    .custom-keterangan-pad{padding: 20px; } 
+</style>
+<div class='main-containpages'>
+    <div style="margin-bottom:20px;">
+        <h3 style="text-align:center;">Pusat Bantuan Basic Cleaner Sneaker Cares</h3>
+    </div>
+    <div class="col-md-12" style="margin-bottom:50px;">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="cursor:pointer;">
+            	<div class="panel-heading click-menu-helper1" style="border-top: 2px solid #252525;"><span class="glyphicon glyphicon-cog"></span> Bagaimana Cara menambah Master Kategori Layanan ?</div>
+            	<div class="panel-body show-content1" style="display:none;">
+            		<div class="row">
+                        <div class="col-md-12 custom-keterangan-pad">
+                            <p>1. Langkah pertama klik pada menu data master.</p>
+                            <p>2. Kemudian pilih menu master kategori layanan kemudian klik tambah, 
+                                  maka anda akan melihat menu yang berisikan kebutuhan layanan / servis yang anda inginkan.
+                            </p>
+                            <p>3. Isikan data sesuai jenis serta pilihan layanan yang tersedia pada layanan Basic Cleaner Shoes Care
+                                  Untuk lebih jelas nya seperti gambar di bawah ini.
+                        </div>
+                        <div class="col-md-12">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/master layanan.png" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" style="cursor:pointer;">
+            	<div class="panel-heading click-menu-helper2" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara melakukan transaksi baru ? </div>
+            	<div class="panel-body show-content2" style="display:none;">
+                    <div class="col-lg-12 custom-keterangan-pad">
+                        <p>1. Langkah pertama klik pada menu transaksi, kemudian klik maka akan menuju pada halaman transaksi</p>
+                        <p>2. Kemudian anda akan menemukan jenis transaksi yang ingin di lakukan, yang pertama transaksi jika member telah mendaftar menjadi seorang member,
+                        yang kedua adalah transaksi jika seorang pelanggan belum memiliki akun atau member, yang ketiga adalah transaksi jika seorang
+                        pelanggan tidak ingin mendaftarkan dirinya sebagai member basic cleaner.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="<?php echo $site;?>frontend/pusat_bantuan/trnasaksi_masuk.png" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" style="cursor:pointer;">
+            <div class="panel-heading click-menu-helper4" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengelola hak akses user / pengguna sistem ?</div>
+                <div class="row">
+                    <div class="panel-body show-content4" style="display:none;">
+                        <div class="col-lg-12 custom-keterangan-pad">
+                            <p>1. Langkah pertama klik pada menu setting pengguna</p>
+                            <p>2. Kemudian akan muncul data pengguna sistem, jika ingin menambah user baru atau mengelola isikan pada kolom tambah pengguna, 
+                            jika ingin mengelola hak akses atau memblokir hak pengguna cukup klik pada menu edit kemudian ubah hakases status penggunanya untuk
+                            lebih jelas lihat pada gambar dibawah ini </p>
+                        </div>
+                        <div class="col-lg-12">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/tambah pengguna.png" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" style="cursor:pointer;">
+            <div class="panel-heading click-menu-helper3" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengelola hak akses user / pengguna sistem ?</div>
+                <div class="row">
+                    <div class="panel-body show-content3" style="display:none;">
+                        <div class="col-lg-12 custom-keterangan-pad">
+                            <p>1. Langkah pertama klik pada menu setting pengguna</p>
+                            <p>2. Kemudian akan muncul data pengguna sistem, jika ingin menambah user baru atau mengelola isikan pada kolom tambah pengguna, 
+                            jika ingin mengelola hak akses atau memblokir hak pengguna cukup klik pada menu edit kemudian ubah hakases status penggunanya untuk
+                            lebih jelas lihat pada gambar dibawah ini </p>
+                        </div>
+                        <div class="col-lg-12">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/tambah pengguna.png" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <table>
+        <tr>
+            <td><label>Servis Category</label></td>
+            <!--onchange show methos is call-->
+            <td><select id="category_service" onchange="show_services()">
+                <option value="">Jenis Service</option>   
+                <option value="Cleaning">Cleaning</option>
+                <option value="Repaint">Repaint Colors</option>
+                <option value="Reglue">Reglue</option>
+              </select>
+          </td>
+          <td>
+            <select name="" id="hidding-default-select">
+              <option value="">Pilih Jenis Servisnya</option>
+            </select>
+          </td>
+           <td>
+              <div id="show_repaint" style="display:none;">
+                <select>
+                  <option value="Repaint">Repaint 1</option>
+                  <option value="Repaint">Repaint 2</option>
+                  <option value="Repaint">Repaint 3</option>
+                </select>
+              </div>
+          </td>
+          <td>
+              <div id="show_reglue" style="display:none;">
+                <select>
+                  <option value="Reglue">Reglue 1</option>
+                  <option value="Reglue">Reglue 2</option>
+                  <option value="Reglue">Reglue 3</option>
+                </select>
+              </div>
+          </td>
+          <td>
+              <div id="show_cleaning" style="display:none;">
+                <select>
+                  <option value="Cleaning">Cleaning 1</option>
+                  <option value="Cleaning">Cleaning 2</option>
+                  <option value="Cleaning">Cleaning 3</option>
+                </select>
+              </div>
+          </td>
+        </tr>
+      </table>
+</div>
+
+<style type="text/css">
+.show-menu-onclick{
+   display:block !important;
+}
+</style>
+<script type="text/javascript">
+    function show_services(){
+        var option = document.getElementById("category_service").value;
+            if(option == "Cleaning")
+            {
+              document.getElementById("show_cleaning").style.display="block";
+              document.getElementById("hidding-default-select").style.display="none";
+            }else if (option == "Repaint") 
+            {
+              document.getElementById("show_repaint").style.display="block";
+              document.getElementById("show_cleaning").style.display="none";
+              document.getElementById("hidding-default-select").style.display="none";
+            }
+            else if(option == "Reglue") 
+            {
+              document.getElementById("show_reglue").style.display="block";
+              document.getElementById("show_repaint").style.display="none";
+              document.getElementById("hidding-default-select").style.display="none";
+            } 
+    }
+</script>
+
+
