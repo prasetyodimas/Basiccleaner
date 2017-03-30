@@ -60,3 +60,4 @@
 	font-size: 13px;
 	color:red;
 }
+.show-elem{display: block !important; } .hidden-elem{display: none; } 

@@ -17,6 +17,8 @@
               <li><a href="homeadmin.php?page=transaksi_nonmembered">Tidak</a></li>
             </ul>
         </div>
+        <div class="wrapper-transaction">
+            
         <div class="col-md-7 custom-innerstyles">
             <div class='row'>
                 <div class="col-md-12">
@@ -100,6 +102,7 @@
                 </table>
             </div>
         <?php } ?>
+        </div>
     </div><!-- row-->
 </div>
 
