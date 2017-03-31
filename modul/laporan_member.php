@@ -1,14 +1,5 @@
 <style type="text/css">
-	.col-md-push-custom {
-    	left: 4.333333%;
-	}
-	.custom-headtables{
-		background-color: #000;
-		color: #fff;
-	}
-	tbody tr td{
-		border-bottom: 1px solid #000;
-	}
+	.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #000; }
 </style>
 <div class='main-containpages'>
 	<div class="col-lg-12">
@@ -25,7 +16,7 @@
  			<thead class="custom-headtables">
  				<tr>
  					<th>No</th>
- 					<th>Id Pemesan</th>
+ 					<th>Kode</th>
  					<th>Nama Pemesan</th>
  					<th>Alamat</th>
  					<th>No telp</th>
@@ -40,7 +31,7 @@
  				while ($result = mysqli_fetch_array($get_datamember)) {
  			?>
  				<tr>
- 					<td><?php echo $no;?></td>
+ 					<td width="50"><?php echo $no;?></td>
  					<td><?php echo $result['id_member'];?></td>
  					<td><?php echo $result['nama_member'];?></td>
  					<td><?php echo $result['alamat_member'];?></td>
