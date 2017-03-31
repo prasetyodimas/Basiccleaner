@@ -1,11 +1,11 @@
 <?php include '../config/koneksi.php';?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Laporan Member</title>
-    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="print">
-</head>
+	<head>
+		<title>Laporan Member</title>
+	    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="screen">
+	    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="print">
+	</head>
 <body>
 <style type="text/css">
 	table {

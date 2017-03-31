@@ -46,7 +46,7 @@
 	</div><!--col-md-6-->
 	<div class="col-lg-12 clearfix-upertop">
 		<table class="table table-hover" id="table-masterpengguna">
-			<thead>
+			<thead class="custom-headtables-globalconf">
 				<tr>
 					<th>No</th>
 					<th>Nama pengguna</th>

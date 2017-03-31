@@ -55,7 +55,7 @@
 			</div><!-- div display none -->
 		<div class="col-lg-12 clearfix-bottom clearfix-upertop">
 			<table class="table table-hover" id="table-master-kate-layanan">
-				<thead>
+				<thead class="custom-headtables-globalconf">
 					<tr>
 						<th>No</th>
 						<th>Kategori layanan</th>
