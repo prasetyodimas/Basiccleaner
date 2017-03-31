@@ -46,6 +46,8 @@
 .custom-innerstyles{
     padding: 20px;border: 1px solid #f5f5f5;background: #f5f5f5;
 }
-#adding-services{margin-top: 25px; } 
+/*=================== CUSTOM HEADING TABLES ================*/
+.custom-headtables-globalconf{background-color: #000; color: #fff; }
+#adding-services{margin-top: 25px; }
 .error{font-size: 13px; color:red; }
 .show-elem{display: block !important; } .hidden-elem{display: none; }

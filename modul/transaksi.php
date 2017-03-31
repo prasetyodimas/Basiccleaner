@@ -57,9 +57,9 @@
                         </div>
                         <div class='form-group'>
                             <div class="row">
-                                <div class="col-xs-4 col-sm-3">No. Nota</div> 
+                                <div class="col-xs-4 col-sm-3">Nama </div> 
                                 <div class="col-xs-4 col-sm-3">
-                                    : <input type="text" name="kode_transaksi" value="TRK<?php echo acakangkahuruf(3);?>" style="display:inline-block;border:none;position:absolute;width:110px;margin-left:3px;">
+                                    : <?php echo $_SESSION['nama_admin']; ?>
                                 </div>
                             </div>
                         </div> 
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><!-- end inner box -->
                 </div>
             </div>
         </div>

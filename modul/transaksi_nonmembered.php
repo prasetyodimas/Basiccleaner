@@ -1,5 +1,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
+        //jquery format currency
+        $('#format_price_cleaning').number(true);
+        $('#format_price_repaint').number(true);
+        $('#format_price_reglue').number(true);
         $("#filterform-nonmember").validate({
           rules: {
               nama_lengkap_nonmember:{
@@ -53,11 +57,16 @@
                 } 
           },
         });
-        /* $("input[type='number']").bind("input", function() {
-            var get_values_shoes = $('#jml_sepatu').val();
-            $("#jml_sepatu").attr('datashoes',get_values_shoes);
-        });*/
-        //jquery Clone Select Append Service  
+        //Validation On Submit 
+        $('button[type="submit"]').attr('disabled', true);
+        $('.validation-payment').on('keyup',function() {
+            if($(this).val() != '') {
+                $('button[type="submit"]').attr('disabled' , false);
+            }else{
+                $('button[type="submit"]').attr('disabled' , true);
+            }
+        });
+        //jquery Clone Select Append All Service  
         $('.adding-shoes').click(function() {
             var new_input_shoes = $('div.cloning-namebarang .clone-input-shoes').clone();
             $('#new-contain-inputshoes').append(new_input_shoes);
@@ -66,7 +75,6 @@
             var new_services = $('div.cloning-jenislayanan .clone-jenis-service1').clone();
             $('#new-contain-services').append(new_services);
         });
-       
         //function counting subtotal
       /*  $("input[type='number']").bind("input", function() {
             var input_val = $("input[type='number']").val();
@@ -98,10 +106,6 @@
             $('#subtotal_transaksi').val(subtotal_reglue);
             console.log(subtotal_reglue);
         });*/
-         //format currency jquery
-        $('#format_price_cleaning').number(true);
-        $('#format_price_repaint').number(true);
-        $('#format_price_reglue').number(true);
         //json change functon price on transaction
         $("#choose_service").change(function(){
             var getValue= $(this).val();
@@ -324,7 +328,7 @@
             <div class="inner-box" style="padding:20px;">
                 <div class="form-group">
                     <label>List Transaksi Item</label>
-                    <p>-</p>
+                    <p>(Jenis Item => Nama Items => Harga Items)</p>
                 </div>
                 <div class='form-group'>
                     <label>Subtotal Transaksi</label>
@@ -337,7 +341,7 @@
                     </div> 
                     <div class="col-md-6">
                         <label>Kembalian</label>
-                        <input id="price-kembalian" type="text" name="kembalian" class="form-control" value=""></input>
+                        <input id="price-kembalian" type="text" name="kembalian" class="form-control validation-payment" value=""></input>
                     </div>
                 </div>
             </div>
