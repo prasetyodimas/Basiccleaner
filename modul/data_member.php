@@ -43,15 +43,15 @@
     </div>
     <?php } ?>   
     <table class='table table-hover' id="table-mastermember">
-        <thead>
+        <thead class="custom-headtables-globalconf">
             <tr>
-                <td>No</td>
-                <td>Id member</td>
-                <td>Nama Lengkap</td>
-                <td>Alamat </td>
-                <td>No Telp</td>
-                <td>Email</td>
-                <td>Aksi</td>
+                <th>No</th>
+                <th>Id member</th>
+                <th>Nama Lengkap</th>
+                <th>Alamat </th>
+                <th>No Telp</th>
+                <th>Email</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -70,7 +70,7 @@
                 <td><?php echo $res['email_member']?></td>
                 <td>
                 <?php if($_SESSION['level_admin']=='manajer'){ ?>
-                    <a href="homeadmin.php?page=cetak_kartu_member&id_member=<?php echo $res['id_member'];?>">Cetak Kartu</a> ||
+                    <a href="homeadmin.php?page=cetak_kartu_member&id_member=<?php echo $res['id_member'];?>">Cetak </a> ||
                     <a href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>" onclick="return confirm('Anda Yakin Menghapus !!');">Delete</a> ||
                 <?php } ?>
                     <a href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>">View</a>

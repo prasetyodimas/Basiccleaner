@@ -1,6 +1,6 @@
 <style type="text/css">
-	.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #000; }
-</style>
+	 .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #000; } 
+ </style>
 <div class='main-containpages'>
 	<div class="col-lg-12">
 		<div class="col-sm-2 col-md-2">
