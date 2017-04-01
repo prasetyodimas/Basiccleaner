@@ -42,7 +42,7 @@
             <td>3 hari</td>
             <td><?php echo tgl_indo($res['tgl_transaksi']);?></td>
             <td><?php echo adding_days($res['tgl_transaksi']).tgl_indo(split_month_year($res['tgl_transaksi']));?></td>
-            <td>Rp.<?php echo formatuang($res['total']);?></td>
+            <td>Rp.</td>
             <td><?php echo $res['status_member'];?></td>
             <td><a href="homeadmin.php?page=transaksi_keluardetail&id_nota=<?php echo $res['id_transaksi_shoes']?>">View</a> ||
                 <a href="<?php echo $site;?>cetak_nota.php?id_nota=<?php echo $res['id_transaksi_shoes']?>" target="_blank">Cetak</a> ||

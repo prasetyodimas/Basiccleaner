@@ -17,6 +17,8 @@
               <li><a href="homeadmin.php?page=transaksi_nonmembered">Tidak</a></li>
             </ul>
         </div>
+        <div class="wrapper-transaction">
+            
         <div class="col-md-7 custom-innerstyles">
             <div class='row'>
                 <div class="col-md-12">
@@ -46,17 +48,36 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"> Dashboard Cashier </div> 
                     <div class="inner-box" style="padding:20px;">
-                        <div class="logobasic-center">
-                            <img class="logos-shadow" src="<?php echo "frontend/logo/android-icon-96x96.png";?>">
+                         <div class="row">
+                            <div class="hidden-xs">
+                                <div class="logobasic-center">
+                                    <img class="img-responsive logos-shadow col-sm-push-8" src="<?php echo "frontend/logo/android-icon-96x96.png";?>" style="position:absolute;">
+                                </div>
+                            </div>
                         </div>
                         <div class='form-group'>
-                            Tanggal <span class="transaksi-tanggal">: <?php echo tgl_indo(date("Y-m-d"))?></span>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-3">No. Nota</div> 
+                                <div class="col-xs-4 col-sm-3">
+                                    : <input type="text" name="kode_transaksi" value="TRK<?php echo acakangkahuruf(3);?>" style="display:inline-block;border:none;position:absolute;width:110px;margin-left:3px;">
+                                </div>
+                            </div>
+                        </div> 
+                        <div class='form-group'>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-4">Tanggal</div> 
+                                <div class="col-sm-4 col-xs-4">
+                                     : <?php echo tgl_indo(date("Y-m-d"))?>
+                                </div>
+                            </div>
                         </div>
                         <div class='form-group'>
-                            Kasir <span class="transaksi-namakasir">: <?php echo $_SESSION['nama_admin'];?></span>
-                        </div>
-                        <div class="form-group">
-                          Waktu <span class="transaksi-clock" id="clock"><?php print date('H:i:s');?></span>
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-4">Kasir</div>
+                                <div class="col-sm-3 col-xs-5">
+                                    : <?php echo $_SESSION['nama_admin'];?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +121,7 @@
                 </table>
             </div>
         <?php } ?>
+        </div>
     </div><!-- row-->
 </div>
 
