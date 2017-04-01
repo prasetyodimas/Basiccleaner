@@ -42,5 +42,8 @@
         </tbody>
         <?php $no++; } ?>
     </table>  
+    <div class="control-action-pages">
+      <a href="<?php echo $site;?>modul/laporan_pemasukan_cetak_all.php" target="_blank" class="btn btn-primary">Cetak Semua Laporan</a>
+    </div>
   </div>
 </div>

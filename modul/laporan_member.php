@@ -1,5 +1,5 @@
 <style type="text/css">
-	 .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #000; } 
+	 .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #ddd; } 
  </style>
 <div class='main-containpages'>
 	<div class="col-lg-12">
