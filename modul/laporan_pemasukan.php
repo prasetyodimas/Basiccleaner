@@ -1,10 +1,21 @@
+<style type="text/css">
+  .custom-headtables{
+      background-color: #000;
+      color: #fff;
+  }
+</style>
 <div class='main-containpages'>
-  <div class="col-lg-12">
-    <div class="heading-laporan">
-      <h3>Laporan Pemasukan Laundry Sepatu Sneakers Care</h3>   
+    <div class="col-lg-12">
+        <div class="col-sm-2 col-md-2">
+          <img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
+        </div>
+        <div class="col-md-8 col-md-push-custom">
+          <h3>LAPORAN PEMASUKAN BASIC CLEANER SHOES AND CARES</h3>
+          <p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>     
+        </div>
     </div>
     <table class="table table-hover">
-        <thead>
+        <thead class="custom-headtables">
           <tr>
               <th>No</th>
               <th>Kode Transaksi</th>
@@ -25,13 +36,11 @@
               <td>xxxx</td>
               <td>xxxx</td>
               <td>
-                  <a href="">Cetak</a>
-                  <a href="">View</a>
+                  <a href="<?php echo $site;?>">View</a>
               </td>
           </tr>
         </tbody>
         <?php $no++; } ?>
     </table>  
-
   </div>
 </div>
