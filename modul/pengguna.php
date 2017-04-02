@@ -6,14 +6,13 @@
     	});
 	});
 </script>
-<div class='main-containpages'>
-	<div class="col-md-6">
-		<div class="heading-menubar"><h3>Tambah Pengguna</h3></div>
+<div class="col-md-6">
+	<div class="heading-menubar"><h3>Tambah Pengguna</h3></div>
 		<div class="form-group">
 			<button class="btn-clicked btn btn-primary">Tambah Pengguna</button>
-		</div> 
+		</div>
 		<div class="btn-show" style="display:none;">
-			<form action="backend/proses_pengguna.php?act=add_pengguna" method="post" id="" enctype="multipart/form-data">
+			<form action="backend/proses_pengguna.php?act=add_pengguna" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Username</label>
 					<input type="text" name="nama_admin" class="form-control" autofocus required="">
@@ -21,7 +20,7 @@
 				<div class="form-group">
 					<label>Password</label>
 					<input type="password" name="password_admin" class="form-control" autofocus required="">
-				</div> 
+				</div>
 				<div class="form-group">
 					<label>Level</label>
 					<select name="level_pengguna" class="form-control" autofocus required="">
@@ -33,15 +32,23 @@
 				<div class="form-group">
 					<label>Blokir</label>
 					<p>Jika ingin memblokir user / pengguna sistem,klik pada pilihan dibawah ini</p>
-					<label class="radio-inline">
-     					 <input type="radio" name="blokir" value="Y">Ya
-    				</label>
-    				<label class="radio-inline">
-     					 <input type="radio" name="blokir" value="N" checked>Tidak
-    				</label>
+					<div class="col-md-2 form-group">
+						<div class="radio">
+	     					 <input type="radio" name="blokir" value="Y">Ya
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="radio">
+	     					 <input type="radio" name="blokir" value="N" checked>Tidak
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<button class="btn btn-primary">Submit</button>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<button class="btn btn-primary">Submit</button>
+						</div>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -56,7 +63,7 @@
 					<th>Blokir pengguna</th>
 					<th>Action</th>
 				</tr>
-			</thead>	
+			</thead>
 			<tbody>
 			<?php
 				$no=1;
@@ -74,10 +81,7 @@
 					</td>
 				<?php $no++; } ?>
 				</tr>
-			</tbody>					
+			</tbody>
 		</table>
 	</div>
 </div><!--maincontain-page-->
-
-
-

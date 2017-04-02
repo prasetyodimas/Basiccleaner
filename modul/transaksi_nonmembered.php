@@ -1,8 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         //jquery format currency
-        $('#format_price_cleaning').number(true);
-        $('#format_price_repaint').number(true);
+        $('.format-price-item').number(true);
         $('#format_price_reglue').number(true);
         $("#filterform-nonmember").validate({
           rules: {
@@ -57,7 +56,25 @@
                 } 
           },
         });
-        //Validation On Submit 
+        //onchange val jenis service
+       /* $('select.change_jenis_service').on('change',function(){
+            var val_jenis_layanan = $('.change_jenis_service').val();
+            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
+            //var repaint_value      = $('select.change_repaint_values').find(':selected').data('id');
+        });*/
+        //onchange val nama layanan
+        $('select.change_nama_layanan').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('value');
+            var val_price_layanan = $(this).find(':selected').data('price');
+            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            //replace this val to input total transaction
+            $('.temp_value').val(val_price_layanan);
+            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+        });
+        //validation on submit 
         $('button[type="submit"]').attr('disabled', true);
         $('.validation-payment').on('keyup',function() {
             if($(this).val() != '') {
@@ -153,7 +170,34 @@
             $("#show_reglue").addClass('hidden-elem');
         } 
     }
+    <?php date_default_timezone_set('Asia/Jakarta'); ?>
+    //buat object date berdasarkan waktu di server
+    var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
+    //buat object date berdasarkan waktu di client
+    var clientTime = new Date();
+    //hitung selisih
+    var Diff = serverTime.getTime() - clientTime.getTime();
+    //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
+    function displayServerTime(){
+        //buat object date berdasarkan waktu di client
+        var clientTime = new Date();
+        //buat object date dengan menghitung selisih waktu client dan server
+        var time = new Date(clientTime.getTime() + Diff);
+        //ambil nilai jam
+        var sh = time.getHours().toString();
+        //ambil nilai menit
+        var sm = time.getMinutes().toString();
+        //ambil nilai detik
+        var ss = time.getSeconds().toString();
+        //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
+        document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
+    } 
 </script>
+<style type="text/css">
+    .container-transaction{
+        margin-bottom: 50px;
+    }
+</style>
 <div class='main-containpages'>
     <div class="col-md-7">
         <h3>Transaksi masuk <span class="heading-notifier-transaction">(Non member)</span></h3>
@@ -181,7 +225,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Jenis Layanan</label>
-                        <select id="category_service" onchange="show_services()" class="form-control" autofocus required="">
+                        <select name="jenis_layanan[]" id="category_service" onchange="show_services()" class="form-control change_jenis_service" autofocus required="">
                             <option value="">Pilih layanan</option>
                             <?php 
                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan GROUP BY jenis_layanan");
@@ -204,12 +248,12 @@
                 <div class="col-md-5" id="show_cleaning" style="display:none;">
                      <div class="form-group">
                         <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control" autofocus required="">
+                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
                             <option value="">Pilih layanannya</option>
                             <?php 
                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' ORDER BY id_kategori_layanan DESC");
                                 while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-value='".$result['jenis_layanan']."'>".$result['nama_layanan']."</option>";
+                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
                                 }
                             ?>
                         </select>
@@ -219,12 +263,12 @@
                 <div class="col-md-5" id="show_repaint" style="display:none;">
                      <div class="form-group">
                         <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control" autofocus required="">
+                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
                             <option value="">Pilih layanannya</option>
                             <?php 
                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' ORDER BY id_kategori_layanan DESC");
                                 while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-value='".$result['jenis_layanan']."'>".$result['nama_layanan']."</option>";
+                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
                                 }
                             ?>
                         </select>
@@ -234,12 +278,12 @@
                 <div class="col-md-5" id="show_reglue" style="display:none;">
                      <div class="form-group">
                         <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control" autofocus required="">
+                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
                             <option value="">Pilih layanannya</option>
                             <?php 
                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' ORDER BY id_kategori_layanan DESC");
                                 while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-value='".$result['jenis_layanan']."'>".$result['nama_layanan']."</option>";
+                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
                                 }
                             ?>
                         </select>
@@ -254,7 +298,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jumlah sepatu</label>
-                        <input type="number" id="jml_sepatu" class="form-control" datashoes="" min="1" max="50" name="jumlah_sepatu[]" autofocus required="">
+                        <input type="number" name="jumlah_sepatu[]" id="jml_sepatu" class="form-control" datashoes="" min="1" max="50" autofocus required="">
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -324,15 +368,30 @@
         <!-- PANEL CASHIER MONEY -->
         <div class="panel panel-default">
             <div class="panel-heading"> Cashier payment </div> 
-            <input type="hidden" name="subtotal" id="total_transaksi_values" class="price_cleaning price_repaint price_reglue">
             <div class="inner-box" style="padding:20px;">
                 <div class="form-group">
                     <label>List Transaksi Item</label>
-                    <p>(Jenis Item => Nama Items => Harga Items)</p>
+                    <div class="row" id="main-transaction-items">
+                        <div class="col-md-3">
+                            <div class="container-transaction-jenis-service"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="container-transaction2"></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-transaction3"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group'>
-                    <label>Subtotal Transaksi</label>
-                    <input type="text" id="subtotal_transaksi" name="total_trans" class="form-control">
+                    <div class="row">
+                        <div class="col-md-5 col-md-push-7">
+                             <strong>Total</strong>
+                        </div>
+                        <div class="col-md-2 col-md-push-4">
+                            <span class="container-total-peritems"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -344,6 +403,7 @@
                         <input id="price-kembalian" type="text" name="kembalian" class="form-control validation-payment" value=""></input>
                     </div>
                 </div>
+                <input type="hidden" name="total_transcation_item" class="temp_value" value="">
             </div>
         </form>
         </div>
@@ -355,7 +415,7 @@
         <div class="row">
             <div class="col-md-4">
                 <label>Jumlah sepatu</label>
-                <input type="number" id="jml_sepatu" class="form-control" datashoes="" min="1" max="50" name="jumlah_sepatu[]" autofocus required="">
+                <input type="number" id="jml_sepatu[]" class="form-control" datashoes="" min="1" max="50" name="jumlah_sepatu[]" autofocus required="">
             </div>
             <div class="col-md-7">
                 <div class="form-group">

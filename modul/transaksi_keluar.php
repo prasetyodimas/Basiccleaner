@@ -25,7 +25,17 @@
     <tbody>
         <?php 
             $no=1;
-            $query=mysqli_query($con,"SELECT * FROM transaksi_shoes ts ORDER BY id_transaksi_shoes DESC");
+            $query=mysqli_query($con,"SELECT ts.id_transaksi_shoes,
+                                             ts.id_member,
+                                             ts.nama_lengkap,
+                                             ts.no_telp,
+                                             ts.status_pengambilan,
+                                             ts.tgl_transaksi,
+                                             dts.harga,
+                                             ts.status_member
+                                      FROM transaksi_shoes ts 
+                                      JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+                                      ORDER BY id_transaksi_shoes DESC");
             while($res=mysqli_fetch_array($query)){
             $cek_member  = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$res[id_member]'"));
         ?>
@@ -42,7 +52,7 @@
             <td>3 hari</td>
             <td><?php echo tgl_indo($res['tgl_transaksi']);?></td>
             <td><?php echo adding_days($res['tgl_transaksi']).tgl_indo(split_month_year($res['tgl_transaksi']));?></td>
-            <td>Rp.</td>
+            <td>Rp.<?php echo formatuang($res['harga']);?></td>
             <td><?php echo $res['status_member'];?></td>
             <td><a href="homeadmin.php?page=transaksi_keluardetail&id_nota=<?php echo $res['id_transaksi_shoes']?>">View</a> ||
                 <a href="<?php echo $site;?>cetak_nota.php?id_nota=<?php echo $res['id_transaksi_shoes']?>" target="_blank">Cetak</a> ||

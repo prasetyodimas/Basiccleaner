@@ -45,8 +45,8 @@
 	    	display: none;
 	    }
 	    th.thead-custom{
-	    	background: #000 !important; 
-	    } 
+	    	background: #000 !important;
+	    }
 	}
 	table.customs >thead.custom-tables>tr.tables>th.thead-custom {
 		text-align: center;
@@ -59,43 +59,29 @@
 		border-bottom:1px solid #fff !important;
 		border-right: 1px solid #fff !important;
 	}
-	th.thead-custom{background: #3a3a3a; color: #fff; } 
+	th.thead-custom{background: #3a3a3a; color: #fff; }
 	.desain-laporan-tanggal{margin-left: 33px; }
-	.desain-laporan-nama{margin-left: 51px; } 
-	.desain-laporan-notelp{margin-left: 41px; } 
-	.attention-kwitansi{font-size: 10px; } 
-	.postion-costum-sizing{position: relative; left: 20px; top: -3px; } 
+	.desain-laporan-nama{margin-left: 51px; }
+	.desain-laporan-notelp{margin-left: 41px; }
+	.attention-kwitansi{font-size: 10px; }
+	.postion-costum-sizing{position: relative; left: 20px; top: -3px; }
 	.margin-top-10{
 		margin-top: 55px;
 	}
-</style> 
+</style>
 <body>
-<?php 
-	// view transacation from tabel transaksi_shoes and detail_transaksi_shoes
-	$viewuser_transaction = mysqli_fetch_array(mysqli_query($con,
-		"SELECT ts.id_transaksi_shoes, ts.id_member, ts.nama_lengkap, ts.alamat, ts.no_telp, ts.email, ts.tgl_transaksi, ts.total, dts.jumlah_sepatu, dts.id_cleaning, dts.id_repaint, dts.id_reglue, dts.nama_barang, ts.status_member
-		FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts ON dts.id_transaksi_shoes=ts.id_transaksi_shoes WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));
-	$show_member     = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$viewuser_transaction[id_member]'"));
-	$servis_cleaning = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM cleaning WHERE id_cleaning='$viewuser_transaction[id_cleaning]'"));
-	$servis_repaint  = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM repaint WHERE id_repaint='$viewuser_transaction[id_repaint]'"));	
-	$servis_reglue   = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM reglue WHERE id_reglue='$viewuser_transaction[id_reglue]'"));
-?>
-
 <div class="col-lg-12" style="padding:40px;">
 	<div class="row">
-	<?php if($viewuser_transaction['status_member']=='member'){?>
 		<div class="col-md-9">
-			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div> 
-			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $show_member['nama_member'];?></span></label></div> 
-			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $show_member['notelp_member']; ?></span></label></div> 
+			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div>
+			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $show_member['nama_member'];?></span></label></div>
+			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $show_member['notelp_member']; ?></span></label></div>
 		</div>
-	<?php }elseif($viewuser_transaction['status_member']=='non-member'){?>
 		<div class="col-md-9">
-			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div> 
-			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $viewuser_transaction['nama_lengkap'];?></span></label></div> 
-			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $viewuser_transaction['no_telp']; ?></span></label></div> 
+			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div>
+			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $viewuser_transaction['nama_lengkap'];?></span></label></div>
+			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $viewuser_transaction['no_telp']; ?></span></label></div>
 		</div>
-	<?php } ?> 
 		<div class="col-md-3 pull-right">
 			<img class="postion-costum-sizing" src="<?php echo $site?>/frontend/logo/header-logolaps.png">
 		</div>
@@ -117,34 +103,6 @@
 					<td><?php echo $servis_cleaning['nama_cleaning'];?></br>
 						<?php echo $servis_repaint['jenis_repaint'];?></br>
 						<?php echo $servis_reglue['kategori_reglue'];?></br>
-					</td>
-					<td>
-						<?php if ($viewuser_transaction['id_cleaning']!='-') { ?>
-							Rp.<?php echo formatuang($servis_cleaning['harga_cleaning']).' @x '.$viewuser_transaction['jumlah_sepatu'];?></br>
-						<?php }elseif ($viewuser_transaction=='-') { ?>
-						<?php } ?>
-						<?php if ($viewuser_transaction['id_repaint']!='-') { ?>
-							Rp.<?php echo formatuang($servis_repaint['harga_repaint']).' @x '.$viewuser_transaction['jumlah_sepatu'];?></br>
-						<?php }elseif ($viewuser_transaction['id_repaint']=='') { ?>
-						<?php } ?>
-						<?php if ($viewuser_transaction['id_reglue']!='-') { ?>
-							Rp.<?php echo formatuang($servis_reglue['harga_reglue']).' @x '.$viewuser_transaction['jumlah_sepatu'];?>
-						<?php }elseif ($viewuser_transaction['id_reglue']=='-') { ?>
-						<?php } ?>						
-					</td>
-					<td>
-						<?php if ($viewuser_transaction['id_cleaning']!='-') { ?>
-							Rp.<?php echo formatuang($servis_cleaning['harga_cleaning']*$viewuser_transaction['jumlah_sepatu']);?></br>
-						<?php }elseif ($viewuser_transaction['id_cleaning']=='-') { ?>
-						<?php } ?>
-						<?php if ($viewuser_transaction['id_repaint']!='-') { ?>
-							Rp.<?php echo formatuang($servis_repaint['harga_repaint']*$viewuser_transaction['jumlah_sepatu']);?></br>
-						<?php }elseif ($viewuser_transaction['id_repaint']=='-') { ?>
-						<?php } ?>
-						<?php if ($viewuser_transaction['id_reglue']!='-') { ?>
-							Rp.<?php echo formatuang($servis_reglue['harga_reglue']*$viewuser_transaction['jumlah_sepatu']);?>
-						<?php }elseif ($viewuser_transaction['id_reglue']=='-') { ?>
-						<?php } ?>
 					</td>
 				</tr>
 				<tr class="">
@@ -175,7 +133,7 @@
 		<div class="">
 			<button class="btn btn-lg btn-warning" onclick="window_print();">Cetak Nota</button>
 		</div>
-	</div>		
+	</div>
 </div>
 </body>
 </html>

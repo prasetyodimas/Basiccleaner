@@ -3,9 +3,8 @@
 $act = $_GET['act'];
 //var date now
 $tgl_transaksi = date('Y-m-d');
-//perhitungan jumlah sepatu dikali setiap harga treatment
-$subtotal 	  = $_POST['total_trans'];
-//$subtotal_transacation  =($count_barang*$subtotal);
+$array_jml_sepatu  = $_POST['jumlah_sepatu'];
+$array_nama_barang = $_POST['nama_barangnonmember'];
 if($act=='add_transaksi') {
 	//var check member 
 	if ($_POST['status_member']=='member') {
@@ -79,6 +78,10 @@ if($act=='add_transaksi') {
 													  		  '$_POST[status_member]',
 													  		  '$tgl_transaksi',
 													  		  'B')";
+
+	$i=0;
+	foreach ($_POST['jenis_layanan'] as $key => $jenis_servis_layanan) {
+	
 		//add detail transaksi baru
 		$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_transaksi_shoes, 
 																	id_kategori_layanan,
@@ -86,12 +89,13 @@ if($act=='add_transaksi') {
 																    harga,
 																    jumlah_sepatu) 
 															VALUES ('$_POST[kode_transaksi]',
-																	'$_POST[id_kategori_layanan]',
-																	'$_POST[nama_barang]',
-																	'$_POST[harga]',
-																	'23')";
-		echo $add_transaksi_nonmember;
-		echo $add_transaksi_detail;
+																	'$jenis_servis_layanan',
+																	'$array_nama_barang[$i]',
+																	'$_POST[total_transcation_item]',
+																	'$array_jml_sepatu[$i]')";
+
+	$i++;
+	}
 		$succes_transaksi 		 = mysqli_query($con,$add_transaksi_nonmember);
 		$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 

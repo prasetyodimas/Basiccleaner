@@ -25,7 +25,10 @@
             <tbody>
                 <?php 
                     $no=1;
-                    $get_transaksi_pengambilan=mysqli_query($con,"SELECT * FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes WHERE status_pengambilan='B' ORDER BY ts.id_transaksi_shoes DESC");
+                    $get_transaksi_pengambilan=mysqli_query($con,
+                    "SELECT * FROM transaksi_shoes ts 
+                    JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes 
+                    WHERE status_pengambilan='B' ORDER BY ts.id_transaksi_shoes DESC");
                     while($result=mysqli_fetch_array($get_transaksi_pengambilan)){
                     $get_data_member = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$result[id_member]'"));
                 ?>
@@ -46,7 +49,7 @@
                     <td><?php echo stat_pengambilan($result['status_pengambilan']);?></td>
                     <td><?php echo $result['status_member'];?></td>
                 <?php } ?>
-                    <td>Rp.<?php echo formatuang($result['total']);?></td>
+                    <td>Rp.<?php echo formatuang($result['harga']);?></td>
                     <td>
                         <a href="homeadmin.php?page=transaksi_pengambilandetail&id_nota=<?php echo $result['id_transaksi_shoes']?>">View</a> ||
                         <a href="homeadmin.php?page=transaksi_pengambilanproses&id_nota=<?php echo $result['id_transaksi_shoes'];;?>" onclick="return confirm('Memproses pengambilan transaksi..?');">Pengambilan</a>

@@ -12,18 +12,6 @@
 .btn:hover,.btn:active,.btn.active,.btn.disabled,.btn[disabled]{color:#333333;background-color:#e6e6e6;*background-color:#d9d9d9;}
 .btn-basic-clenaer{color: #fff !important; background-color: #111113 !important; border-color: #0a0a0a !important; } 
 .clearfix-bottom{margin-bottom: 100px;display: inline-block;}
-.transaksi-idnota{margin-left: 98px;} 
-.transaksi-pemesan{margin-left: 94px;} 
-.transaksi-alamat{margin-left: 148px;} 
-.transaksi-notelp{margin-left: 147px;} 
-.transaksi-email{margin-left: 158px;}
-.transaksi-jenislayanan{margin-left: 104px;}
-.transaksi-subtotallayanan{margin-left: 85px;}
-.transaksi-pengambilan{margin-left: 69px;}
-.transaksi-deskripsibarang{margin-left: 85px;}
-.transaksi-sepatu{margin-left: 102px;} 
-.transaksi-pengambilan{margin-left: 70px;}
-.transaksi-status_member{margin-left: 154px;}
 .box-detailtransaction_out{border: 1px solid #cecece; padding: 14px; background: #fdfdfd; border-top: 5px solid #000; }
 /*=== CUSTOM UI TRANSACTION ===*/
 .transaksi-nonota{color:#ff0000;font-weight:bold;font-size:15px;margin-left:50px;}
@@ -31,7 +19,6 @@
 .transaksi-namakasir{margin-left: 75px;}
 .panel-default {border-color: #f5f5f5;}
 .transaksi-clock{margin-left: 74px;}
-.custom-innerstyles{padding: 20px;border: 1px solid #dddddd;height: 188px; }
 /* === NOTIFIER HEADING ===*/
 .heading-notifier-transaction{font-size: 17px; color: red; position: relative; top: -2px; }
 /*========= CUSTOM CSS CASHIER ==========--*/
@@ -42,11 +29,14 @@
 .transaksi-clock{margin-left: 74px;}
 /*========== CUSTOM BOX SHADOW DAHSBOARD CAHSIER ==========*/
 .logobasic-center .logos-shadow{box-shadow: 0px 0px 3px #bfbfbf; } 
-.custom-innerstyles{
-    padding: 20px;border: 1px solid #f5f5f5;background: #f5f5f5;
-}
+.custom-innerstyles{padding: 20px;border: 1px solid #ddd; } 
 /*=================== CUSTOM HEADING TABLES ================*/
 .custom-headtables-globalconf{background-color: #000; color: #fff; }
 #adding-services{margin-top: 25px; }
 .error{font-size: 13px; color:red; }
 .show-elem{display: block !important; } .hidden-elem{display: none; }
+/*======================== PAGE HEADER MEMBER ======================*/
+.section-padd-header .heading-member{padding: 15px 20px; } 
+.heading-member .size-heading-member h4{font-size: 28px; } 
+/*========== CONTAINER ITEMS TRANSACTION ====================*/
+#main-transaction-items{padding: 10px;border-bottom: 1px solid #ababab; width: 100%; margin-left: 1px; }

@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
     	$('#table-master-kate-layanan').DataTable({
-    		responsive: true
+    		"lengthMenu": [ 5, 10, 20, 30, 40, 50, 100 ]
     	});
     	$('.btn-cliked').click(function(){
     		$('.btn-show').slideToggle('slow');
