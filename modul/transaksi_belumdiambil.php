@@ -8,7 +8,7 @@
     <div class="table-responsive">
     <form action="backend/proses_pengambilan_barang.php?act=update_statusbarang" method="post" enctype="multipart/form-data">
         <table class='table table-hover' id="table-transaksipengambilan">
-            <thead>
+            <thead class="custom-headtables-globalconf">
                 <tr>
                     <td>No</td>
                     <td>No nota</td>

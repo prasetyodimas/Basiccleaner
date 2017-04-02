@@ -14,77 +14,11 @@
             $('#price-kembalian').val(get_returnprice);
             console.log(get_returnprice);
         });
-        $('input[type=radio][name=jenis_member]').click(function(){
-            var member_person=$(this).val();
-            $('.'+member_person).show();
-                $('input[type=radio][name=jenis_member]').not(':checked').each(function(){
-                    var member_person_atasnama=$(this).val();
-                    $('.'+member_person_atasnama).hide();
-                });
-        });
-        //choose jenis layanan member
-        $('input[type=radio][name=jenis_layanan_member]').click(function(){
-            var cat_service_cleaner=$(this).val();
-            $('.'+cat_service_cleaner).show();
-                $('input[type=radio][name=jenis_layanan_member]').not(':checked').each(function(){
-                    var cat_service_cleaner_hide=$(this).val();
-                    $('.'+cat_service_cleaner_hide).hide();
-                });
-        });
-        //choose jenis layanan non member
-        $('input[type=radio][name=jenis_layanan_nonmember]').click(function(){
-            var cat_service_cleaner=$(this).val();
-            $('.'+cat_service_cleaner).show();
-                $('input[type=radio][name=jenis_layanan_nonmember]').not(':checked').each(function(){
-                    var cat_service_cleaner_hide=$(this).val();
-                    $('.'+cat_service_cleaner_hide).hide();
-                });
-        });
         //format currency jquery
         $('#format_price_cleaning').number(true);
         $('#format_price_repaint').number(true);
         $('#format_price_reglue').number(true);
         //json change functon price on transaction
-        $("#choose_cleaning").change(function(){
-            var getValue= $(this).val();
-            if(getValue == 0) {
-            }else{
-                $.ajax({
-                    url:'json/json_cleaning.php',
-                    type:'GET',
-                    dataType:'json',
-                    data: {'id_cleaning' : getValue},
-                    success:function (data) {
-                        if(data != '') {
-                            $.each(data,function(index,value){
-                                $(".price_cleaning").val(value.harga_cleaning);
-                                $("#deskripsi_cleaning").val(value.deskripsi_cleaning);
-                            });
-                        }
-                    }
-                });
-            }
-        });
-        $("#change_repaint").change(function(){
-            var getValrepaint =  $(this).val();
-            if (getValrepaint == 0) {
-            }else{
-                $.ajax({
-                    url :'json/json_repaint.php',
-                    type:'GET',
-                    dataType :'json',
-                    data : {'id_repaint' : getValrepaint},
-                    success :function(data){
-                        if (data !='') {
-                            $.each(data,function(index,value){
-                                $(".price_repaint").val(value.harga_repaint);
-                                $("#deskripsi_repaint").val(value.deskripsi_repaint);
-                            });
-                        }
-                    }
-                });
-            }
-        });
         $("#change_reglue").change(function(){
             var getValrepaint =  $(this).val();
             if (getValrepaint == 0) {
@@ -167,7 +101,7 @@
             </div><!-- row -->
             <div class='form-actions'>
                 <button type="submit" id='proses' class="btn btn-success">Submit</button>
-                <button type="cancel" class="btn btn-danger" onclick="javascript:history.go(-2);">Cancel</button>
+                <button type="reset" onclick="javascript:history.go(-2);" class="btn btn-danger">Cancel</button>
             </div>
         </section>
         <input type="hidden" name="subtotal" class="price_cleaning">
@@ -178,21 +112,44 @@
             <div class="panel panel-default">
                 <div class="panel-heading"> Dashboard Cashier </div> 
                 <div class="inner-box" style="padding:20px;">
-                    <div class="logobasic-center">
-                        <img class="logos-shadow" src="<?php echo "frontend/logo/android-icon-96x96.png";?>">
+                    <div class="row">
+                        <div class="hidden-xs">
+                            <div class="logobasic-center">
+                                <img class="img-responsive logos-shadow col-sm-push-8" src="<?php echo "frontend/logo/android-icon-96x96.png";?>" style="position:absolute;">
+                            </div>
+                        </div>
                     </div>
                     <div class='form-group'>
-                        No. Nota : 
-                        <span class='transaksi-nonota'><input type="text" name="kode_transaksi" value="TRK<?php echo acakangkahuruf(3);?>" style="border:none;"></span>
-                    </div>  
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-3">No. Nota</div> 
+                            <div class="col-xs-4 col-sm-3">
+                                : <input type="text" name="kode_transaksi" value="TRK<?php echo acakangkahuruf(3);?>" style="display:inline-block;border:none;position:absolute;width:110px;margin-left:3px;">
+                            </div>
+                        </div>
+                    </div> 
                     <div class='form-group'>
-                        Tanggal <span class="transaksi-tanggal">: <?php echo tgl_indo(date("Y-m-d"))?></span>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-4">Tanggal</div> 
+                            <div class="col-sm-4 col-xs-4">
+                                 : <?php echo tgl_indo(date("Y-m-d"))?>
+                            </div>
+                        </div>
                     </div>
                     <div class='form-group'>
-                        Kasir <span class="transaksi-namakasir">: <?php echo $_SESSION['nama_admin'];?></span>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-4">Kasir</div>
+                            <div class="col-sm-3 col-xs-5">
+                                : <?php echo $_SESSION['nama_admin'];?>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                      Waktu <span class="transaksi-clock" id="clock">: <?php print date('H:i:s'); ?></span>
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-4">Waktu</div>
+                            <div class="col-sm-3 col-xs-5">
+                                : <span id="clock"><?php print date('H:i:s'); ?></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

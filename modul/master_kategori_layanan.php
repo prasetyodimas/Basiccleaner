@@ -1,13 +1,17 @@
 <script type="text/javascript">
 	$(document).ready(function(){
-    	$('#table-master-kate-layanan').DataTable();
+    	$('#table-master-kate-layanan').DataTable({
+    		responsive: true
+    	});
     	$('.btn-cliked').click(function(){
     		$('.btn-show').slideToggle('slow');
     	});
 	});
 </script>
 <div class="heading-menubar"><h3>Master Kategori Layanan</h3></div>
-	<button class="btn-cliked">Tambah Kategori Layanan</button>
+	<div class="form-group">
+		<button class="btn-cliked btn btn-primary">Tambah Kategori Layanan</button>
+	</div>
 	<div class="row">
 		<div class='main-containpages'>
 			<div class="btn-show" style="display:none;">
@@ -45,7 +49,7 @@
 					</div>
 				</div>
 			</div><!-- div display none -->
-			<div class="col-lg-12 clearfix-bottom clearfix-upertop">
+			<div class="col-lg-12 clearfix-bottom">
 				<table class="table table-hover" id="table-master-kate-layanan">
 					<thead class="custom-headtables-globalconf">
 						<tr>
