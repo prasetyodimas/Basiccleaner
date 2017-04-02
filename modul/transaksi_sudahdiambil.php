@@ -7,7 +7,7 @@
     <h3>List Transaksi Sudah Diambil</h3>
     <div class="table-responsive">
         <table class='table table-hover' id="table-transaksipengambilan">
-            <thead>
+            <thead class="custom-headtables-globalconf">
                 <tr>
                     <td>No</td>
                     <td>No nota</td>

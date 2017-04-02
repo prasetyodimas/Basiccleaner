@@ -8,8 +8,10 @@
 </script>
 <div class='main-containpages'>
 	<div class="col-md-6">
-		<div class="heading-menubar"><h3>Tambah Pengguna</h3></div> 
-		<button class="btn-clicked" style="margin-bottom:20px;">Tambah Pengguna</button>
+		<div class="heading-menubar"><h3>Tambah Pengguna</h3></div>
+		<div class="form-group">
+			<button class="btn-clicked btn btn-primary">Tambah Pengguna</button>
+		</div> 
 		<div class="btn-show" style="display:none;">
 			<form action="backend/proses_pengguna.php?act=add_pengguna" method="post" id="" enctype="multipart/form-data">
 				<div class="form-group">
@@ -44,7 +46,7 @@
 			</form>
 		</div>
 	</div><!--col-md-6-->
-	<div class="col-lg-12 clearfix-upertop">
+	<div class="col-lg-12">
 		<table class="table table-hover" id="table-masterpengguna">
 			<thead class="custom-headtables-globalconf">
 				<tr>

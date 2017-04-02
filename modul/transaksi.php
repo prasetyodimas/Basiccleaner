@@ -88,7 +88,7 @@
             <div class="find-datauser">
                 <h5>Data Ditemukan sebagai berikut :</h5>
                 <table class="table table-hover" style="font-size:14px;">
-                    <thead>
+                    <thead class="custom-headtables-globalconf">
                         <tr>
                             <th>No</th>
                             <th>Id member</th>

@@ -8,20 +8,20 @@
         <h3>List Transaksi Keluar</h3>
     </div>
     <table class='table table-hover' id="table-transaksikeluar">
-    <thead>
-        <tr>
-            <td>No</td>
-            <td>No nota</td>
-            <td>Nama Pemesan</td>
-            <td>No telp</td>
-            <td>Estimasi</td>
-            <td>Tgl masuk</td>
-            <td>Saran pengambilan</td>
-            <td>Total Transaksi</td>
-            <td>Status</td>
-            <td>Action</td>
-        </tr>
-    </thead>
+        <thead class="custom-headtables-globalconf">
+            <tr>
+                <td>No</td>
+                <td>No nota</td>
+                <td>Nama Pemesan</td>
+                <td>No telp</td>
+                <td>Estimasi</td>
+                <td>Tgl masuk</td>
+                <td>Saran pengambilan</td>
+                <td>Total Transaksi</td>
+                <td>Status</td>
+                <td>Action</td>
+            </tr>
+        </thead>
     <tbody>
         <?php 
             $no=1;
