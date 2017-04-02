@@ -20,7 +20,11 @@
               <th>No</th>
               <th>Kode Transaksi</th>
               <th>Nama Pemesan</th>
+              <th>Nama Barang</th>
+              <th>Jumlah</th>
               <th>Jenis Layanan</th>
+              <th>Nama Layanan</th>
+              <th>Harga</th>
               <th>Aksi</th>
           </tr>
         </thead>
@@ -33,6 +37,8 @@
           <tr>
               <td><?php echo $no;?></td>
               <td>xxx</td>
+              <td>xxxx</td>
+              <td>xxxx</td>
               <td>xxxx</td>
               <td>xxxx</td>
               <td>
