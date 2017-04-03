@@ -16,83 +16,83 @@
 	JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
 	WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
 	$showmember = mysqli_fetch_array(mysqli_query($con,
-				 "SELECT * FROM member m 
-				 JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
-				 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
+			 "SELECT * FROM member m 
+			  JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
+			  WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));
 ?>
 <!-- JIKA ADA ID MEMBER NYA -->
 <div class='main-containpages'>
 	<div style="margin-bottom:30px;">
-		<h3>List Detail Transaksi Keluar</h3>
+		<h3>List Detail Pengambilan Barang</h3>
 	</div>
     <section>
 		<div class="col-md-6 box-detailtransaction_out">
 	    	<div class="form-group"><strong>Detail Pemesan</strong></div>
 	    	<div class="form-group">
 	    		<div class="row">
-	    			<div class="col-md-4"> Kode Transaksi </div> 
-	    			<div class="col-md-5"> : <?php echo $_GET['id_nota'];?> </div>
-    			</div>
+	    			<div class="col-md-4">Kode Transaksi</div>
+	    			<div class="col-md-5">: <?php echo $_GET['id_nota'];?></div>
+	    		</div>
 	    	</div>
 	    	<?php if ($shownon_member['status_member']=='member') { ?>
 		        <div class="form-group">
 		        	<div class="row">
-		        		<div class="col-md-4"> Nama Pemesan </div> 
+		        		<div class="col-md-4">Nama Pemesan</div> 
 		        		<div class="col-md-5">: <?php echo $showmember['nama_member'] ;?></div>
 		        	</div>
+		        </div>
+		        <div class="form-group">
 		        	<div class="row">
-		        		<div class="col-md-4"> Alamat </div> 
+		        		<div class="col-md-4">Alamat </div>
 		        		<div class="col-md-5">: <?php echo $showmember['alamat_member'];?></div>
 		        	</div>
-		        	<div class="row">
-		        		<div class="col-md-4">No telp</div>
-		        		<div class="col-md-5">: <?php echo $showmember['notelp_member'];?></div>
-		        	</div>
-		        	<div class="row">
-			        	<div class="col-md-4">Email</div>
-			        	<div class="col-md-5">: <?php echo $showmember['email_member'];?></div>
-		        	</div>
-		        	<div class="row">
-		        		<div class="col-md-4">Status</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
-		        	</div>
 		        </div>
-		</div>
-		<div class="box-detailtransaction_out">
+		        <div class="form-group">
+		        	<div class="col-md-4">No telp</div> 
+		        	<div class="col-md-5">: <?php echo $showmember['notelp_member'];?></div>
+		        </div>
+		        <div class="form-group">
+		        	<div class="col-md-4">Email</div>
+		        	<div class="col-md-5"> : <?php echo $showmember['email_member'];?></div> 
+		        </div>
+		        <div class="form-group">
+		        	<div class="col-md-4"> Status</div> 
+		        	<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
+		        </div>
 		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
 		    	<div class="form-group">
 		    		<div class="row">
-		        		<div class="col-md-4"> Nama Pemesan </div> 
-		        		<div class="col-md-5">: <?php echo $shownon_member['nama_lengkap'] ;?></div>
-		        	</div>
-		        </div>
-		        <div class="form-group">	
-		        	<div class="row">
-		        		<div class="col-md-4"> Alamat </div> 
-		        		<div class="col-md-5">: <?php echo $shownon_member['alamat'];?></div>
-		        	</div>
+			           <div class="col-md-4"> Nama Pemesan </div>
+			           <div class="col-md-5"> : <?php echo $shownon_member['nama_lengkap'] ;?></div>
+			        </div>
+		    	</div>
+		        <div class="form-group">
+		       		<div class="row">
+			        	<div class="col-md-4">Alamat</div>
+			        	<div class="col-md-5"> : <?php echo $shownon_member['alamat'];?></div>
+			        </div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
 		        		<div class="col-md-4">No telp</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['no_telp'];?></div>
+		        		<div class="col-md-5"> : <?php echo $shownon_member['no_telp'];?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
-			        	<div class="col-md-4">Email</div>
-			        	<div class="col-md-5">: <?php echo $shownon_member['email'];?></div>
+		        		<div class="col-md-4">Email</div>
+		        		<div class="col-md-5"> : <?php echo $shownon_member['email'];?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
 		        		<div class="col-md-4">Status</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
+		        		<div class="col-md-5"> : <?php echo $shownon_member['status_member'];?></div>
 		        	</div>
 		        </div>
 		    <?php } ?>
-	    </div>
-	    <div class="row">
+		</div>
+		<div class="row">
 	    	<div class="col-md-6">
 	    		<div class="box-detailtransaction_out">
 					<div class="form-group">
@@ -113,7 +113,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
-							<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							<div class="col-md-5" style="color:#1ef01e;font-weight:bold;"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
 	    		</div>
@@ -127,32 +127,31 @@
 	    				<th>No</th>
 	    				<th>Nama Layanan</th>
 	    				<th>Jenis Layanan</th>
-	    				<th>Deskripsi Layanan</th>
 	    				<th>Harga</th>
+	    				<th>Deskripsi Layanan</th>
 	    				<th>Tanggal Pesan</th>
 	    				<th>Estimasi Pengambilan</th>
     				</tr>
     			</thead>
-    			<?php
-    				$no =1;
+    			<?php 
+	    			$no =1;
     				$get_transaction = mysqli_query($con,
     					"SELECT * FROM transaksi_shoes ts 
 					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
     					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
-						 while ($result_transaction = mysqli_fetch_array($get_transaction)) {
-    			 ?>
+						 while ($result_transaction = mysqli_fetch_array($get_transaction)) { ?>
     			<tbody>
     				<tr>
-    					<td><?php echo $no;?></td>
+						<td><?php echo $no;?></td>
     					<td><?php echo $result_transaction['jenis_layanan'];?></td>
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
-    					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
     					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
     					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
+    					<td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
-    			</tbody>
     			<?php } ?>
+    			</tbody>
     		</table>
 			<div style="margin-bottom:50px;"></div>
 		</div>

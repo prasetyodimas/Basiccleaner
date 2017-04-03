@@ -45,6 +45,9 @@
         case "transaksi_sudahdiambil":
             include "modul/transaksi_sudahdiambil.php";
         break;
+        case 'transaksi_detail_sudahdiambil':
+            include "modul/transaksi_detail_sudahdiambil.php";
+        break;
         case 'transaksi_pengambilandetail':
             include "modul/transaksi_pengambilandetail.php";
         break;

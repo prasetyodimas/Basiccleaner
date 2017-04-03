@@ -17,9 +17,6 @@
 	table tbody tr td{
 		padding: 5px;
 	}
-	.hidden-button{
-		display:none !important;
-	}
 	.control-action-pages{
 		margin-top: 50px;
 	}
@@ -27,16 +24,10 @@
 		border: 1px solid #000;
 		border-bottom: 1px solid #000;
 	}
-	.col-md-push-custom {
-    	left: 4.333333%;
-	}
 	@media print{
 	  /*HIDE BUTTON CETAK ALL */
 	  #hidden-button{
 	  	display: none !important;
-	  }
-	  .push-customize{
-  		left: 22.66666667%;
 	  }
 	}
 </style>
@@ -47,9 +38,9 @@
 				<div class="col-sm-2 col-md-2">
 					<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 				</div>
-				<div class="col-md-8 col-md-push-custom">
-					<h3 style="margin-left:127px;">LAPORAN MEMBER BASIC CLEANER</h3>
-					<p class="col-md-8 col-md-push-2 push-customize">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+				<div class="col-md-8">
+					<h3>LAPORAN MEMBER BASIC CLEANER</h3>
+					<p class="col-md-8 col-md-push-2 ">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">

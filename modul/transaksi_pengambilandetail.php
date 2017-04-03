@@ -113,7 +113,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
-							<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							<div class="col-md-5" style="color:red;"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
 	    		</div>
@@ -145,9 +145,9 @@
 						<td><?php echo $no;?></td>
     					<td><?php echo $result_transaction['jenis_layanan'];?></td>
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
-    					<td><?php echo tgl_indo($result_transaction['deskripsi_layanan']);?></td>
-    					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
     					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
+    					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
     					<td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
     			<?php } ?>

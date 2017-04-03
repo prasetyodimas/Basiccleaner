@@ -45,20 +45,23 @@
                                                  JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
                                                  JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
             while ($result = mysqli_fetch_array($get_datamember)) {
-            $get_datamember = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$result[id_member]'"));
+              $showmember = mysqli_fetch_array(mysqli_query($con,
+                             "SELECT * FROM member m 
+                             JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
+                             WHERE ts.id_transaksi_shoes='$result[id_transaksi_shoes]'")); 
           ?>
             <tr>
               <td><?php echo $no;?></td>
               <td><?php echo $result['id_transaksi_shoes'];?></td>
-          <?php if($result['id_member']=='-'){ ?>
-              <td width="200"><?php echo $result['nama_lengkap'];?></td>
+          <?php if($result['id_member']!='-'){ ?>
+              <td width="200"><?php echo $result['nama_member'];?></td>
               <td><?php echo $result['nama_barang'];?></td>
               <td><?php echo $result['jumlah_sepatu'];?></td>
               <td><?php echo $result['jenis_layanan'];?></td>
               <td><?php echo $result['nama_layanan'];?></td>
               <td>Rp.<?php echo formatuang($result['harga']);?></td>
           <?php }else{ ?>
-              <td width="200"><?php echo $get_datamember['nama_member'];?></td>
+              <td><?php echo $showmember['nama_lengkap'];?></td>
               <td><?php echo $result['nama_barang'];?></td>
               <td><?php echo $result['jumlah_sepatu'];?></td>
               <td><?php echo $result['jenis_layanan'];?></td>

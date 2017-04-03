@@ -15,7 +15,6 @@
                     <td>Nama Pemesan</td>
                     <td>No telp</td>
                     <td>Tanggal Masuk</td>
-                    <td>Status pengerjaan</td>
                     <td>Status</td>
                     <td>Total Transaksi</td>
                     <td>Action</td>
@@ -27,7 +26,8 @@
                     $get_transaction = mysqli_query($con,
                         "SELECT * FROM transaksi_shoes ts 
                          JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-                         JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+                         JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan
+                         WHERE ts.status_pengambilan='S' ORDER BY ts.id_transaksi_shoes DESC");
                          while ($result_transaction = mysqli_fetch_array($get_transaction)) {
                          $get_datamember = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$result_transaction[id_member]'"));
                  ?>
@@ -44,10 +44,11 @@
                         <td><?php echo $result_transaction['no_telp'];?></td>
                     <?php } ?>  
                         <td><?php echo tgl_indo($result_transaction['tgl_transaksi']);?></td>
-                        <td>Selesai</td>
-                        <td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
+                        <td><?php echo stat_pengambilan($result_transaction['status_pengambilan']);?></td>
                         <td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
-                        <td></td>
+                        <td>
+                            <a href="homeadmin.php?page=transaksi_detail_sudahdiambil&id_nota=<?php echo $result_transaction['id_transaksi_shoes'];?>">View</a>
+                        </td>
                     </tr>
                 <?php $no++; } ?>
             </tbody>

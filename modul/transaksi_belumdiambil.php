@@ -16,8 +16,8 @@
                     <td>Nama Pemesan</td>
                     <td>No telp</td>
                     <td>Tanggal Masuk</td>
-                    <td>Status pengerjaan</td>
                     <td>Status</td>
+                    <td>Status Member</td>
                     <td>Total Transaksi</td>
                     <td>Action</td>
                 </tr>
@@ -35,7 +35,7 @@
                 <tr>
                     <td><?php echo $no;?></td>
                     <td><?php echo $result['id_transaksi_shoes']?></a></td>
-                    <td><?php if($result['id_member']!=''){ ?> <?php echo $result['id_member'];?> <?php }else{ ?> <?php echo '-'; ?> <?php } ?> </td>
+                    <td><?php if($result['id_member']!='-'){ ?> <?php echo $result['id_member'];?> <?php }else{ ?> <?php echo '-'; ?> <?php } ?> </td>
                 <?php if ($result['status_member']=='member') { ?>
                     <td><?php echo $get_data_member['nama_member'];?></td>    
                     <td><?php echo $get_data_member['notelp_member'];?></td>
