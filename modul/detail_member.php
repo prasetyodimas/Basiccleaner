@@ -19,46 +19,48 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <label>Id member </label>
+                    <div class="custom-inner-styles">
+                        <div class="row custom-inner">
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <label>Id member </label>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    : <?php echo $show_member['id_member'];?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-inner">
+                            <div class="col-sm-3 col-md-3">
+                                <label>Nama lengkap </label>
                             </div>
                             <div class="col-xs-12 col-sm-3 col-md-3">
-                                : <?php echo $show_member['id_member'];?>
+                                : <?php echo $show_member['nama_member'];?>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3">
-                            <label>Nama lengkap </label>
+                        <div class="row custom-inner">
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <label>Alamat member </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-8">
+                                : <?php echo $show_member['alamat_member'];?>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            : <?php echo $show_member['nama_member'];?>
+                        <div class="row custom-inner">
+                            <div class="col-sm-3 col-md-3">
+                                <label>Email member</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                : <?php echo $show_member['nama_member'];?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-3 col-md-3">
-                            <label>Alamat member </label>
-                        </div>
-                        <div class="col-xs-12 col-sm-9 col-md-8">
-                            : <?php echo $show_member['alamat_member'];?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3">
-                            <label>Email member</label>
-                        </div>
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            : <?php echo $show_member['nama_member'];?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            <label>No telp member </label>
-                        </div>
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            : <?php echo $show_member['notelp_member'];?>
+                        <div class="row custom-inner">
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <label>No telp member </label>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                : <?php echo $show_member['notelp_member'];?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,3 +69,11 @@
     </div>
 </div>
         
+<style type="text/css">
+    .custom-inner-styles{
+        padding: 10px;
+    }
+    .custom-inner{
+        padding: 8px;
+    }
+</style>
