@@ -37,6 +37,9 @@
     	.control-action-pages{
     		display: none !important;
     	}
+    	.csutom-space-alamat{
+    		
+    	}
     }
   }
 </style>
@@ -49,7 +52,7 @@
 				</div>
 				<div class="col-md-8 col-md-push-custom">
 					<h3 class="custom-heading-laporan">LAPORAN PEMASUKAN BASIC CLEANER</h3>
-					<p class="col-md-8" style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+					<p class="col-md-8 csutom-space-alamat" style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">
