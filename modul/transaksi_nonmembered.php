@@ -74,10 +74,15 @@
             $('.temp_value').val(val_price_layanan);
             $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
         });
-        //validation on submit 
+        //function jumlah bayar as total - jumlah bayar = kembalian / total
         $('button[type="submit"]').attr('disabled', true);
-        $('.validation-payment').on('keyup',function() {
-            if($(this).val() != '') {
+        $('#bayar').blur(function(){
+            var total    = $('#subtotal').val();
+            var bayarnya = $('#bayar').val();
+            var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
+            $('#price-kembalian').val(get_returnprice);
+            //statement jika pembayaran kurang dari total maka disable button
+            if(total <= bayarnya) {
                 $('button[type="submit"]').attr('disabled' , false);
             }else{
                 $('button[type="submit"]').attr('disabled' , true);
@@ -101,12 +106,6 @@
             //console.log(counting_price_all_shoes);
         });*/
         //function pembayaran cahsier
-       /* $('#bayar').blur(function(){
-            var total    = $('#subtotal_transaksi').val();
-            var bayarnya = $('#bayar').val();
-            var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
-            $('#price-kembalian').val(get_returnprice);
-        });*/
         //onchange function price repaint
         /*$('select.change_repaint_values').on('change',function(){
             var repaint_value      = $('select.change_repaint_values').find(':selected').data('id');
@@ -396,14 +395,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Jumlah Bayar</label>
-                        <input id="bayar" type="text" name="jum_bayar" class="form-control bayar">
+                        <input id="bayar" type="text" name="jum_bayar" class="form-control bayar validation-payment">
                     </div> 
                     <div class="col-md-6">
                         <label>Kembalian</label>
-                        <input id="price-kembalian" type="text" name="kembalian" class="form-control validation-payment" value=""></input>
+                        <input id="price-kembalian" type="text" name="kembalian" class="form-control" value=""></input>
                     </div>
                 </div>
-                <input type="hidden" name="total_transcation_item" class="temp_value" value="">
+                <input type="hidden" name="total_transcation_item" class="temp_value" value="" id="subtotal">
             </div>
         </form>
         </div>

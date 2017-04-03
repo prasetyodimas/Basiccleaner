@@ -41,6 +41,8 @@
               <td>xxxx</td>
               <td>xxxx</td>
               <td>xxxx</td>
+              <td>xxxx</td>
+              <td>xxxx</td>
               <td>
                   <a href="<?php echo $site;?>">View</a>
               </td>
