@@ -3,6 +3,11 @@
       background-color: #000;
       color: #fff;
   }
+  @media print{
+    .control-action-pages .hidden-btnprint{
+      display: none !important;
+    }
+  }
 </style>
 <div class='main-containpages'>
     <div class="col-lg-12">
@@ -10,7 +15,7 @@
           <img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
         </div>
         <div class="col-md-8 col-md-push-custom">
-          <h3>LAPORAN PEMASUKAN BASIC CLEANER SHOES AND CARES</h3>
+          <h3 class="col-md-9 col-md-push-2">LAPORAN PEMASUKAN BASIC CLEANER</h3>
           <p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>     
         </div>
     </div>
@@ -51,7 +56,7 @@
         <?php $no++; } ?>
     </table>  
     <div class="control-action-pages">
-      <a href="<?php echo $site;?>modul/laporan_pemasukan_cetak_all.php" target="_blank" class="btn btn-primary">Cetak Semua Laporan</a>
+      <a href="<?php echo $site;?>modul/laporan_pemasukan_cetak_all.php" target="_blank" class="btn btn-primary hidden-btnprint">Cetak Semua Laporan</a>
     </div>
   </div>
 </div>
