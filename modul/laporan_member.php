@@ -1,13 +1,13 @@
 <style type="text/css">
-	 .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #ddd; } 
- </style>
+ .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #ddd; } 
+</style>
 <div class='main-containpages'>
 	<div class="col-lg-12">
 		<div class="col-sm-2 col-md-2">
 			<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 		</div>
 		<div class="col-md-8 col-md-push-custom">
-			<h3>LAPORAN MEMBER BASIC CLEANER SHOES AND CARES</h3>
+			<h3 style="margin-left:129px;">LAPORAN MEMBER BASIC CLEANER</h3>
 			<p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 		</div>
 	</div>
@@ -33,7 +33,7 @@
  				<tr>
  					<td width="50"><?php echo $no;?></td>
  					<td><?php echo $result['id_member'];?></td>
- 					<td><?php echo $result['nama_member'];?></td>
+ 					<td width="200"><?php echo $result['nama_member'];?></td>
  					<td><?php echo $result['alamat_member'];?></td>
  					<td><?php echo $result['notelp_member'];?></td>
  					<td><?php echo $result['email_member'];?></td>

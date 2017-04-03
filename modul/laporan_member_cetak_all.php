@@ -51,7 +51,7 @@
 					<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 				</div>
 				<div class="col-md-8 col-md-push-custom">
-					<h3>LAPORAN MEMBER BASIC CLEANER SHOES AND CARES</h3>
+					<h3 style="margin-left:127px;">LAPORAN MEMBER BASIC CLEANER</h3>
 					<p class="col-md-8 col-md-push-2 push-customize">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
