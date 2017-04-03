@@ -57,6 +57,8 @@
 		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
 		        	</div>
 		        </div>
+		</div>
+		<div class="box-detailtransaction_out">
 		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
 		    	<div class="form-group">
 		    		<div class="row">
@@ -89,17 +91,20 @@
 		        	</div>
 		        </div>
 		    <?php } ?>
-		</div>
-		<div class="col-md-6">
-			<div class="form-group"><strong>Detail Barang</strong></div>
-			<div class="form-group">
-				<p>Deskripsi Barang <span class="transaksi-deskripsibarang"> : <?php echo $cek_layanan_status['nama_barang'];?></span></p>
-			</div>
-			<div class="form-group">
-				<p>Jumlah Sepatu<span class="transaksi-sepatu">: <?php echo $cek_layanan_status['jumlah_sepatu'];?></span></p>
-			</div>
-			<div class="form-group">
-				<p>Status Pengambilan<span class="transaksi-pengambilan">: <?php echo stat_pengambilan($cek_layanan_status['status_pengambilan']);?></span></p>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-md-6">
+					<div class="form-group"><strong>Detail Barang</strong></div>
+					<div class="form-group">
+						<p>Deskripsi Barang <span class="transaksi-deskripsibarang"> : <?php echo $shownon_member['nama_barang'];?></span></p>
+					</div>
+					<div class="form-group">
+						<p>Jumlah Sepatu<span class="transaksi-sepatu">: <?php echo $shownon_member['jumlah_sepatu'];?></span></p>
+					</div>
+					<div class="form-group">
+						<p>Status Pengambilan<span class="transaksi-pengambilan">: <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></span></p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-12" style="margin-top:50px;">
@@ -115,16 +120,24 @@
 	    				<th>Estimasi Pengambilan</th>
     				</tr>
     			</thead>
+    			<?php
+    				$no =1;
+    				$get_transaction = mysqli_query($con,
+    					"SELECT * FROM transaksi_shoes ts 
+					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes");
+						 while ($result_transaction = mysqli_fetch_array($get_transaction)) {
+    			 ?>
     			<tbody>
     				<tr>
     					<td>Cleaning</td>
-    					<td><?php echo $get_service_cleaning['nama_cleaning'];?></td>
-    					<td>Rp.<?php echo formatuang($get_service_cleaning['harga_cleaning']);?></td>
-    					<td><?php echo $get_service_cleaning['deskripsi_cleaning'];?></td>
-    					<td><?php echo tgl_indo($cek_layanan_status['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($cek_layanan_status['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
+    					<td><?php echo $result_transaction['nama_layanan'];?></td>
+    					<td>Rp.<?php echo formatuang($result_transaction['harga_cleaning']);?></td>
+    					<td><?php echo $result_transaction['deskripsi_cleaning'];?></td>
+    					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
+    					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
     				</tr>
     			</tbody>
+    			<?php } ?>
     		</table>
 			<div style="margin-bottom:50px;"></div>
 		</div>
