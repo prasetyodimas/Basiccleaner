@@ -12,18 +12,6 @@
 .btn:hover,.btn:active,.btn.active,.btn.disabled,.btn[disabled]{color:#333333;background-color:#e6e6e6;*background-color:#d9d9d9;}
 .btn-basic-clenaer{color: #fff !important; background-color: #111113 !important; border-color: #0a0a0a !important; } 
 .clearfix-bottom{margin-bottom: 100px;display: inline-block;}
-.transaksi-idnota{margin-left: 98px;} 
-.transaksi-pemesan{margin-left: 94px;} 
-.transaksi-alamat{margin-left: 148px;} 
-.transaksi-notelp{margin-left: 147px;} 
-.transaksi-email{margin-left: 158px;}
-.transaksi-jenislayanan{margin-left: 104px;}
-.transaksi-subtotallayanan{margin-left: 85px;}
-.transaksi-pengambilan{margin-left: 69px;}
-.transaksi-deskripsibarang{margin-left: 85px;}
-.transaksi-sepatu{margin-left: 102px;} 
-.transaksi-pengambilan{margin-left: 70px;}
-.transaksi-status_member{margin-left: 154px;}
 .box-detailtransaction_out{border: 1px solid #cecece; padding: 14px; background: #fdfdfd; border-top: 5px solid #000; }
 /*=== CUSTOM UI TRANSACTION ===*/
 .transaksi-nonota{color:#ff0000;font-weight:bold;font-size:15px;margin-left:50px;}
@@ -48,9 +36,7 @@
 .error{font-size: 13px; color:red; }
 .show-elem{display: block !important; } .hidden-elem{display: none; }
 /*======================== PAGE HEADER MEMBER ======================*/
-.section-padd-header .heading-member{
-	padding: 15px 20px;
-}
-.heading-member .size-heading-member h4{
-	font-size: 28px;
-}
+.section-padd-header .heading-member{padding: 15px 20px; } 
+.heading-member .size-heading-member h4{font-size: 28px; } 
+/*========== CONTAINER ITEMS TRANSACTION ====================*/
+#main-transaction-items{padding: 10px;border-bottom: 1px solid #ababab; width: 100%; margin-left: 1px; }

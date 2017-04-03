@@ -42,14 +42,14 @@
 						<input type="text" name="harga_reglue" id="price" class="form-control" autofocus required="">
 					</div>
 					<div class="form-group">
-						<label>Deskripsi</label> 
+						<label>Deskripsi</label>
 						<textarea name="dekripsi_reglue" class="form-control" autofocus required=""></textarea>
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary">Submit</button>
 					</div>
 				</form>
-			</div> 
+			</div>
 		</div><!--col-md-6-->
 		<div class="col-lg-12 clearfix-upertop">
 			<table class="table table-hover" id="table-masterreglue">
@@ -62,7 +62,7 @@
 						<th>Deskripsi</th>
 						<th>Action</th>
 					</tr>
-				</thead>	
+				</thead>
 				<?php
 					$no=1;
 					$x = mysqli_query($con,"SELECT * FROM reglue ORDER BY id_reglue DESC");
@@ -81,11 +81,8 @@
 						</td>
 					</tr>
 					<?php $no++; } ?>
-				</tbody>					
+				</tbody>
 			</table>
 		</div>
 	</div><!--maincontain-page-->
 </div><!--row-->
-
-
-
