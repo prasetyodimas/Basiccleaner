@@ -16,7 +16,6 @@
                     <td>Nama Pemesan</td>
                     <td>No telp</td>
                     <td>Tanggal Masuk</td>
-                    <td>Status pengerjaan</td>
                     <td>Status</td>
                     <td>Total Transaksi</td>
                     <td>Action</td>

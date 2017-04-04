@@ -147,7 +147,6 @@
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
     					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
     					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
-    					<td><?php echo $result_transaction['']; ?></td>
     					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
     					<td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>

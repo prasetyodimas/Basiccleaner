@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-md-10 section-padd-header">
                             <div class="heading-member">
-                                <h3 class="size-heading-member">Member Basic Cleaner Sneaker Care</h3>
+                                <h3 class="size-heading-member">Member Basic Cleaner</h3>
                             </div>
                         </div>
                     </div>
