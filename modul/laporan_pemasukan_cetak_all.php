@@ -17,9 +17,6 @@
 	table tbody tr td{
 		padding: 5px;
 	}
-	.hidden-button{
-		display:none !important;
-	}
 	.control-action-pages{
 		margin-top: 50px;
 	}
@@ -33,15 +30,15 @@
 	.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7	, .col-md-8, .col-md-9{
 		float: left;
 	}
-	@media print(){
-	  /*HIDE BUTTON CETAK ALL */
-	  #hidden-button{
-	  	display: none !important;
-	  }
-	  .push-customize{
-	  		left: 16.66666667%;
-	  }
-	}
+	.custom-heading-laporan{
+    	margin-left: 100px;
+    }
+    @media print{
+    	.control-action-pages{
+    		display: none !important;
+    	}
+    }
+  }
 </style>
 <div class="row" style="margin-top:50px;">
 	<div class="container">
@@ -51,8 +48,8 @@
 					<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 				</div>
 				<div class="col-md-8 col-md-push-custom">
-					<h3>LAPORAN PEMASUKAN BASIC CLEANER SHOES AND CARES</h3>
-					<p class="col-md-8 col-md-push-2 push-customize">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+					<h3 class="custom-heading-laporan">LAPORAN PEMASUKAN BASIC CLEANER</h3>
+					<p class="col-md-8" style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">
@@ -85,7 +82,7 @@
 		 			</tbody>
 		 		</table>
 		 		<div class="control-action-pages">
-		 			<a href="" id="hidden-button" onclick="window.print();" class="btn btn-primary">Cetak Semua Laporan</a>
+		 			<a href="" id="hidden-button" onclick="window.print();" class="btn btn-primary hidden-btnprint">Cetak Semua Laporan</a>
 		 		</div>
 		 	</div>
 		</div>        
