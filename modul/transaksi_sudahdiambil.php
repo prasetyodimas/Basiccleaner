@@ -45,9 +45,11 @@
                     <?php } ?>  
                         <td><?php echo tgl_indo($result_transaction['tgl_transaksi']);?></td>
                         <td>Selesai</td>
-                        <td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
+                        <td><?php echo stat_pengambilan($result_transaction['status_pengambilan']);?></td>
                         <td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
-                        <td></td>
+                        <td>
+                            <a href="homeadmin.php?page=">View</a>
+                        </td>
                     </tr>
                 <?php $no++; } ?>
             </tbody>
