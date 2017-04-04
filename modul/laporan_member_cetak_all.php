@@ -30,16 +30,13 @@
 	.col-md-push-custom {
     	left: 4.333333%;
 	}
-	.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7	, .col-md-8, .col-md-9{
-		float: left;
-	}
-	@media print(){
+	@media print{
 	  /*HIDE BUTTON CETAK ALL */
 	  #hidden-button{
 	  	display: none !important;
 	  }
 	  .push-customize{
-	  		left: 16.66666667%;
+  		left: 22.66666667%;
 	  }
 	}
 </style>

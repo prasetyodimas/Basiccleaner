@@ -3,9 +3,15 @@
       background-color: #000;
       color: #fff;
   }
+  .custom-alamat-pemasukan{
+    margin-left: 21%;
+  }
   @media print{
     .control-action-pages .hidden-btnprint{
       display: none !important;
+    }
+    .custom-alamat-pemasukan{
+      margin-left: 21% !important;
     }
   }
 </style>
@@ -16,7 +22,7 @@
         </div>
         <div class="col-md-8 col-md-push-custom">
           <h3 class="col-md-9 col-md-push-2">LAPORAN PEMASUKAN BASIC CLEANER</h3>
-          <p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>     
+          <p class="col-md-8 custom-alamat-pemasukan">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>     
         </div>
     </div>
     <table class="table table-hover">
