@@ -68,7 +68,7 @@
             <tr>
                 <td><?php echo $no;?></td>
                 <td><?php echo $res['id_member']?></td>
-                <td><?php echo $res['nama_member']?></td>
+                <td width="200"><?php echo $res['nama_member']?></td>
                 <td><?php echo $res['alamat_member']?></td>
                 <td><?php echo $res['notelp_member']?></td>
                 <td><?php echo $res['email_member']?></td>
