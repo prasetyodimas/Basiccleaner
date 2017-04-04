@@ -4,13 +4,26 @@
 	.dont-worry{font-family: monospace;font-size: 18px}
 	.daily-activity .main-images .action-images { transition: all .5s ease-in-out; cursor: pointer; }
 	.action-images:hover { transform: scale(1.1); }
+	/*IMAGE ROTATION*/
+	img.image-rotation{
+		-webkit-transition: -webkit-transform .8s ease-in-out;
+         transition:         transform .8s ease-in-out;
+    }
+    img.image-rotation:hover{
+		-webkit-transform: rotate(360deg);
+	    transform: rotate(360deg);
+		box-shadow: 2px 3px 5px #dcdcdc;
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+    }
 </style>
 <div class="row">
 	<div class="container">
 		<div class="form-group">
 			<div class="row">
 				<div class="col-md-2 col-md-offset-5">
-					<img class="img-responsive" src="<?php echo $site;?>frontend/logo/ms-icon-310x310.png">
+					<img class="img-responsive image-rotation" src="<?php echo $site;?>frontend/logo/ms-icon-310x310.png">
 				</div>
 			</div>
 		</div>
