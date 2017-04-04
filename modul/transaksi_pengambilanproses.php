@@ -115,7 +115,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
-							<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							<div class="col-md-5" style="color:red;"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
 	    		</div>
@@ -124,58 +124,36 @@
 		<div class="col-md-12" style="margin-top:50px;">
     		<div class="form-group"><strong>Detail Transaksi</strong></div>
     		<table class="table table-hover" style="font-size:14px;">
-    			<thead>
+    			<thead class="custom-headtables-globalconf">
 	    			<tr>
+	    				<th>No</th>
 	    				<th>Nama Layanan</th>
 	    				<th>Jenis Layanan</th>
-	    				<th>Harga</th>
 	    				<th>Deskripsi Layanan</th>
+	    				<th>Harga</th>
 	    				<th>Tanggal Pesan</th>
 	    				<th>Estimasi Pengambilan</th>
     				</tr>
     			</thead>
-	    			<?php 
-    					$services_cleaning = mysqli_query($con,"SELECT * FROM detail_transaksi_shoes WHERE id_transaksi_shoes='$_GET[id_nota]'");
-	    				foreach ($services_cleaning as $key => $value_array) :
-	    			?>
+    			<?php
+    				$no =1;
+    				$get_transaction = mysqli_query($con,
+    					"SELECT * FROM transaksi_shoes ts 
+					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+						 while ($result_transaction = mysqli_fetch_array($get_transaction)) {
+    			 ?>
     			<tbody>
-    				<?php if ($value_array['id_cleaning']!='-') {
-    					$get_service_cleaning = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM cleaning WHERE id_cleaning='$value_array[id_cleaning]'"));?>
     				<tr>
-    					<td>Cleaning</td>
-    					<td><?php echo $get_service_cleaning['nama_cleaning'];?></td>
-    					<td>Rp.<?php echo formatuang($get_service_cleaning['harga_cleaning']);?></td>
-    					<td><?php echo $get_service_cleaning['deskripsi_cleaning'];?></td>
-    					<td><?php echo tgl_indo($cek_layanan_status['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($cek_layanan_status['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
+    					<td><?php echo $no;?></td>
+    					<td><?php echo $result_transaction['jenis_layanan'];?></td>
+    					<td><?php echo $result_transaction['nama_layanan'];?></td>
+    					<td><?php echo tgl_indo($result_transaction['deskripsi_layanan']);?></td>
+    					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
+    					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
-    				<?php }elseif($value_array['id_cleaning']=='-'){ ?>
-    				<?php } ?>
-    				<?php if($value_array['id_repaint']!='-') {
-    					$get_service_repaint = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM repaint WHERE id_repaint='$value_array[id_repaint]'"));?>
-    				<tr>
-    					<td>Repaint</td>
-    					<td><?php echo $get_service_repaint['jenis_repaint']; ?></td>
-    					<td>Rp.<?php echo formatuang($get_service_repaint['harga_repaint']);?></td>
-    					<td><?php echo $get_service_repaint['deskripsi_repaint']; ?></td>
-    					<td><?php echo tgl_indo($cek_layanan_status['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($cek_layanan_status['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
-    				</tr>
-    				<?php }elseif($value_array['id_repaint']=='-'){ ?>
-    				<?php } ?>
-    				<?php if($value_array['id_reglue']!='-') {
-    					$get_service_repaint = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM reglue WHERE id_reglue='$value_array[id_reglue]'"));?>
-    				<tr>
-    					<td>Reglue</td>
-    					<td><?php echo $get_service_repaint['kategori_reglue'];?></td>
-    					<td>Rp.<?php echo formatuang($get_service_repaint['harga_reglue']);?></td>
-    					<td><?php echo $get_service_repaint['deskripsi_reglue'];?></td>
-    					<td><?php echo tgl_indo($cek_layanan_status['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($cek_layanan_status['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
-    				</tr>
-    				<?php }elseif ($value_array['id_reglue']=='-') { ?>
-    				<?php } ?>
-    				<?php endforeach;?>
+    			<?php } ?>
     			</tbody>
     		</table>
     		<div class="">
