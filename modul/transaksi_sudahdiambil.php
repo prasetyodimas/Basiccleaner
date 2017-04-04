@@ -47,7 +47,7 @@
                         <td><?php echo stat_pengambilan($result_transaction['status_pengambilan']);?></td>
                         <td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
                         <td>
-                            <a href="homeadmin.php?page=">View</a>
+                            <a href="homeadmin.php?page=transaksi_detail_sudahdiambil&id_nota=<?php echo $result_transaction['id_transaksi_shoes'];?>">View</a>
                         </td>
                     </tr>
                 <?php $no++; } ?>

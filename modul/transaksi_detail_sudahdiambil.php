@@ -113,7 +113,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
-							<div class="col-md-5" style="color:red;"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							<div class="col-md-5" style="color:#1ef01e;font-weight:bold;"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
 	    		</div>
