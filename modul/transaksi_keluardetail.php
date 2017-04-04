@@ -91,31 +91,46 @@
 		        	</div>
 		        </div>
 		    <?php } ?>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="col-md-6">
-					<div class="form-group"><strong>Detail Barang</strong></div>
-					<div class="form-group">
-						<p>Deskripsi Barang <span class="transaksi-deskripsibarang"> : <?php echo $shownon_member['nama_barang'];?></span></p>
-					</div>
-					<div class="form-group">
-						<p>Jumlah Sepatu<span class="transaksi-sepatu">: <?php echo $shownon_member['jumlah_sepatu'];?></span></p>
-					</div>
-					<div class="form-group">
-						<p>Status Pengambilan<span class="transaksi-pengambilan">: <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></span></p>
+	    </div>
+	    <div class="row">
+	    	<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="form-group">
+							<strong>Detail Barang</strong>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-4"> Deskripsi Barang </div> 
+								<div class="col-md-5"> : <?php echo $shownon_member['nama_barang'];?></div> 
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-4"> Jumlah Sepatu </div> 
+								<div class="col-md-5"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-4"> Status Pengambilan </div> 
+								<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+	    	</div>
+	    </div>
 		<div class="col-md-12" style="margin-top:50px;">
     		<div class="form-group"><strong>Detail Transaksi</strong></div>
     		<table class="table table-hover" style="font-size:14px;">
-    			<thead>
+    			<thead class="custom-headtables-globalconf">
 	    			<tr>
+	    				<th>No</th>
 	    				<th>Nama Layanan</th>
 	    				<th>Jenis Layanan</th>
-	    				<th>Harga</th>
 	    				<th>Deskripsi Layanan</th>
+	    				<th>Harga</th>
 	    				<th>Tanggal Pesan</th>
 	    				<th>Estimasi Pengambilan</th>
     				</tr>
@@ -124,17 +139,19 @@
     				$no =1;
     				$get_transaction = mysqli_query($con,
     					"SELECT * FROM transaksi_shoes ts 
-					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes");
+					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
 						 while ($result_transaction = mysqli_fetch_array($get_transaction)) {
     			 ?>
     			<tbody>
     				<tr>
-    					<td>Cleaning</td>
+    					<td><?php echo $no;?></td>
+    					<td><?php echo $result_transaction['jenis_layanan'];?></td>
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
-    					<td>Rp.<?php echo formatuang($result_transaction['harga_cleaning']);?></td>
-    					<td><?php echo $result_transaction['deskripsi_cleaning'];?></td>
+    					<td><?php echo tgl_indo($result_transaction['deskripsi_layanan']);?></td>
     					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
-    					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($cek_layanan_status['tgl_transaksi']));?></td>
+    					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
     			</tbody>
     			<?php } ?>
