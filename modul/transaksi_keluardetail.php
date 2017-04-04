@@ -94,31 +94,29 @@
 	    </div>
 	    <div class="row">
 	    	<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="form-group">
-							<strong>Detail Barang</strong>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-4"> Deskripsi Barang </div> 
-								<div class="col-md-5"> : <?php echo $shownon_member['nama_barang'];?></div> 
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-4"> Jumlah Sepatu </div> 
-								<div class="col-md-5"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-md-4"> Status Pengambilan </div> 
-								<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
-							</div>
+	    		<div class="box-detailtransaction_out">
+					<div class="form-group">
+						<strong>Detail Barang</strong>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4"> Deskripsi Barang </div> 
+							<div class="col-md-5"> : <?php echo $shownon_member['nama_barang'];?></div> 
 						</div>
 					</div>
-				</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4"> Jumlah Sepatu </div> 
+							<div class="col-md-5"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4"> Status Pengambilan </div> 
+							<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+						</div>
+					</div>
+	    		</div>
 	    	</div>
 	    </div>
 		<div class="col-md-12" style="margin-top:50px;">
