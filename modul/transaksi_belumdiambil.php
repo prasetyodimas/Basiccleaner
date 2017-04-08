@@ -40,13 +40,13 @@
                     <td><?php echo $get_data_member['nama_member'];?></td>    
                     <td><?php echo $get_data_member['notelp_member'];?></td>
                     <td><?php echo tgl_indo($result['tgl_transaksi']);?></td>
-                    <td><?php echo stat_pengambilan($result['status_pengambilan']);?></td>
+                    <td class="<?php echo getstatus_pengambilan($result['status_pengambilan']);?>"><?php echo stat_pengambilan($result['status_pengambilan']);?></td>
                     <td><?php echo $result['status_member'];?></td>
                 <?php }elseif ($result['status_member']=='non-member') { ?>
                     <td><?php echo $result['nama_lengkap'];?></td>    
                     <td><?php echo $result['no_telp'];?></td>
                     <td><?php echo tgl_indo($result['tgl_transaksi']);?></td>
-                    <td><?php echo stat_pengambilan($result['status_pengambilan']);?></td>
+                    <td class="<?php echo getstatus_pengambilan($result['status_pengambilan']);?>"><?php echo stat_pengambilan($result['status_pengambilan']);?></td>
                     <td><?php echo $result['status_member'];?></td>
                 <?php } ?>
                     <td>Rp.<?php echo formatuang($result['harga']);?></td>

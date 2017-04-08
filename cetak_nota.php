@@ -99,12 +99,20 @@
 					<th class="thead-custom">Jumlah</th>
 				</tr>
 			</thead>
+			<?php 
+				$getall_transaction = mysqli_query($con,
+					"SELECT * FROM transaksi_shoes ts 
+					INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+					 ");
+				while ($res_transaction =mysqli_fetch_array($getall_transaction)) {
+			 ?>
 			<tbody>
 				<tr>
 					<td style="padding: 15px 20px;"></td>
 					<td></td>
 					<td></br></td>
 				</tr>
+			<?php } ?>
 				<tr class="">
 					<td colspan="5" class="custom-td-nobordered">
 						<div class="row">

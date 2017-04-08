@@ -16,6 +16,7 @@
                     <td>No telp</td>
                     <td>Tanggal Masuk</td>
                     <td>Status</td>
+                    <td>Status Member</td>
                     <td>Total Transaksi</td>
                     <td>Action</td>
                 </tr>
@@ -44,7 +45,8 @@
                         <td><?php echo $result_transaction['no_telp'];?></td>
                     <?php } ?>  
                         <td><?php echo tgl_indo($result_transaction['tgl_transaksi']);?></td>
-                        <td><?php echo stat_pengambilan($result_transaction['status_pengambilan']);?></td>
+                        <td class="<?php echo getstatus_pengambilan($result_transaction['status_pengambilan'])?>"><?php echo stat_pengambilan($result_transaction['status_pengambilan']);?></td>
+                        <td><?php echo $result_transaction['status_member'];?></td>
                         <td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
                         <td>
                             <a href="homeadmin.php?page=transaksi_detail_sudahdiambil&id_nota=<?php echo $result_transaction['id_transaksi_shoes'];?>">View</a>
