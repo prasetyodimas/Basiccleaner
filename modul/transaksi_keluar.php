@@ -25,17 +25,18 @@
     <tbody>
         <?php 
             $no=1;
-            $query=mysqli_query($con,"SELECT ts.id_transaksi_shoes,
-                                             ts.id_member,
-                                             ts.nama_lengkap,
-                                             ts.no_telp,
-                                             ts.status_pengambilan,
-                                             ts.tgl_transaksi,
-                                             dts.harga,
-                                             ts.status_member
-                                      FROM transaksi_shoes ts 
-                                      JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-                                      ORDER BY id_transaksi_shoes DESC");
+            $query=mysqli_query($con,
+            "SELECT ts.id_transaksi_shoes,
+                    ts.id_member,
+                    ts.nama_lengkap,
+                    ts.no_telp,
+                    ts.status_pengambilan,
+                    ts.tgl_transaksi,
+                    dts.harga,
+                    ts.status_member
+            FROM transaksi_shoes ts 
+            JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+            ORDER BY id_transaksi_shoes DESC");
             while($res=mysqli_fetch_array($query)){
             $cek_member  = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$res[id_member]'"));
         ?>

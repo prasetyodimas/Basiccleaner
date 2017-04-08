@@ -1,5 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
         //jquery format currency
         $('.format-price-item').number(true);
         $('#format_price_reglue').number(true);
@@ -56,12 +57,6 @@
                 } 
           },
         });
-        //onchange val jenis service
-       /* $('select.change_jenis_service').on('change',function(){
-            var val_jenis_layanan = $('.change_jenis_service').val();
-            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
-            //var repaint_value      = $('select.change_repaint_values').find(':selected').data('id');
-        });*/
         //onchange val nama layanan
         $('select.change_nama_layanan').on('change',function(){
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
@@ -124,7 +119,7 @@
         });*/
         //json change functon price on transaction
         $("#choose_service").change(function(){
-            var getValue= $(this).val();
+            var getValue= $(this).find(':selected').data('id');
             if(getValue =='') {
                 alert('no values here !!');
             }else{
@@ -146,7 +141,7 @@
         });
     });
     function show_services(){
-        var option = $(".category_service").val();
+        var option = $('.category_service').val();
         if(option == "Cleaning") {
             $(".show_cleaning").addClass('show-elem');
             $(".show_repaint").removeClass('show-elem');
@@ -224,7 +219,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Jenis Layanan</label>
-                        <select name="jenis_layanan[]" onchange="show_services()" class="category_service form-control change_jenis_service" autofocus required="">
+                        <select name="jenis_layanan[]" onchange="show_services()" class="category_service form-control" autofocus required="">
                             <option value="">Pilih layanan</option>
                             <?php 
                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan GROUP BY jenis_layanan");
@@ -289,7 +284,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-danger" id="adding-services">+</button>
+                    <button type="button" class="btn btn-danger" id="adding-services" data-toggle="tooltip" title="tambah layanan..?" data-placement="right">+</button>
                 </div>
             </div><!-- row -->
             <div id="new-contain-services"></div><!-- new container shoes -->
@@ -307,7 +302,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-danger adding-shoes" data-toggle="tootip" tooltip="tested">+</button>
+                    <button type="button" class="btn btn-danger adding-shoes" data-toggle="tooltip" title="tambah barang..?" data-placement="right">+</button>
                 </div>
             </div><!-- row -->
 

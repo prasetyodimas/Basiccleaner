@@ -16,9 +16,9 @@
 	JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
 	WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
 	$showmember = mysqli_fetch_array(mysqli_query($con,
-				 "SELECT * FROM member m 
-				 JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
-				 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
+	"SELECT * FROM member m 
+	JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
+	WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
 ?>
 <!-- JIKA ADA ID MEMBER NYA -->
 <div class='main-containpages'>
@@ -30,31 +30,31 @@
 	    	<div class="form-group"><strong>Detail Pemesan</strong></div>
 	    	<div class="form-group">
 	    		<div class="row">
-	    			<div class="col-md-4"> Kode Transaksi </div> 
+	    			<div class="col-md-3"> Kode Transaksi </div> 
 	    			<div class="col-md-5"> : <?php echo $_GET['id_nota'];?> </div>
     			</div>
 	    	</div>
 	    	<?php if ($shownon_member['status_member']=='member') { ?>
 		        <div class="form-group">
 		        	<div class="row">
-		        		<div class="col-md-4"> Nama Pemesan </div> 
-		        		<div class="col-md-5">: <?php echo $showmember['nama_member'] ;?></div>
+		        		<div class="col-md-3"> Nama Pemesan </div> 
+		        		<div class="col-md-9">: <?php echo $showmember['nama_member'] ;?></div>
 		        	</div>
 		        	<div class="row">
-		        		<div class="col-md-4"> Alamat </div> 
-		        		<div class="col-md-5">: <?php echo $showmember['alamat_member'];?></div>
+		        		<div class="col-md-3"> Alamat </div> 
+		        		<div class="col-md-9">: <?php echo $showmember['alamat_member'];?></div>
 		        	</div>
 		        	<div class="row">
-		        		<div class="col-md-4">No telp</div>
-		        		<div class="col-md-5">: <?php echo $showmember['notelp_member'];?></div>
+		        		<div class="col-md-3">No telp</div>
+		        		<div class="col-md-9">: <?php echo $showmember['notelp_member'];?></div>
 		        	</div>
 		        	<div class="row">
-			        	<div class="col-md-4">Email</div>
-			        	<div class="col-md-5">: <?php echo $showmember['email_member'];?></div>
+			        	<div class="col-md-3">Email</div>
+			        	<div class="col-md-9">: <?php echo $showmember['email_member'];?></div>
 		        	</div>
 		        	<div class="row">
-		        		<div class="col-md-4">Status</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
+		        		<div class="col-md-3">Status</div>
+		        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
 		        	</div>
 		        </div>
 		</div>
@@ -62,32 +62,32 @@
 		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
 		    	<div class="form-group">
 		    		<div class="row">
-		        		<div class="col-md-4"> Nama Pemesan </div> 
-		        		<div class="col-md-5">: <?php echo $shownon_member['nama_lengkap'] ;?></div>
+		        		<div class="col-md-3"> Nama Pemesan </div> 
+		        		<div class="col-md-9">: <?php echo $shownon_member['nama_lengkap'] ;?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">	
 		        	<div class="row">
-		        		<div class="col-md-4"> Alamat </div> 
-		        		<div class="col-md-5">: <?php echo $shownon_member['alamat'];?></div>
+		        		<div class="col-md-3"> Alamat </div> 
+		        		<div class="col-md-9">: <?php echo $shownon_member['alamat'];?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
-		        		<div class="col-md-4">No telp</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['no_telp'];?></div>
+		        		<div class="col-md-3">No telp</div>
+		        		<div class="col-md-9">: <?php echo $shownon_member['no_telp'];?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
-			        	<div class="col-md-4">Email</div>
-			        	<div class="col-md-5">: <?php echo $shownon_member['email'];?></div>
+			        	<div class="col-md-3">Email</div>
+			        	<div class="col-md-9">: <?php echo $shownon_member['email'];?></div>
 		        	</div>
 		        </div>
 		        <div class="form-group">
 		        	<div class="row">
-		        		<div class="col-md-4">Status</div>
-		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
+		        		<div class="col-md-3">Status</div>
+		        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
 		        	</div>
 		        </div>
 		    <?php } ?>
@@ -101,19 +101,19 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Deskripsi Barang </div> 
-							<div class="col-md-5"> : <?php echo $shownon_member['nama_barang'];?></div> 
+							<div class="col-md-8"> : <?php echo $shownon_member['nama_barang'];?></div> 
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Jumlah Sepatu </div> 
-							<div class="col-md-5"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
+							<div class="col-md-8"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
-							<div class="col-md-5"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+							<div class="col-md-8"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
 	    		</div>
