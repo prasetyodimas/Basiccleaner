@@ -74,6 +74,14 @@ function stat_pengambilan($argue){
     }
     return $show_status;
 }
+ function getstatus_pengambilan($statusnya){
+    if ($statusnya=='S') {
+        $add_atribute_class ='status-barang-ambil';                                
+    }elseif ($statusnya=='B') {
+        $add_atribute_class ='status-barang-belum-diambil';                                
+    }
+    return $add_atribute_class;
+}
 function status_level($arg){
     if ($arg=='N') {
         $msg = 'Tidak';
