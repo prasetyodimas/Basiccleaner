@@ -1,4 +1,4 @@
-<?php include '../config/koneksi.php';?>
+<?php include '../config/koneksi.php'; include"../config/function_general.php";?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -60,27 +60,45 @@
 		 			<thead class="custom-header-bordered">
 		 				<tr>
 		 					<th width="50">No</th>
-		 					<th>Id Pemesan</th>
+		 					<th>Kode</th>
 		 					<th>Nama Pemesan</th>
-		 					<th>Alamat</th>
-		 					<th>No telp</th>
-		 					<th>Email</th>
+		 					<th>Nama Barang</th>
+		 					<th>Jumlah</th>
+		 					<th>Jenis layanan</th>
+		 					<th>Nama Layanan</th>
+		 					<th>Harga</th>
 		 				</tr>
 		 			</thead>
 		 			<tbody>
 		 			<?php 
 		 				$no =1;
-		 				$get_datamember = mysqli_query($con,"SELECT * FROM member ORDER BY id_member DESC");
-		 				while ($result = mysqli_fetch_array($get_datamember)) {
+						$get_datalaporan_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts
+						     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+						     JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+						while ($result = mysqli_fetch_array($get_datalaporan_transaction)) {
+						$showmember = mysqli_fetch_array(mysqli_query($con,
+						"SELECT * FROM member m 
+						JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
+						WHERE ts.id_transaksi_shoes='$result[id_transaksi_shoes]'")); 
 		 			?>
-		 				<tr>
-		 					<td><?php echo $no;?></td>
-		 					<td><?php echo $result['id_member'];?></td>
-		 					<td><?php echo $result['nama_member'];?></td>
-		 					<td><?php echo $result['alamat_member'];?></td>
-		 					<td><?php echo $result['notelp_member'];?></td>
-		 					<td><?php echo $result['email_member'];?></td>
-		 				</tr>
+ 				    <tr>
+				      <td><?php echo $no;?></td>
+				      <td><?php echo $result['id_transaksi_shoes'];?></td>
+				  <?php if($result['id_member']!='-'){ ?>
+				      <td width="200"><?php echo $result['nama_member'];?></td>
+				      <td><?php echo $result['nama_barang'];?></td>
+				      <td><?php echo $result['jumlah_sepatu'];?></td>
+				      <td><?php echo $result['jenis_layanan'];?></td>
+				      <td><?php echo $result['nama_layanan'];?></td>
+				      <td>Rp.<?php echo formatuang($result['harga']);?></td>
+				  <?php }else{ ?>
+				      <td><?php echo $showmember['nama_lengkap'];?></td>
+				      <td><?php echo $result['nama_barang'];?></td>
+				      <td><?php echo $result['jumlah_sepatu'];?></td>
+				      <td><?php echo $result['jenis_layanan'];?></td>
+				      <td><?php echo $result['nama_layanan'];?></td>
+				      <td>Rp.<?php echo formatuang($result['harga']);?></td>
+				  <?php } ?>
 					<?php $no++; } ?>
 		 			</tbody>
 		 		</table>

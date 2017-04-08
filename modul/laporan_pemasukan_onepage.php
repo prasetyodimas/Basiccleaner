@@ -6,19 +6,6 @@
   .custom-alamat-pemasukan{
     margin-left: 21%;
   }
-  .control-action-pages{
-    margin-top: 150px;
-  }
-  h4.customize-size{
-    font-size: 16px;
-  }
-  .main-detail-information .main-tanda-tangan ,.main-paraf-area{
-    text-align:center;
-    font-size:15px;
-  }
-  .main-detail-information .main-paraf-area{
-    margin-top: 50px;
-  }
   @media print{
     .control-action-pages .hidden-btnprint{
       display: none !important;
@@ -54,10 +41,10 @@
         </thead>
           <?php 
             $no =1;
-            $get_datalaporan_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts
+            $get_datamember = mysqli_query($con,"SELECT * FROM transaksi_shoes ts
                                                  JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
                                                  JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
-            while ($result = mysqli_fetch_array($get_datalaporan_transaction)) {
+            while ($result = mysqli_fetch_array($get_datamember)) {
               $showmember = mysqli_fetch_array(mysqli_query($con,
                              "SELECT * FROM member m 
                              JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
@@ -82,29 +69,12 @@
               <td>Rp.<?php echo formatuang($result['harga']);?></td>
           <?php } ?>
               <td>
-                  <a href="<?php echo $site;?>homeadmin.php?page=">View</a>
+                  <a href="<?php echo $site;?>">View</a>
               </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td colspan="2"><strong>Total</strong> Rp.<?php echo formatuang($result['harga']);?></td>
           </tr>
         </tbody>
         <?php $no++; } ?>
     </table>  
-    <div class="col pull-right main-detail-information">
-        <h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
-        <div class="main-tanda-tangan">
-          <p class="">Pimpinan</p>
-        </div>
-        <div class="main-paraf-area">(..................)</div>
-    </div>
     <div class="control-action-pages">
       <a href="<?php echo $site;?>modul/laporan_pemasukan_cetak_all.php" target="_blank" class="btn btn-primary hidden-btnprint">Cetak Semua Laporan</a>
     </div>
