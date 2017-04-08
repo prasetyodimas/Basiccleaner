@@ -75,7 +75,7 @@
 					<td><?php echo $res['nama_admin']; ?></td>
 					<td><?php echo $res['level_admin']; ?></td>
 					<td><?php echo status_level($res['blokir']); ?></td>
-					<td>
+					<td class="col-md-2">
 						<a href="homeadmin.php?page=editpengguna&id=<?php echo $res['id_admin']?>">Edit</a> ||
 						<a onclick="return confirm('Anda yakin menghapus !!')" href="backend/proses_pengguna.php?act=delete_pengguna&id=<?php echo $res['id_admin'];?>">Hapus</a>
 					</td>

@@ -63,24 +63,28 @@
 	.desain-laporan-nama{margin-left: 51px; }
 	.desain-laporan-notelp{margin-left: 41px; }
 	.attention-kwitansi{font-size: 10px; }
-	.postion-costum-sizing{position: relative; left: 20px; top: -3px; }
+	.postion-costum-sizing{ position: relative; left: 88px; top: -8px; } 
 	.margin-top-10{
 		margin-top: 55px;
 	}
 </style>
 <body>
+<?php $get_datacustomer = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM transaksi_shoes WHERE id_transaksi_shoes='$_GET[id_nota]'"));?>
 <div class="col-lg-12" style="padding:40px;">
 	<div class="row">
+		<?php if($get_datacustomer['status_member']!='non-member'){?>
 		<div class="col-md-9">
 			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div>
 			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $show_member['nama_member'];?></span></label></div>
 			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $show_member['notelp_member']; ?></span></label></div>
 		</div>
+		<?php }else{?>
 		<div class="col-md-9">
 			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div>
-			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $viewuser_transaction['nama_lengkap'];?></span></label></div>
-			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $viewuser_transaction['no_telp']; ?></span></label></div>
+			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $get_datacustomer['nama_lengkap'];?></span></label></div>
+			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $get_datacustomer['no_telp']; ?></span></label></div>
 		</div>
+		<?php } ?>
 		<div class="col-md-3 pull-right">
 			<img class="postion-costum-sizing" src="<?php echo $site?>/frontend/logo/header-logolaps.png">
 		</div>
@@ -97,12 +101,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td style="padding: 15px 20px;"><?php echo $viewuser_transaction['jumlah_sepatu'];?></td>
-					<td><?php echo $viewuser_transaction['nama_barang'];?></td>
-					<td><?php echo $servis_cleaning['nama_cleaning'];?></br>
-						<?php echo $servis_repaint['jenis_repaint'];?></br>
-						<?php echo $servis_reglue['kategori_reglue'];?></br>
-					</td>
+					<td style="padding: 15px 20px;"></td>
+					<td></td>
+					<td></br></td>
 				</tr>
 				<tr class="">
 					<td colspan="5" class="custom-td-nobordered">
@@ -122,7 +123,7 @@
 								<p style="margin-top:45px;">....................</p>
 							</div>
 							<div class="col-md-2 col-md-push-2">
-								<p>Total : Rp.<?php echo formatuang($viewuser_transaction['total']);?></p>
+								<p>Total : Rp.</p>
 							</div>
 						</div>
 					</td>
