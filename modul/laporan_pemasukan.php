@@ -103,7 +103,7 @@
         <div class="main-tanda-tangan">
           <p class="">Pimpinan</p>
         </div>
-        <div class="main-paraf-area">(..................)</div>
+        <div class="main-paraf-area">(...................................)</div>
     </div>
     <div class="control-action-pages">
       <a href="<?php echo $site;?>modul/laporan_pemasukan_cetak_all.php" target="_blank" class="btn btn-primary hidden-btnprint">Cetak Semua Laporan</a>
