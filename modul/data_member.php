@@ -72,7 +72,7 @@
                 <td class="col-md-4"><?php echo $res['alamat_member']?></td>
                 <td><?php echo $res['notelp_member']?></td>
                 <td><?php echo $res['email_member']?></td>
-                <td class="col-md-1">
+                <td class="col">
                 <?php if($_SESSION['level_admin']=='manajer'){ ?>
                   <!--   <a href="homeadmin.php?page=cetak_kartu_member&id_member=<?php echo $res['id_member'];?>">Cetak </a> || -->
                     <a href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>" onclick="return confirm('Anda Yakin Menghapus !!');">Delete</a> ||
