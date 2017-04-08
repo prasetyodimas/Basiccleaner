@@ -75,9 +75,9 @@
                 <td class="col">
                 <?php if($_SESSION['level_admin']=='manajer'){ ?>
                   <!--   <a href="homeadmin.php?page=cetak_kartu_member&id_member=<?php echo $res['id_member'];?>">Cetak </a> || -->
-                    <a href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>" onclick="return confirm('Anda Yakin Menghapus !!');">Delete</a> ||
+                    <a href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>">View</a> ||
                 <?php } ?>
-                    <a href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>">View</a>
+                    <a href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>" onclick="return confirm('Anda Yakin Menghapus !!');">Delete</a>
                 </td>
             </tr>
          <?php $no++; } ?>

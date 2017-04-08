@@ -1,5 +1,4 @@
 <?php include "../config/koneksi.php";
-
 $act = $_GET['act'];
 //var date now
 $tgl_transaksi = date('Y-m-d');
