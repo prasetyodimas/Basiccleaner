@@ -23,7 +23,7 @@
 </style>
 <div class='main-containpages'>
     <div style="margin-bottom:20px;">
-        <h3 style="text-align:center;">Pusat Bantuan Basic Cleaner Sneaker Cares</h3>
+        <h3 style="text-align:center;">Pusat Bantuan Basic Cleaner</h3>
     </div>
     <div class="col-md-12" style="margin-bottom:50px;">
         <div class="col-lg-12">
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="panel panel-default" style="cursor:pointer;">
-            <div class="panel-heading click-menu-helper3" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengelola hak akses user / pengguna sistem ?</div>
+            <div class="panel-heading click-menu-helper3" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengetahui setiap transaksi yang telah masuk..?</div>
                 <div class="row">
                     <div class="panel-body show-content3" style="display:none;">
                         <div class="col-lg-12 custom-keterangan-pad">

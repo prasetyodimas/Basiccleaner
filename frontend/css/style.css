@@ -1,5 +1,5 @@
 /*=== CONTAINER STYLES ===*/
-.main-containpages{padding: 0px; } 
+.main-containpages{padding: 0px; }
 .heading-menubar{margin-bottom: 20px; display: block; } 
 .navbar-inverse {background-color: #e4e4e4 !important; border-color: #c7c7c7 !important; } 
 .navbar-inverse .navbar-brand{color: #565656 !important; }
@@ -40,3 +40,4 @@
 .heading-member .size-heading-member h4{font-size: 28px; } 
 /*========== CONTAINER ITEMS TRANSACTION ====================*/
 #main-transaction-items{padding: 10px;border-bottom: 1px solid #ababab; width: 100%; margin-left: 1px; }
+.adding-shoes{position: relative; top:25px; left: 0px; right: 0px; bottom: 0px; }
