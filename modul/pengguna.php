@@ -4,6 +4,26 @@
     	$('.btn-clicked').click(function(){
     		$('.btn-show').slideToggle('slow');
     	});
+    	//VALIDATION RULES
+    	$('#validate-pengguna').validate({
+    		rules:{
+    			nama_admin:{
+    				required:true,
+    				
+    			},
+    			password_admin:{
+    				required:true,
+    			},
+    			level_pengguna:{
+    				required:true,
+    			},
+    		},
+    		messages:{
+    			nama_admin : ' nama pengguna sistem tidak boleh kosong !!',
+    			password_admin :'password admin tidak boleh kosong !!',
+    			level_pengguna:'level pengguna tidak boleh kosong !!',
+    		},
+    	});
 	});
 </script>
 <div class="col-md-6">
@@ -12,7 +32,7 @@
 			<button class="btn-clicked btn btn-primary">Tambah Pengguna</button>
 		</div>
 		<div class="btn-show" style="display:none;">
-			<form action="backend/proses_pengguna.php?act=add_pengguna" method="post" enctype="multipart/form-data">
+			<form action="backend/proses_pengguna.php?act=add_pengguna" method="post" enctype="multipart/form-data" id="validate-pengguna">
 				<div class="form-group">
 					<label>Username</label>
 					<input type="text" name="nama_admin" class="form-control" autofocus required="">

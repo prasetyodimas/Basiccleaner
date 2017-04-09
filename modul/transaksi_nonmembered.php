@@ -60,7 +60,7 @@
         //onchange val nama layanan
         $('select.change_nama_layanan').on('change',function(){
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
-            var val_nama_layanan  = $(this).find(':selected').data('value');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
             $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
             $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
@@ -77,7 +77,7 @@
             var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
             $('#price-kembalian').val(get_returnprice);
             //statement jika pembayaran kurang dari total maka disable button
-            if(total <= bayarnya) {
+            if(bayarnya >= total) {
                 $('button[type="submit"]').attr('disabled' , false);
             }else{
                 $('button[type="submit"]').attr('disabled' , true);
@@ -238,7 +238,7 @@
                         <div class="col-md-5">
                              <div class="form-group">
                                 <label>Nama Layanan</label>
-                                <select class="form-control place-valueservice change_nama_layanan" autofocus required="">
+                                <select name="id_layanan_service[]" class="form-control place-valueservice change_nama_layanan" autofocus required="">
                                     <option value="">Pilih Jenis Layanan Dulu !</option>
                                 </select>
                             </div>

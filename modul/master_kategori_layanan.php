@@ -6,6 +6,29 @@
     	$('.btn-cliked').click(function(){
     		$('.btn-show').slideToggle('slow');
     	});
+    	//VALIDATION RULES
+    	$('#validation-master-service').validate({
+    		rules:{
+    			jenis_layanan:{
+    				required:true,
+    			},
+    			nama_layanan:{
+    				required:true,
+    			},
+    			harga_layanan:{
+    				required:true,
+    			},
+    			deskripsi_layanan:{
+    				required:true,
+    			}
+    		},
+    		messages:{
+    			jenis_layanan:'jenis layanan tidak boleh kosong !!',
+    			nama_layanan:'nama layanan tidak boleh kosong !!',
+    			harga_layanan:'harga layanan tidak boleh kosong !!',
+    			deskripsi_layanan:'deskripsi layanan tidak boleh kosong !!',
+    		},
+    	});
 	});
 </script>
 <div class="heading-menubar"><h3>Master Kategori Layanan</h3></div>
@@ -16,7 +39,7 @@
 		<div class='main-containpages'>
 			<div class="btn-show" style="display:none;">
 				<div class="col-md-6">
-					<form action="backend/proses_master_kategori_layanan.php?act=add_kategori_layanan" method="post" id="" enctype="multipart/form-data">
+					<form action="backend/proses_master_kategori_layanan.php?act=add_kategori_layanan" method="post" enctype="multipart/form-data" id="validation-master-service">
 						<div class="form-group" style="margin-top:30px;">
 							<label>Jenis layanan</label>
 							<input type="text" name="jenis_layanan" class="form-control" autofocus required="">

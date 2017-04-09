@@ -6,6 +6,37 @@
         $('.btn-cliked').click(function(){
             $('.btn-show').slideToggle('slow');
         });
+        //VALIDATION RULES
+        $('#validation-member').validate({
+            rules:{
+                nama_member:{
+                    required:true,
+                },
+                alamat_member:{
+                    required:true,
+                },
+                notelp_member:{
+                    required:true,
+                    number:true,
+                },
+                email_member:{
+                    required:true,
+                    email:true,
+                }
+            },  
+            messages:{
+                nama_member :'nama lengkap tidak boleh kosong !!',
+                alamat_member :'alamat tidak boleh kosong !!',
+                notelp_member :{
+                    required : 'nomor telepon tidak boleh kosong !!',
+                    number : 'nomor telepon tidak valid !!',
+                },
+                email_member :{
+                    required :'email tidak boleh kosong !!',
+                    email : 'email tidak valid !!',
+                },
+            },
+        });
     });
 </script>
 <div class='main-containpages'>
@@ -15,7 +46,7 @@
     <?php if ($_SESSION['level_admin']=='manajer') { ?>
     <button class="btn-cliked btn btn-primary" style="margin-bottom:20px;">Tambah Member</button>
     <div class="btn-show" style="display:none;">
-        <form action="backend/proses_member.php?act=add_member" method="post" enctype="multpart/form-data">
+        <form action="backend/proses_member.php?act=add_member" method="post" enctype="multpart/form-data" id="validation-member">
         <div class="row">
             <div class="col-md-6" style="margin-bottom:50px;">
                 <div class="form-group">
@@ -28,7 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label>Alamat member</label>
-                    <input type="text" name="alamat_member" class="form-control" autofocus required="">
+                    <textarea name="alamat_member" class="form-control" autofocus required=""></textarea>
                 </div>
                 <div class="form-group">
                     <label>No telp</label>
