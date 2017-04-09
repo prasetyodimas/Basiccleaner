@@ -39,8 +39,8 @@
 					<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 				</div>
 				<div class="col-md-8">
-					<h3>LAPORAN MEMBER BASIC CLEANER</h3>
-					<p class="col-md-8 col-md-push-2 ">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+					<h3 style="margin-left:129px;">LAPORAN MEMBER BASIC CLEANER</h3>
+					<p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">

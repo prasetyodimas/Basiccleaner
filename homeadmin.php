@@ -107,7 +107,9 @@ if (empty($_SESSION['nama_admin'])) {
                 <li><a>session user saat ini : <?php echo $_SESSION['nama_admin']. ' => ' .$_SESSION['level_admin'];?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+            <?php if ($_SESSION['level_admin']=='manajer') { ?>
                 <li><a href="homeadmin.php?page=pengguna"><span class="glyphicon glyphicon-cog"></span> Setting Pengguna</a></li> 
+            <?php } ?>
                 <li><a href="homeadmin.php?page=setting"><span class="glyphicon glyphicon-cog"></span> Pusat Bantuan</a></li>
                 <li><a href="backend/proses_logout.php" onclick="return confirm('Anda yakin keluar sistem !!')"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
             </ul>
