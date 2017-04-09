@@ -69,7 +69,9 @@
 	}
 </style>
 <body>
-<?php $get_datacustomer = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM transaksi_shoes WHERE id_transaksi_shoes='$_GET[id_nota]'"));?>
+<?php $get_datacustomer = mysqli_fetch_array(mysqli_query($con,
+						"SELECT * FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts
+						 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));?>
 <div class="col-lg-12" style="padding:40px;">
 	<div class="row">
 		<?php if($get_datacustomer['status_member']!='non-member'){?>
@@ -102,14 +104,14 @@
 			<?php 
 				$getall_transaction = mysqli_query($con,
 					"SELECT * FROM transaksi_shoes ts 
-					INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-					 ");
+					INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes 
+					WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
 				while ($res_transaction =mysqli_fetch_array($getall_transaction)) {
 			 ?>
 			<tbody>
 				<tr>
 					<td style="padding: 15px 20px;"></td>
-					<td></td>
+					<td><?php echo $res_transaction['']; ?></td>
 					<td></br></td>
 				</tr>
 			<?php } ?>
