@@ -12,8 +12,16 @@
             $('.show-content3').slideToggle('slow');
             $('.show-content1').hide('slow');
         });
-         $('.click-menu-helper4').click(function(){
+        $('.click-menu-helper4').click(function(){
             $('.show-content4').slideToggle('slow');
+            $('.show-content1').hide('slow');
+        });
+        $('.click-menu-helper5').click(function(){
+            $('.show-content5').slideToggle('slow');
+            $('.show-content1').hide('slow');
+        });
+        $('.click-menu-helper6').click(function(){
+            $('.show-content6').slideToggle('slow');
             $('.show-content1').hide('slow');
         });
 	});
@@ -86,7 +94,39 @@
                             lebih jelas lihat pada gambar dibawah ini </p>
                         </div>
                         <div class="col-lg-12">
-                            <img src="<?php echo $site;?>frontend/pusat_bantuan/tambah pengguna.png" class="img-responsive">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/list transaksi keluar.png" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" style="cursor:pointer;">
+            <div class="panel-heading click-menu-helper5" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengetahui transaksi jika sepatu belum siap diambil..?</div>
+                <div class="row">
+                    <div class="panel-body show-content5" style="display:none;">
+                        <div class="col-lg-12 custom-keterangan-pad">
+                            <p>1. Langkah pertama klik pada menu pengambilan barang</p>
+                            <p>2. Kemudian akan muncul menu transaksi pengambilan barang belum diambil, kemudian klik pada menu tersebut untuk melihat detail transaksi yang telah dilakukan. </p>
+                            <p>3. Pada status bar warna merah tersebut adalah sebuah status untuk mengetahui bahwa transaksi pencucian sepatu tersebut belum diambil oleh pemilik.
+                            sepatu.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/transaksi belum diambil.png" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" style="cursor:pointer;">
+            <div class="panel-heading click-menu-helper6" style="border-top: 2px solid #252525;"> <span class="glyphicon glyphicon-cog"></span> Bagaimana Cara mengetahui transaksi jika sepatu sudah siap diambil..?</div>
+                <div class="row">
+                    <div class="panel-body show-content6" style="display:none;">
+                        <div class="col-lg-12 custom-keterangan-pad">
+                            <p>1. Langkah pertama klik pada menu pengambilan barang</p>
+                            <p>2. Kemudian akan muncul menu transaksi pengambilan barang sudah diambil, kemudian klik pada menu tersebut untuk melihat detail transaksi yang telah dilakukan </p>
+                            <p>3. Pada status bar warna hijau tersebut adalah sebuah status untuk mengetahui bahwa transaksi pencucian sepatu tersebut sudah diambil oleh pemilik
+                            sepatu.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <img src="<?php echo $site;?>frontend/pusat_bantuan/transaksi siap diambil.png" class="img-responsive">
                         </div>
                     </div>
                 </div>
