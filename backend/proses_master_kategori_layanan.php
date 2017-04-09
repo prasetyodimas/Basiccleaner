@@ -46,7 +46,7 @@ if ($act=='add_kategori_layanan') {
                                                            harga_layanan        ='$filter_price',
                                                            deskripsi_layanan    ='$_POST[deskripsi_layanan]'
                                                      WHERE id_kategori_layanan  ='$_POST[kode_layanan]'";
-  echo $update_category_services; die();
+  //echo $update_category_services; die();
   $saved =mysqli_query($con,$update_category_services);
   if ($saved) {
      echo "<script>alert('Master kategori layanan berhasil di ubah !!')</script>";
