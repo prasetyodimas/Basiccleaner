@@ -95,8 +95,8 @@
             <td></td>
             <td colspan="2"><strong>Total</strong> Rp.<?php echo formatuang($result['harga']);?></td>
           </tr>
-        </tbody>
         <?php $no++; } ?>
+        </tbody>
     </table>  
     <div class="col pull-right main-detail-information">
         <h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
