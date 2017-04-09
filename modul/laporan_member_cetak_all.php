@@ -20,6 +20,12 @@
 	.control-action-pages{
 		margin-top: 50px;
 	}
+	.col-md-push-custom {
+    	left: 4.333333%;
+	}
+	.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7	, .col-md-8, .col-md-9{
+		float: left;
+	}
 	thead.custom-header-bordered{
 		border: 1px solid #000;
 		border-bottom: 1px solid #000;
@@ -38,7 +44,7 @@
 				<div class="col-sm-2 col-md-2">
 					<img src="<?php echo $site;?>frontend/logo/android-icon-144x144.png">
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 col-md-push-custom">
 					<h3 style="margin-left:129px;">LAPORAN MEMBER BASIC CLEANER</h3>
 					<p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
