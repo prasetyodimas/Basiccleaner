@@ -118,31 +118,33 @@
             console.log(subtotal_reglue);
         });*/
         //json change functon price on transaction
-        $("#choose_service").change(function(){
-            var getValue= $(this).find(':selected').data('id');
+        $(".category_service").change(function(){
+            var getValue = $(this).val();
             if(getValue =='') {
-                alert('no values here !!');
+                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
                     type:'GET',
                     dataType:'json',
                     data: {'jenis_layanan' : getValue},
-                    success:function (data) {
-                        if(data !='') {
-                            console.log(data);
-                            $.each(data,function(index,value){
-                                $("#x").val(value.nama_layanan);
-                            });
+                    success:function (JSONObject) {
+                    var all_service ="";
+                        // Loop through Object and create peopleHTML
+                        for (var key in JSONObject){
+                            if (JSONObject.hasOwnProperty(key)) {
+                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                            }
                         }
+                    $('.place-valueservice').html(all_service);
                     }
                 });
             }
         });
     });
-    /*$('.category_service').on('change',function(){
+   /* $('.category_service').change(function(){
         var option = $('.category_service').val();
-        console.log(option);
+        alert(option);
         if(option == "Cleaning") {
             $(".show_cleaning").addClass('show-elem');
             $(".show_repaint").removeClass('show-elem');
@@ -165,30 +167,6 @@
             $(".hidding-default-select").addClass('show-elem');
         } 
     });*/
-    function show_services(){
-        var option = $('.category_service').val();
-        if(option == "Cleaning") {
-            $(".show_cleaning").addClass('show-elem');
-            $(".show_repaint").removeClass('show-elem');
-            $(".show_reglue").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if (option == "Reglue") {
-            $(".show_reglue").addClass('show-elem');
-            $(".show_cleaning").removeClass('show-elem');
-            $(".show_repaint").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if(option == "Repaint") {
-            $(".show_repaint").addClass('show-elem');
-            $(".show_cleaning").removeClass('show-elem');
-            $(".show_reglue").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if(option ==""){
-            $(".show_cleaning").addClass('hidden-elem');
-            $(".show_repaint").addClass('hidden-elem');
-            $(".show_reglue").addClass('hidden-elem');
-            $(".hidding-default-select").addClass('show-elem');
-        } 
-    }
     <?php date_default_timezone_set('Asia/Jakarta'); ?>
     //buat object date berdasarkan waktu di server
     var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
@@ -241,77 +219,77 @@
                 <textarea name="alamat_nonmember" cols="10" rows="5" class="form-control" autofocus required=""></textarea>
             </div>
             <div class="row">
-                 <div class="cloning-jenislayanan">
+                <div class="cloning-jenislayanan">
                     <div class="clone-jenis-service cloning-jenislayanan">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Jenis Layanan</label>
-                                <select name="jenis_layanan[]" onchange="show_services();" class="category_service form-control" autofocus required="">
+                                <select name="jenis_layanan[]" class="category_service form-control" autofocus required="">
                                     <option value="">Pilih layanan</option>
                                     <?php 
                                         $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan GROUP BY jenis_layanan");
                                         while ($result = mysqli_fetch_array($get_services)) {
-                                            echo "<option value='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
+                                            echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
                                         }
                                     ?>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-5 hidding-default-select">
+                        <div class="col-md-5">
                              <div class="form-group">
                                 <label>Nama Layanan</label>
-                                <select class="form-control" autofocus required disabled="">
-                                    <option value="">Pilih jenis layanan dulu ! </option>
+                                <select class="form-control place-valueservice change_nama_layanan" autofocus required="">
+                                    <option value="">Pilih Jenis Layanan Dulu !</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- ================================ Hidden Service Cleaning  =================================-->
-                <div class="col-md-5 show_cleaning" style="display:none;">
-                     <div class="form-group">
-                        <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                            <option value="">Pilih layanannya</option>
-                            <?php 
-                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' ORDER BY id_kategori_layanan DESC");
-                                while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <!-- ================================ Hidden Service Repaint  =================================-->
-                <div class="col-md-5 show_repaint" style="display:none;">
-                     <div class="form-group">
-                        <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                            <option value="">Pilih layanannya</option>
-                            <?php 
-                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' ORDER BY id_kategori_layanan DESC");
-                                while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-                <!-- ================================ Hidden Service Reglue =================================-->
-                <div class="col-md-5 show_reglue" style="display:none;">
-                     <div class="form-group">
-                        <label>Nama Layanan</label>
-                        <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                            <option value="">Pilih layanannya</option>
-                            <?php 
-                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' ORDER BY id_kategori_layanan DESC");
-                                while ($result = mysqli_fetch_array($get_services)) {
-                                    echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                }
-                            ?>
-                        </select>
-                    </div>
-                </div>
+                        <!-- ================================ Hidden Service Cleaning  =================================-->
+                        <div class="col-md-5 show_cleaning" style="display:none;">
+                             <div class="form-group">
+                                <label>Nama Layanan</label>
+                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
+                                    <option value="">Pilih layanannya</option>
+                                    <?php 
+                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' ORDER BY id_kategori_layanan DESC");
+                                        while ($result = mysqli_fetch_array($get_services)) {
+                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- ================================ Hidden Service Repaint  =================================-->
+                        <div class="col-md-5 show_repaint" style="display:none;">
+                             <div class="form-group">
+                                <label>Nama Layanan</label>
+                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
+                                    <option value="">Pilih layanannya</option>
+                                    <?php 
+                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' ORDER BY id_kategori_layanan DESC");
+                                        while ($result = mysqli_fetch_array($get_services)) {
+                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- ================================ Hidden Service Reglue =================================-->
+                        <div class="col-md-5 show_reglue" style="display:none;">
+                             <div class="form-group">
+                                <label>Nama Layanan</label>
+                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
+                                    <option value="">Pilih layanannya</option>
+                                    <?php 
+                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' ORDER BY id_kategori_layanan DESC");
+                                        while ($result = mysqli_fetch_array($get_services)) {
+                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- clone-jenis-service -->
+                </div><!-- cloning-jenislayanan-->
                 <div class="col">
                     <button type="button" class="btn btn-danger" id="adding-services" data-toggle="tooltip" title="tambah layanan..?" data-placement="right">+</button>
                 </div>

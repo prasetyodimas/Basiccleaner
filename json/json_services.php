@@ -1,5 +1,5 @@
 <?php include '../config/koneksi.php';
-$id = isset($_GET['id_kategori_layanan']) ? intval($_GET['id_kategori_layanan']) : 0;
+$id = isset($_GET['jenis_layanan']) ? strval($_GET['jenis_layanan']) : 0;
 
 $get_repaint = "SELECT * FROM kategori_layanan WHERE jenis_layanan='$id'";
 $result = mysqli_query($con,$get_repaint);
