@@ -53,9 +53,6 @@
     	.control-action-pages{
     		display: none !important;
     	}
-    	.csutom-space-alamat{
-    		
-    	}
     }
   }
 </style>
