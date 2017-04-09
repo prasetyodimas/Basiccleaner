@@ -20,6 +20,22 @@
 	.control-action-pages{
 		margin-top: 50px;
 	}
+	.control-action-pages{
+		margin-top: 150px;
+	}
+	h4.customize-size{
+		font-size: 16px;
+	}
+	.main-detail-information{
+		margin-top: 50px;
+	}
+	.main-detail-information .main-tanda-tangan ,.main-paraf-area{
+		text-align:center;
+		font-size:15px;
+	}
+	.main-detail-information .main-paraf-area{
+		margin-top: 50px;
+	}
 	thead.custom-header-bordered{
 		border: 1px solid #000;
 		border-bottom: 1px solid #000;
@@ -99,9 +115,22 @@
 				      <td><?php echo $result['nama_layanan'];?></td>
 				      <td>Rp.<?php echo formatuang($result['harga']);?></td>
 				  <?php } ?>
-					<?php $no++; } ?>
+					</tr>
+				  <?php $no++; } ?>
+				  <?php $gettotal_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes"); ?>
+					<tr>
+            			<td colspan="8"><a style="color:#000;text-decoration:none;" class="pull-right">
+            			<strong>Total</strong> Rp.<?php echo formatuang($result['harga']);?></a></td>
+         			</tr>
 		 			</tbody>
 		 		</table>
+		 		 <div class="col pull-right main-detail-information">
+					<h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
+					<div class="main-tanda-tangan">
+						<p class="">Pimpinan</p>
+					</div>
+					<div class="main-paraf-area">(...................................)</div>
+				</div>
 		 		<div class="control-action-pages">
 		 			<a href="" id="hidden-button" onclick="window.print();" class="btn btn-primary hidden-btnprint">Cetak Semua Laporan</a>
 		 		</div>
