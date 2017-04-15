@@ -91,7 +91,7 @@
 			<img class="postion-costum-sizing" src="<?php echo $site?>/frontend/logo/header-logolaps.png">
 		</div>
 	</div><!-- row -->
-		<table class="table customs table-hover" border="1px">
+		<table class="table customs" border="1px">
 			<thead class="custom-tables">
 				<tr class="tables">
 					<th class="thead-custom">Qty</th>
