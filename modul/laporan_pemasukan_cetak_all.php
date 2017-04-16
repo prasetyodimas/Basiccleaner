@@ -20,9 +20,9 @@
 	.control-action-pages{
 		margin-top: 50px;
 	}
-	.control-action-pages{
+	/* .control-action-pages{
 		margin-top: 150px;
-	}
+	} */
 	h4.customize-size{
 		font-size: 16px;
 	}
@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-md-8 col-md-push-custom">
 					<h3 class="custom-heading-laporan">LAPORAN PEMASUKAN BASIC CLEANER</h3>
-					<p class="col-md-8 csutom-space-alamat" style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+					<p class="col-md-8 custom-space-alamat" style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">
@@ -85,7 +85,20 @@
 		 			<tbody>
 		 			<?php 
 		 				$no =1;
-						$get_datalaporan_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts
+						$get_datalaporan_transaction = mysqli_query($con,
+							"SELECT ts.id_transaksi_shoes,
+                                ts.id_member, 
+                                ts.nama_lengkap,
+                                ts.alamat,
+                                ts.no_telp, 
+                                ts.email, 
+                                ts.tgl_transaksi,
+                                dts.nama_barang, 
+                                dts.harga, 
+                                dts.jumlah_sepatu, 
+                                kl.jenis_layanan, 
+                                kl.nama_layanan,
+                                kl.deskripsi_layanan FROM transaksi_shoes ts
 						     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
 						     JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
 						while ($result = mysqli_fetch_array($get_datalaporan_transaction)) {
@@ -114,14 +127,17 @@
 				  <?php } ?>
 					</tr>
 				  <?php $no++; } ?>
-				  <?php $gettotal_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes"); ?>
+				  <?php
+           			  $get_total = mysqli_query($con,"SELECT SUM(harga) AS total FROM detail_transaksi_shoes");
+        			  while ($total_result = mysqli_fetch_array($get_total)) {?>
 					<tr>
             			<td colspan="8"><a style="color:#000;text-decoration:none;" class="pull-right">
-            			<strong>Total</strong> Rp.<?php echo formatuang($result['harga']);?></a></td>
+            			<strong>Total</strong> Rp.<?php echo formatuang($total_result['total']);?></a></td>
          			</tr>
+         			<?php } ?>
 		 			</tbody>
 		 		</table>
-		 		 <div class="col pull-right main-detail-information">
+		 		<div class="col pull-right main-detail-information">
 					<h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
 					<div class="main-tanda-tangan">
 						<p class="">Pimpinan</p>

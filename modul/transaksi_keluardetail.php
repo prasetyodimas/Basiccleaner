@@ -14,7 +14,7 @@
 			dts.jumlah_sepatu
 	FROM transaksi_shoes ts
 	JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-	WHERE ts.id_transaksi_shoes='$_GET[id_nota]'")); 
+	WHERE ts.id_transaksi_shoes='$_GET[id_nota]' GROUP BY ts.id_transaksi_shoes")); 
 	$showmember = mysqli_fetch_array(mysqli_query($con,
 	"SELECT * FROM member m 
 	JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
@@ -98,22 +98,37 @@
 					<div class="form-group">
 						<strong>Detail Barang</strong>
 					</div>
+					<?php
+						//get detail barang 
+						$get_detail_barang = mysqli_query($con,
+								"SELECT * FROM transaksi_shoes ts
+								 INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes 
+								 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
+							while ($res_barang = mysqli_fetch_array($get_detail_barang)) {
+					 ?>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Deskripsi Barang </div> 
-							<div class="col-md-8"> : <?php echo $shownon_member['nama_barang'];?></div> 
+							<div class="col-md-8"> : <?php echo $res_barang['nama_barang'];?></div> 
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Jumlah Sepatu </div> 
-							<div class="col-md-8"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
+							<div class="col-md-8"> : <?php echo $res_barang['jumlah_sepatu'];?></div>
 						</div>
 					</div>
+					<?php } ?>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
 							<div class="col-md-8"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4"> Total Barang</div> 
+							<div class="col-md-8"> :</div> 
 						</div>
 					</div>
 	    		</div>
@@ -125,8 +140,8 @@
     			<thead class="custom-headtables-globalconf">
 	    			<tr>
 	    				<th>No</th>
-	    				<th>Nama Layanan</th>
 	    				<th>Jenis Layanan</th>
+	    				<th>Nama Layanan</th>
 	    				<th>Deskripsi Layanan</th>
 	    				<th>Harga</th>
 	    				<th>Tanggal Pesan</th>
@@ -138,7 +153,8 @@
     				$get_transaction = mysqli_query($con,
     					"SELECT * FROM transaksi_shoes ts 
 					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan 
+    					 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
 						 while ($result_transaction = mysqli_fetch_array($get_transaction)) {
     			 ?>
     			<tbody>
@@ -152,7 +168,7 @@
     					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
     			</tbody>
-    			<?php } ?>
+    			<?php $no++; } ?>
     		</table>
 			<div style="margin-bottom:50px;"></div>
 		</div>

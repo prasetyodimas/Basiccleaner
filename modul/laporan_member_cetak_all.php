@@ -1,4 +1,4 @@
-<?php include '../config/koneksi.php';?>
+<?php include '../config/koneksi.php';include'../config/function_general.php';?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,6 +19,16 @@
 	}
 	.control-action-pages{
 		margin-top: 50px;
+	}
+	h4.customize-size{
+		font-size: 16px;
+	}
+	.main-detail-information{
+		margin-top: 50px;
+	}
+	.main-detail-information .main-tanda-tangan ,.main-paraf-area{
+		text-align:center;
+		font-size:15px;
 	}
 	.col-md-push-custom {
     	left: 4.333333%;
@@ -46,7 +56,7 @@
 				</div>
 				<div class="col-md-8 col-md-push-custom">
 					<h3 style="margin-left:129px;">LAPORAN MEMBER BASIC CLEANER</h3>
-					<p class="col-md-8 col-md-push-2">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
+					<p class="col-md-8 "style="margin-left:115px;">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>			
 				</div>
 			</div>
 		 	<div class="col-lg-12">
@@ -78,6 +88,13 @@
 					<?php $no++; } ?>
 		 			</tbody>
 		 		</table>
+		 		<div class="col pull-right main-detail-information">
+					<h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
+					<div class="main-tanda-tangan">
+						<p class="">Pimpinan</p>
+					</div>
+					<div class="main-paraf-area">(...................................)</div>
+				</div>
 		 		<div class="control-action-pages">
 		 			<a href="" id="hidden-button" onclick="window.print();" class="btn btn-primary">Cetak Semua Laporan</a>
 		 		</div>

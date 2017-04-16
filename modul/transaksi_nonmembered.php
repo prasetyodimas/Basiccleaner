@@ -58,7 +58,31 @@
           },
         });
         //onchange val nama layanan
-        $('select.change_nama_layanan').on('change',function(){
+        $('select.change_nama_layanan_cleaning').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
+            var val_price_layanan = $(this).find(':selected').data('price');
+            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            //replace this val to input total transaction
+            $('.temp_value').val(val_price_layanan);
+            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+        });
+        //onchange val nama layanan
+        $('select.change_nama_layanan_reglue').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
+            var val_price_layanan = $(this).find(':selected').data('price');
+            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            //replace this val to input total transaction
+            $('.temp_value').val(val_price_layanan);
+            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+        });
+         //onchange val nama layanan
+        $('select.change_nama_layanan_reglue').on('change',function(){
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
             var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
@@ -93,7 +117,7 @@
             $('#new-contain-services').append(new_services);
         });
         //function counting subtotal
-      /*  $("input[type='number']").bind("input", function() {
+        /* $("input[type='number']").bind("input", function() {
             var input_val = $("input[type='number']").val();
             var subtotal  = $('#subtotal_transaksi').val();
             var counting_price_all_shoes = parseFloat(input_val)*parseFloat(subtotal);
@@ -118,7 +142,7 @@
             console.log(subtotal_reglue);
         });*/
         //json change functon price on transaction
-        $(".category_service").change(function(){
+        $(".category_service_cleaning").change(function(){
             var getValue = $(this).val();
             if(getValue =='') {
                 $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
@@ -136,37 +160,58 @@
                                 all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
                             }
                         }
-                    $('.place-valueservice').html(all_service);
+                    $('.place-valueservice-reglue').html(all_service);
+                    }
+                });
+            }
+        });
+        $(".category_service_repaint").change(function(){
+            var getValue = $(this).val();
+            if(getValue =='') {
+                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
+            }else{
+                $.ajax({
+                    url:'json/json_services.php',
+                    type:'GET',
+                    dataType:'json',
+                    data: {'jenis_layanan' : getValue},
+                    success:function (JSONObject) {
+                    var all_service ="";
+                        // Loop through Object and create peopleHTML
+                        for (var key in JSONObject){
+                            if (JSONObject.hasOwnProperty(key)) {
+                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                            }
+                        }
+                    $('.place-valueservice-repaint').html(all_service);
+                    }
+                });
+            }
+        });
+        $(".category_service_reglue").change(function(){
+            var getValue = $(this).val();
+            if(getValue =='') {
+                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
+            }else{
+                $.ajax({
+                    url:'json/json_services.php',
+                    type:'GET',
+                    dataType:'json',
+                    data: {'jenis_layanan' : getValue},
+                    success:function (JSONObject) {
+                    var all_service ="";
+                        // Loop through Object and create peopleHTML
+                        for (var key in JSONObject){
+                            if (JSONObject.hasOwnProperty(key)) {
+                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                            }
+                        }
+                    $('.place-valueservice-reglue').html(all_service);
                     }
                 });
             }
         });
     });
-   /* $('.category_service').change(function(){
-        var option = $('.category_service').val();
-        alert(option);
-        if(option == "Cleaning") {
-            $(".show_cleaning").addClass('show-elem');
-            $(".show_repaint").removeClass('show-elem');
-            $(".show_reglue").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if (option == "Reglue") {
-            $(".show_reglue").addClass('show-elem');
-            $(".show_cleaning").removeClass('show-elem');
-            $(".show_repaint").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if(option == "Repaint") {
-            $(".show_repaint").addClass('show-elem');
-            $(".show_cleaning").removeClass('show-elem');
-            $(".show_reglue").removeClass('show-elem');
-            $(".hidding-default-select").addClass('hidden-elem');
-        }else if(option ==""){
-            $(".show_cleaning").addClass('hidden-elem');
-            $(".show_repaint").addClass('hidden-elem');
-            $(".show_reglue").addClass('hidden-elem');
-            $(".hidding-default-select").addClass('show-elem');
-        } 
-    });*/
     <?php date_default_timezone_set('Asia/Jakarta'); ?>
     //buat object date berdasarkan waktu di server
     var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
@@ -221,73 +266,35 @@
             <div class="row">
                 <div class="cloning-jenislayanan">
                     <div class="clone-jenis-service cloning-jenislayanan">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Jenis Layanan</label>
-                                <select name="jenis_layanan[]" class="category_service form-control" autofocus required="">
-                                    <option value="">Pilih layanan</option>
-                                    <?php 
-                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan GROUP BY jenis_layanan");
-                                        while ($result = mysqli_fetch_array($get_services)) {
-                                            echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
-                                        }
-                                    ?>
-                                </select>
+                        <!-- ===================== JENIS LAYANAN CLEANING ====================-->
+                        <div class="col-lg-12">
+                            <div class="col-md-12 main-inner-services">
+                                <div class="heading-services"><h4>Cleaning Service</h4></div> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Jenis Layanan</label>
+                                        <select name="jenis_layanan[]" class="category_service_reglue form-control" autofocus required="">
+                                            <option value="">Pilih layanan</option>
+                                            <?php 
+                                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' GROUP BY jenis_layanan");
+                                                while ($result = mysqli_fetch_array($get_services)) {
+                                                    echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label>Nama Layanan</label>
+                                        <select name="id_layanan_service[]" class="form-control place-valueservice-reglue change_nama_layanan_cleaning" autofocus required="">
+                                            <option value="">Pilih Jenis Layanan Dulu !</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                             <div class="form-group">
-                                <label>Nama Layanan</label>
-                                <select name="id_layanan_service[]" class="form-control place-valueservice change_nama_layanan" autofocus required="">
-                                    <option value="">Pilih Jenis Layanan Dulu !</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- ================================ Hidden Service Cleaning  =================================-->
-                        <div class="col-md-5 show_cleaning" style="display:none;">
-                             <div class="form-group">
-                                <label>Nama Layanan</label>
-                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                                    <option value="">Pilih layanannya</option>
-                                    <?php 
-                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' ORDER BY id_kategori_layanan DESC");
-                                        while ($result = mysqli_fetch_array($get_services)) {
-                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- ================================ Hidden Service Repaint  =================================-->
-                        <div class="col-md-5 show_repaint" style="display:none;">
-                             <div class="form-group">
-                                <label>Nama Layanan</label>
-                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                                    <option value="">Pilih layanannya</option>
-                                    <?php 
-                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' ORDER BY id_kategori_layanan DESC");
-                                        while ($result = mysqli_fetch_array($get_services)) {
-                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- ================================ Hidden Service Reglue =================================-->
-                        <div class="col-md-5 show_reglue" style="display:none;">
-                             <div class="form-group">
-                                <label>Nama Layanan</label>
-                                <select name="nama_layanan[]" class="form-control change_nama_layanan" autofocus required="">
-                                    <option value="">Pilih layanannya</option>
-                                    <?php 
-                                        $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' ORDER BY id_kategori_layanan DESC");
-                                        while ($result = mysqli_fetch_array($get_services)) {
-                                            echo "<option value='".$result['id_kategori_layanan']."' data-jenis='".$result['jenis_layanan']."' data-value='".$result['nama_layanan']."' data-price='".$result['harga_layanan']."'>".$result['nama_layanan']."</option>";
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
+                       
                     </div><!-- clone-jenis-service -->
                 </div><!-- cloning-jenislayanan-->
                 <div class="col">
@@ -412,7 +419,7 @@
     </div><!-- row-->
 </div>
 <!-- hiddin form input nama sepatu -->
-<div style="display:none;" class="cloning-namebarang">
+<!-- <div style="display:none;" class="cloning-namebarang">
     <div class="clone-input-shoes">
         <div class="row">
             <div class="col-md-4">
@@ -428,3 +435,4 @@
         </div>
     </div>
 </div>
+ -->
