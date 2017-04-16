@@ -73,5 +73,8 @@
         case 'laporan_member':
             include "modul/laporan_member.php";
         break;
+        case 'laporan_member_onepages':
+            include "modul/laporan_member_onepages.php";
+        break;
     }
 ?> 

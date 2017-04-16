@@ -43,3 +43,5 @@
 .adding-shoes{position: relative; top:25px; left: 0px; right: 0px; bottom: 0px; }
 .status-barang-ambil{background-color: #50ce00; color: #fff; } 
 .status-barang-belum-diambil{background-color: #ce0027; color: #fff; }
+.main-inner-services{border:1px solid #cccccc; padding:20px; } 
+.main-inner-services .heading-services h4{position: relative; left: 14px; }

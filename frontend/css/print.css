@@ -1,0 +1,20 @@
+/* COnfig Print Css Author Dimas Prasetyo */
+
+@media print{
+	/*==== GLOBAL CONFIG ====*/
+	@page {
+	  size: A4;
+	  margin: 0;
+	}
+    html, body {
+	    width: 768px;
+  	}
+	body{
+		margin: 0 auto;
+		padding :0 auto;
+	}
+	/*========= Laporan cetak member one pages ============ */
+    #btn-cetak-onepages{
+	  	display: none !important;
+    }
+}

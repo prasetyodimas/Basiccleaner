@@ -6,9 +6,6 @@
   .custom-alamat-pemasukan{
     margin-left: 21%;
   }
-  .control-action-pages{
-    margin-top: 150px;
-  }
   h4.customize-size{
     font-size: 16px;
   }
@@ -49,14 +46,28 @@
               <th>Jenis Layanan</th>
               <th>Nama Layanan</th>
               <th>Harga</th>
-              <th>Aksi</th>
+             <!--  <th>Aksi</th> -->
           </tr>
         </thead>
           <?php 
             $no =1;
-            $get_datalaporan_transaction = mysqli_query($con,"SELECT * FROM transaksi_shoes ts
-                                                 JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-                                                 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+            $get_datalaporan_transaction = mysqli_query($con,
+                        "SELECT ts.id_transaksi_shoes,
+                                ts.id_member, 
+                                ts.nama_lengkap,
+                                ts.alamat,
+                                ts.no_telp, 
+                                ts.email, 
+                                ts.tgl_transaksi,
+                                dts.nama_barang, 
+                                dts.harga, 
+                                dts.jumlah_sepatu, 
+                                kl.jenis_layanan, 
+                                kl.nama_layanan,
+                                kl.deskripsi_layanan 
+                                FROM transaksi_shoes ts
+                                JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+                                JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
             while ($result = mysqli_fetch_array($get_datalaporan_transaction)) {
               $showmember = mysqli_fetch_array(mysqli_query($con,
                              "SELECT * FROM member m 
@@ -81,10 +92,14 @@
               <td><?php echo $result['nama_layanan'];?></td>
               <td>Rp.<?php echo formatuang($result['harga']);?></td>
           <?php } ?>
-              <td>
+              <!-- <td>
                   <a href="<?php echo $site;?>homeadmin.php?page=">View</a>
-              </td>
+              </td> -->
           </tr>
+          <?php $no++; } ?>
+          <?php
+            $get_total = mysqli_query($con,"SELECT SUM(harga) AS total FROM detail_transaksi_shoes");
+            while ($total_result = mysqli_fetch_array($get_total)) {?>
           <tr>
             <td></td>
             <td></td>
@@ -93,9 +108,9 @@
             <td></td>
             <td></td>
             <td></td>
-            <td colspan="2"><strong>Total</strong> Rp.<?php echo formatuang($result['harga']);?></td>
+            <td colspan="2"><strong>Total</strong> Rp.<?php echo formatuang($total_result['total']);?></td>
           </tr>
-        <?php $no++; } ?>
+          <?php } ?>
         </tbody>
     </table>  
     <div class="col pull-right main-detail-information">

@@ -1,5 +1,15 @@
 <style type="text/css">
- .custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #ddd; } 
+.custom-headtables{background-color: #000; color: #fff; }.col-md-push-custom {left: 4.333333%; } tbody tr td{border-bottom: 1px solid #ddd; }
+h4.customize-size{
+	font-size: 16px;
+}
+.main-detail-information{
+	margin-top: 50px;
+}
+.main-detail-information .main-tanda-tangan ,.main-paraf-area{
+	text-align:center;
+	font-size:15px;
+} 
 </style>
 <div class='main-containpages'>
 	<div class="col-lg-12">
@@ -38,12 +48,19 @@
  					<td><?php echo $result['notelp_member'];?></td>
  					<td><?php echo $result['email_member'];?></td>
 					<td>
-						<a href="homeadmin.php?page=detail_laporan_member">View</a>
+						<a href="homeadmin.php?page=laporan_member_onepages&id=<?php echo $result['id_member'];?>">View</a>
 					</td>
  				</tr>
 			<?php $no++; } ?>
  			</tbody>
  		</table>
+ 		<div class="col pull-right main-detail-information">
+ 			<h4 class="customize-size">Yogyakarta <?php echo tgl_indo(date('Y-m-d'));?></h4>
+			<div class="main-tanda-tangan">
+				<p class="">Pimpinan</p>
+			</div>
+			<div class="main-paraf-area">(...................................)</div>
+ 		</div>
  		<div class="control-action-pages">
  			<a href="<?php echo $site;?>modul/laporan_member_cetak_all.php" target="_blank" class="btn btn-primary">Cetak Semua Laporan</a>
  		</div>
