@@ -62,21 +62,21 @@
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
             var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
-            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
-            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
-            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            $('.container-category-services-cleaning').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-name-services-cleaning').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-price-services-cleaning').html('<p class=format-price-item>'+val_price_layanan+'</p>');
             //replace this val to input total transaction
             $('.temp_value').val(val_price_layanan);
             $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
         });
         //onchange val nama layanan
-        $('select.change_nama_layanan_reglue').on('change',function(){
+        $('select.change_nama_layanan_repaint').on('change',function(){
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
             var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
-            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
-            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
-            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            $('.container-category-services-repaint').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-name-services-repaint').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-price-services-repaint').html('<p class=format-price-item>'+val_price_layanan+'</p>');
             //replace this val to input total transaction
             $('.temp_value').val(val_price_layanan);
             $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
@@ -86,9 +86,9 @@
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
             var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
-            $('.container-transaction-jenis-service').html('<p>'+val_jenis_layanan+'</p>');
-            $('.container-transaction2').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
-            $('.container-transaction3').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            $('.container-category-services-reglue').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-name-services-reglue').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-price-services-reglue').html('<p class=format-price-item>'+val_price_layanan+'</p>');
             //replace this val to input total transaction
             $('.temp_value').val(val_price_layanan);
             $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
@@ -145,7 +145,7 @@
         $(".category_service_cleaning").change(function(){
             var getValue = $(this).val();
             if(getValue =='') {
-                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-cleaning').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
@@ -160,7 +160,7 @@
                                 all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
                             }
                         }
-                    $('.place-valueservice-reglue').html(all_service);
+                    $('.place-valueservice-cleaning').html(all_service);
                     }
                 });
             }
@@ -168,7 +168,7 @@
         $(".category_service_repaint").change(function(){
             var getValue = $(this).val();
             if(getValue =='') {
-                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-repaint').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
@@ -191,7 +191,7 @@
         $(".category_service_reglue").change(function(){
             var getValue = $(this).val();
             if(getValue =='') {
-                $('.place-valueservice').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-reglue').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
@@ -266,14 +266,26 @@
             <div class="row">
                 <div class="cloning-jenislayanan">
                     <div class="clone-jenis-service cloning-jenislayanan">
+                        <div class="col-md-12 form-group">
+                            <label>Pilih Jenis Layanan :</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="Cleaning" id=""> Cleaning
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="Repaint" id=""> Repaint
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" value="Reglue" id=""> Reglue
+                            </label>
+                        </div>
                         <!-- ===================== JENIS LAYANAN CLEANING ====================-->
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 form-group">
                             <div class="col-md-12 main-inner-services">
                                 <div class="heading-services"><h4>Cleaning Service</h4></div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan[]" class="category_service_reglue form-control" autofocus required="">
+                                        <select name="jenis_layanan[]" class="category_service_cleaning form-control" autofocus required="">
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' GROUP BY jenis_layanan");
@@ -287,19 +299,74 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service[]" class="form-control place-valueservice-reglue change_nama_layanan_cleaning" autofocus required="">
+                                        <select name="id_layanan_service[]" class="form-control place-valueservice-cleaning change_nama_layanan_cleaning" autofocus required="">
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
+                        <!-- ===================== JENIS LAYANAN CLEANING ====================-->
+                        <div class="col-lg-12 form-group">
+                            <div class="col-md-12 main-inner-services">
+                                <div class="heading-services"><h4>Repaint Service</h4></div> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Jenis Layanan</label>
+                                        <select name="jenis_layanan[]" class="category_service_repaint form-control" autofocus required="">
+                                            <option value="">Pilih layanan</option>
+                                            <?php 
+                                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' GROUP BY jenis_layanan");
+                                                while ($result = mysqli_fetch_array($get_services)) {
+                                                    echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label>Nama Layanan</label>
+                                        <select name="id_layanan_service[]" class="form-control place-valueservice-repaint change_nama_layanan_repaint" autofocus required="">
+                                            <option value="">Pilih Jenis Layanan Dulu !</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ===================== JENIS LAYANAN CLEANING ====================-->
+                        <div class="col-lg-12 form-group">
+                            <div class="col-md-12 main-inner-services">
+                                <div class="heading-services"><h4>Reglue Service</h4></div> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Jenis Layanan</label>
+                                        <select name="jenis_layanan[]" class="category_service_reglue form-control" autofocus required="">
+                                            <option value="">Pilih layanan</option>
+                                            <?php 
+                                                $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' GROUP BY jenis_layanan");
+                                                while ($result = mysqli_fetch_array($get_services)) {
+                                                    echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                     <div class="form-group">
+                                        <label>Nama Layanan</label>
+                                        <select name="id_layanan_service[]" class="form-control place-valueservice-reglue change_nama_layanan_reglue" autofocus required="">
+                                            <option value="">Pilih Jenis Layanan Dulu !</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div><!-- clone-jenis-service -->
                 </div><!-- cloning-jenislayanan-->
-                <div class="col">
+                <!-- <div class="col">
                     <button type="button" class="btn btn-danger" id="adding-services" data-toggle="tooltip" title="tambah layanan..?" data-placement="right">+</button>
-                </div>
+                </div> -->
             </div><!-- row -->
             <div class="row">
                 <div id="new-contain-services"></div><!-- new container shoes -->
@@ -381,14 +448,35 @@
                 <div class="form-group">
                     <label>List Transaksi Item</label>
                     <div class="row" id="main-transaction-items">
+                        <!-- ============= CLEANING TRANSACTION =============-->
                         <div class="col-md-3">
-                            <div class="container-transaction-jenis-service"></div>
+                            <div class="container-category-services-cleaning"></div>
                         </div>
                         <div class="col-md-6">
-                            <div class="container-transaction2"></div>
+                            <div class="container-name-services-cleaning"></div>
                         </div>
                         <div class="col-md-3">
-                            <div class="container-transaction3"></div>
+                            <div class="container-price-services-cleaning"></div>
+                        </div>
+                        <!-- ============= REPAINT TRANSACTION =============-->
+                        <div class="col-md-3">
+                            <div class="container-category-services-repaint"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="container-name-services-repaint"></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-price-services-repaint"></div>
+                        </div>
+                        <!-- ============= REGLUE TRANSACTION =============-->
+                        <div class="col-md-3">
+                            <div class="container-category-services-reglue"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="container-name-services-reglue"></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container-price-services-reglue"></div>
                         </div>
                     </div>
                 </div>
