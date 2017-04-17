@@ -28,7 +28,7 @@
                     $get_transaksi_pengambilan=mysqli_query($con,
                     "SELECT * FROM transaksi_shoes ts 
                     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes 
-                    WHERE status_pengambilan='B' ORDER BY ts.id_transaksi_shoes DESC");
+                    WHERE status_pengambilan='B' GROUP BY ts.id_transaksi_shoes");
                     while($result=mysqli_fetch_array($get_transaksi_pengambilan)){
                     $get_data_member = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$result[id_member]'"));
                 ?>

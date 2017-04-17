@@ -116,8 +116,8 @@
             var new_services = $('div.cloning-jenislayanan .clone-jenis-service').clone();
             $('#new-contain-services').append(new_services);
         });
-        //function counting subtotal
-        /* $("input[type='number']").bind("input", function() {
+       /* //function counting subtotal
+         $("input[type='number']").bind("input", function() {
             var input_val = $("input[type='number']").val();
             var subtotal  = $('#subtotal_transaksi').val();
             var counting_price_all_shoes = parseFloat(input_val)*parseFloat(subtotal);
@@ -269,13 +269,13 @@
                         <div class="col-md-12 form-group">
                             <label>Pilih Jenis Layanan :</label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Cleaning" id=""> Cleaning
+                                <input type="checkbox" value="Cleaning" id="chose-cleaning"> Cleaning
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Repaint" id=""> Repaint
+                                <input type="checkbox" value="Repaint" id="choose-repaint"> Repaint
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Reglue" id=""> Reglue
+                                <input type="checkbox" value="Reglue" id="choose-reglue"> Reglue
                             </label>
                         </div>
                         <!-- ===================== JENIS LAYANAN CLEANING ====================-->

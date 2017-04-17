@@ -98,27 +98,19 @@
 					<div class="form-group">
 						<strong>Detail Barang</strong>
 					</div>
-					<?php
-						//get detail barang 
-						$get_detail_barang = mysqli_query($con,
-								"SELECT * FROM transaksi_shoes ts
-								 INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes 
-								 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
-							while ($res_barang = mysqli_fetch_array($get_detail_barang)) {
-					 ?>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Deskripsi Barang </div> 
-							<div class="col-md-8"> : <?php echo $res_barang['nama_barang'];?></div> 
+							<div class="col-md-8"> : <?php echo $shownon_member['nama_barang'];?></div> 
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Jumlah Sepatu </div> 
-							<div class="col-md-8"> : <?php echo $res_barang['jumlah_sepatu'];?></div>
+							<div class="col-md-8"> : <?php echo $shownon_member['jumlah_sepatu'];?></div>
 						</div>
 					</div>
-					<?php } ?>
+					
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-4"> Status Pengambilan </div> 
@@ -163,7 +155,7 @@
     					<td><?php echo $result_transaction['jenis_layanan'];?></td>
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
     					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
-    					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td>Rp.<?php echo formatuang($result_transaction['harga_layanan']);?></td>
     					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
     					<td><?php echo tgl_indo(adding_days($shownon_member['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
