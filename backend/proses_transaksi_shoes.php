@@ -2,12 +2,9 @@
 $act = $_GET['act'];
 //var date now
 $tgl_transaksi = date('Y-m-d');
-$array_jml_sepatu  = $_POST['jumlah_sepatu'];
-$array_nama_barang = $_POST['nama_barangnonmember'];
+$array_jml_sepatu    = $_POST['jumlah_sepatu'];
+$array_nama_barang   = $_POST['nama_barangnonmember'];
 $array_jenis_layanan = $_POST['id_layanan_service'];
-/*print_r($array_jml_sepatu);
-print_r($array_nama_barang);
-exit();*/
 if($act=='add_transaksi') {
 	//var check member 
 	if ($_POST['status_member']=='member') {
@@ -83,7 +80,7 @@ if($act=='add_transaksi') {
 													  		  'B')";
 
 		$succes_transaksi = mysqli_query($con,$add_transaksi_nonmember);
-		foreach ($array_jenis_layanan as $jenis_servis_layanan) {
+		for ($i=0;$i<count($array_jenis_layanan);$i++) { 
 			//add detail transaksi baru
 			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_transaksi_shoes, 
 																		id_kategori_layanan,
@@ -91,13 +88,12 @@ if($act=='add_transaksi') {
 																	    harga,
 																	    jumlah_sepatu) 
 																VALUES ('$_POST[kode_transaksi]',
-																		'$jenis_servis_layanan',
-																		'$array_nama_barang[$i]',
+																		'$array_jenis_layanan[$i]',
+																		'$array_nama_barang',
 																		'$_POST[total_transcation_item]',
 																		'$array_jml_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 		}
-
 		if ($succes_transaksi && $succes_detail_transaksi) {
 		    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 			echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";

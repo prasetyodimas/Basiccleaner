@@ -1,4 +1,32 @@
 <script type="text/javascript">
+    $(window).load(function(){
+        //hide element when load page
+        $('#cleaning-hide').hide('fast');
+        $('#repaint-hide').hide('fast');
+        $('#reglue-hide').hide('fast');
+        //when click checkbox show elem services
+        $('#choose-cleaning').click(function(){
+            if ($(this).is(':checked')){
+                var show_elem = $('#cleaning-hide').show(1000);
+            }else{
+                var show_elem = $('#cleaning-hide').hide(1000);
+            }
+        });
+        $('#choose-repaint').click(function(){
+            if($(this).is(':checked')){
+                var show_elem = $('#repaint-hide').show(1000);
+            }else{
+                var show_elem = $('#repaint-hide').hide(1000);
+            }
+        });
+        $('#choose-reglue').click(function(){
+            if ($(this).is(':checked')) {
+                var show_elem = $('#reglue-hide').show(1000);
+            }else{
+                var show_elem = $('#reglue-hide').hide(1000);
+            }
+        });
+    });
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip(); 
         //jquery format currency
@@ -62,12 +90,11 @@
             var val_jenis_layanan = $(this).find(':selected').data('jenis');
             var val_nama_layanan  = $(this).find(':selected').data('name');
             var val_price_layanan = $(this).find(':selected').data('price');
-            $('.container-category-services-cleaning').html('<p>'+val_jenis_layanan+'</p>');
-            $('.container-name-services-cleaning').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
-            $('.container-price-services-cleaning').html('<p class=format-price-item>'+val_price_layanan+'</p>');
-            //replace this val to input total transaction
-            $('.temp_value').val(val_price_layanan);
-            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+                $('.container-category-services-cleaning').html('<p>'+val_jenis_layanan+'</p>');
+                $('.container-name-services-cleaning').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+                $('.container-price-services-cleaning').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+                //replace this val to input total transaction
+                $('.temp_value-one').val(val_price_layanan);
         });
         //onchange val nama layanan
         $('select.change_nama_layanan_repaint').on('change',function(){
@@ -78,8 +105,7 @@
             $('.container-name-services-repaint').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
             $('.container-price-services-repaint').html('<p class=format-price-item>'+val_price_layanan+'</p>');
             //replace this val to input total transaction
-            $('.temp_value').val(val_price_layanan);
-            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+            $('.temp_value-two').val(val_price_layanan);
         });
          //onchange val nama layanan
         $('select.change_nama_layanan_reglue').on('change',function(){
@@ -90,24 +116,42 @@
             $('.container-name-services-reglue').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
             $('.container-price-services-reglue').html('<p class=format-price-item>'+val_price_layanan+'</p>');
             //replace this val to input total transaction
-            $('.temp_value').val(val_price_layanan);
-            $('.container-total-peritems').html('<p>'+val_price_layanan+'</p>');
+            $('.temp_value-three').val(val_price_layanan);
         });
         //function jumlah bayar as total - jumlah bayar = kembalian / total
         $('button[type="submit"]').attr('disabled', true);
         $('#bayar').blur(function(){
-            var total    = $('#subtotal').val();
-            var bayarnya = $('#bayar').val();
-            var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
-            $('#price-kembalian').val(get_returnprice);
-            //statement jika pembayaran kurang dari total maka disable button
-            if(bayarnya >= total) {
-                $('button[type="submit"]').attr('disabled' , false);
+            var vars      = 0;
+            var total     = $('#subtotal').val();
+            var bayarnya  = $('#bayar').val();
+            var get_returnprice = parseInt(bayarnya)-parseInt(total);
+            var kembalian = $('#price-kembalian').val(get_returnprice);
+            //jika pembayaran == null / kosong 
+            if (bayarnya =='' || bayarnya== null) {
+                $('#price-kembalian').val(vars);
+                $('input[name="kembalian"]').attr('disabled',true);
             }else{
-                $('button[type="submit"]').attr('disabled' , true);
+                $('button[type="submit"]').attr('disabled',true);
+            }
+            //statement jika pembayaran kurang dari total maka disable button
+            if(total <= bayarnya) {
+                $('button[type="submit"]').attr('disabled',true);
+            }else if(bayarnya==''){
+                $('button[type="submit"]').attr('disabled',true);
             }
         });
-        //jquery Clone Select Append All Service  
+        $('input[name=total_transcation_item]').mouseover(function(){
+            $('#subtotal').val(function(){
+                var harga1 = parseInt($('#count1').val());
+                var harga2 = parseInt($('#count2').val());
+                var harga3 = parseInt($('#count3').val());
+                    harga1 = isNaN(harga1) ? 0 :harga1;
+                    harga2 = isNaN(harga2) ? 0 :harga2;
+                    harga3 = isNaN(harga3) ? 0 :harga3;
+                    return harga1 + harga2 + harga3;
+            });
+        });
+        //jquery clone select append all service  
         $('.adding-shoes').click(function() {
             var new_input_shoes = $('div.cloning-namebarang .clone-input-shoes').clone();
             $('#new-contain-inputshoes').append(new_input_shoes);
@@ -116,31 +160,11 @@
             var new_services = $('div.cloning-jenislayanan .clone-jenis-service').clone();
             $('#new-contain-services').append(new_services);
         });
-       /* //function counting subtotal
-         $("input[type='number']").bind("input", function() {
-            var input_val = $("input[type='number']").val();
-            var subtotal  = $('#subtotal_transaksi').val();
-            var counting_price_all_shoes = parseFloat(input_val)*parseFloat(subtotal);
-            $('#subtotal_transaksi').val(counting_price_all_shoes);
-            //console.log(counting_price_all_shoes);
-        });*/
-        //function pembayaran cahsier
-        //onchange function price repaint
-        /*$('select.change_repaint_values').on('change',function(){
-            var repaint_value      = $('select.change_repaint_values').find(':selected').data('id');
-            var total_repaint      = $('#total_transaksi_values').val();
-            var subtotal_repaint   = parseFloat(repaint_value)+parseFloat(total_repaint); 
-            $('#subtotal_transaksi').val(subtotal_repaint);
-            console.log(subtotal_repaint)
-        });*/
-        //onchange function price reglue
-        /*$('select.change_reglue_values').on('change',function(){
-            var reglue_value      = $('select.change_reglue_values').find(':selected').data('id');
-            var total_reglue      = $('#total_transaksi_values').val();
-            var subtotal_reglue   = parseFloat(reglue_value)+parseFloat(total_reglue); 
-            $('#subtotal_transaksi').val(subtotal_reglue);
-            console.log(subtotal_reglue);
-        });*/
+        //function counting subtotal transaaction
+        $('.temp_value').on("change", function(){
+            var price_trans = $(this).val();
+            console.log(price_trans);
+        });
         //json change functon price on transaction
         $(".category_service_cleaning").change(function(){
             var getValue = $(this).val();
@@ -269,23 +293,23 @@
                         <div class="col-md-12 form-group">
                             <label>Pilih Jenis Layanan :</label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Cleaning" id="chose-cleaning"> Cleaning
+                                <input type="checkbox" name="cleaning" value="Cleaning" id="choose-cleaning" style="cursor:pointer;"> Cleaning
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Repaint" id="choose-repaint"> Repaint
+                                <input type="checkbox" name="repaint" value="Repaint" id="choose-repaint" style="cursor:pointer;"> Repaint
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" value="Reglue" id="choose-reglue"> Reglue
+                                <input type="checkbox" name="reglue" value="Reglue" id="choose-reglue" style="cursor:pointer;"> Reglue
                             </label>
                         </div>
                         <!-- ===================== JENIS LAYANAN CLEANING ====================-->
-                        <div class="col-lg-12 form-group">
+                        <div class="col-lg-12 form-group" id="cleaning-hide">
                             <div class="col-md-12 main-inner-services">
                                 <div class="heading-services"><h4>Cleaning Service</h4></div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan[]" class="category_service_cleaning form-control" autofocus required="">
+                                        <select name="jenis_layanan" class="category_service_cleaning form-control">
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' GROUP BY jenis_layanan");
@@ -299,21 +323,21 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service[]" class="form-control place-valueservice-cleaning change_nama_layanan_cleaning" autofocus required="">
+                                        <select name="id_layanan_service" class="form-control place-valueservice-cleaning change_nama_layanan_cleaning">
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ===================== JENIS LAYANAN CLEANING ====================-->
-                        <div class="col-lg-12 form-group">
+                        <!-- ===================== JENIS LAYANAN REPAINT ====================-->
+                        <div class="col-lg-12 form-group" id="repaint-hide">
                             <div class="col-md-12 main-inner-services">
                                 <div class="heading-services"><h4>Repaint Service</h4></div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan[]" class="category_service_repaint form-control" autofocus required="">
+                                        <select name="jenis_layanan" class="category_service_repaint form-control">
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' GROUP BY jenis_layanan");
@@ -327,21 +351,21 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service[]" class="form-control place-valueservice-repaint change_nama_layanan_repaint" autofocus required="">
+                                        <select name="id_layanan_service" class="form-control place-valueservice-repaint change_nama_layanan_repaint">
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- ===================== JENIS LAYANAN CLEANING ====================-->
-                        <div class="col-lg-12 form-group">
+                        <!-- ===================== JENIS LAYANAN REGLUE ====================-->
+                        <div class="col-lg-12 form-group" id="reglue-hide">
                             <div class="col-md-12 main-inner-services">
                                 <div class="heading-services"><h4>Reglue Service</h4></div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan[]" class="category_service_reglue form-control" autofocus required="">
+                                        <select name="jenis_layanan" class="category_service_reglue form-control">
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' GROUP BY jenis_layanan");
@@ -355,7 +379,7 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service[]" class="form-control place-valueservice-reglue change_nama_layanan_reglue" autofocus required="">
+                                        <select name="id_layanan_service" class="form-control place-valueservice-reglue change_nama_layanan_reglue">
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
@@ -375,13 +399,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jumlah sepatu</label>
-                        <input type="number" name="jumlah_sepatu[]" id="jml_sepatu" class="form-control" datashoes="" min="1" max="50" autofocus required="">
+                        <input type="number" name="jumlah_sepatu" id="jml_sepatu" class="form-control" datashoes="" min="1" max="50" autofocus required="">
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="form-group">
                         <label>Nama sepatu / nama barang</label>
-                        <textarea name="nama_barangnonmember[]" cols="10" rows="1" class="form-control"></textarea>
+                        <textarea name="nama_barangnonmember" cols="10" rows="1" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="col">
@@ -480,14 +504,18 @@
                         </div>
                     </div>
                 </div>
-                <div class='form-group'>
+                <div class='form-inline'>
                     <div class="row">
-                        <div class="col-md-5 col-md-push-7">
-                             <strong>Total</strong>
+                        <div class="col-md-8 pull-right" style="padding-right:0;padding-left: 31px;">
+                            <label class="form-group">
+                             Total <input type="text" name="total_transcation_item" id="subtotal" class="form-control">
+                            </label>
                         </div>
-                        <div class="col-md-2 col-md-push-4">
-                            <span class="container-total-peritems"></span>
-                        </div>
+                        <div style="display:none;">
+                            <input type="text" name="total_trans_one" id="count1" class="temp_value-one">
+                            <input type="text" name="total_trans_two" id="count2" class="temp_value-two">
+                            <input type="text" name="total_trans_three" id="count3" class="temp_value-three">
+                         </div>
                     </div>
                 </div>
                 <div class="row">
@@ -500,27 +528,9 @@
                         <input id="price-kembalian" type="text" name="kembalian" class="form-control" value=""></input>
                     </div>
                 </div>
-                <input type="hidden" name="total_transcation_item" class="temp_value" value="" id="subtotal">
             </div>
         </form>
         </div>
     </div><!-- row-->
 </div>
-<!-- hiddin form input nama sepatu -->
-<!-- <div style="display:none;" class="cloning-namebarang">
-    <div class="clone-input-shoes">
-        <div class="row">
-            <div class="col-md-4">
-                <label>Jumlah sepatu</label>
-                <input type="number" id="jml_sepatu[]" class="form-control" datashoes="" min="1" max="50" name="jumlah_sepatu[]" autofocus required="">
-            </div>
-            <div class="col-md-7">
-                <div class="form-group">
-                    <label>Nama sepatu / Nama barang</label>
-                    <textarea name="nama_barang[]" cols="10" rows="1" class="form-control"></textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- -->
+

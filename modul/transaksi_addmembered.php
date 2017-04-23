@@ -4,8 +4,8 @@
             var input_val = $("input[type='number']").val();
             var subtotal  = $('#total_transaksi').val();
             var counting_price_all_shoes = parseFloat(input_val)*parseFloat(subtotal);
-            //console.log(counting_price_all_shoes);
             $('#total_transaksi').val(counting_price_all_shoes);
+            //console.log(counting_price_all_shoes);
         });
         //change bayar function kembalian for buyer
         $('#bayar').blur(function(){
@@ -13,7 +13,7 @@
             var bayarnya = $('#bayar').val();
             var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
             $('#price-kembalian').val(get_returnprice);
-            console.log(get_returnprice);
+            //console.log(get_returnprice);
         });
         //change value from transaction + adding new services transaction
         $('#value_total_trans').change(function(){
@@ -239,7 +239,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Jumlah Bayar</label>
-                            <input id="bayar" type="text" name="jum_bayar" class="form-control bayar">
+                            <input id="bayar" type="text" name="jum_bayar" class="form-control">
                         </div> 
                         <div class="col-md-6">
                             <label>Kembalian</label>
