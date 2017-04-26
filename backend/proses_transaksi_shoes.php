@@ -8,10 +8,10 @@ $nama_barang             = $_POST['nama_barangnonmember'];
 $jenis_layanan_cleaning  = $_POST['category_layanan_cleaning'];
 $jenis_layanan_repaint   = $_POST['category_layanan_repaint'];
 $jenis_layanan_reglue    = $_POST['category_layanan_reglue'];
-
+/*
 echo $_POST['x'];
 echo $_POST['y'];
-echo $_POST['z'];
+echo $_POST['z'];*/
 
 if($act=='add_transaksi') {
 	//var check member 
@@ -198,7 +198,7 @@ if($act=='add_transaksi') {
 			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
-		}//end if reglue
+		}//end if reglue 
 
 	}
 }//statement add_transaksi
