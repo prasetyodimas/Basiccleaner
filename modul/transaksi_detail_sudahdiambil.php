@@ -138,7 +138,8 @@
     				$get_transaction = mysqli_query($con,
     					"SELECT * FROM transaksi_shoes ts 
 					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan
+    					 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
 						 while ($result_transaction = mysqli_fetch_array($get_transaction)) { ?>
     			<tbody>
     				<tr>

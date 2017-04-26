@@ -8,6 +8,9 @@
         $('#choose-cleaning').click(function(){
             if ($(this).is(':checked')){
                 var show_elem = $('#cleaning-hide').show(1000);
+                $('.category_service_cleaning').removeAttr('disabled');
+                $('.change_nama_layanan_cleaning').removeAttr('disabled');
+                $('#val-replace-cleaning').val('Cleaning');
             }else{
                 var show_elem = $('#cleaning-hide').hide(1000);
             }
@@ -15,6 +18,9 @@
         $('#choose-repaint').click(function(){
             if($(this).is(':checked')){
                 var show_elem = $('#repaint-hide').show(1000);
+                $('.category_service_repaint').removeAttr('disabled');
+                $('.change_nama_layanan_repaint').removeAttr('disabled');
+                $('#val-replace-repaint').val('Repaint');
             }else{
                 var show_elem = $('#repaint-hide').hide(1000);
             }
@@ -22,6 +28,9 @@
         $('#choose-reglue').click(function(){
             if ($(this).is(':checked')) {
                 var show_elem = $('#reglue-hide').show(1000);
+                $('.category_service_reglue').removeAttr('disabled');
+                $('.change_nama_layanan_reglue').removeAttr('disabled');
+                $('#val-replace-reglue').val('Reglue');
             }else{
                 var show_elem = $('#reglue-hide').hide(1000);
             }
@@ -127,17 +136,17 @@
             var get_returnprice = parseInt(bayarnya)-parseInt(total);
             var kembalian = $('#price-kembalian').val(get_returnprice);
             //jika pembayaran == null / kosong 
-            if (bayarnya =='' || bayarnya== null) {
+            if (bayarnya=='' || bayarnya== null) {
                 $('#price-kembalian').val(vars);
                 $('input[name="kembalian"]').attr('disabled',true);
             }else{
                 $('button[type="submit"]').attr('disabled',true);
             }
             //statement jika pembayaran kurang dari total maka disable button
-            if(total <= bayarnya) {
+            if(bayarnya <= total) {
                 $('button[type="submit"]').attr('disabled',true);
-            }else if(bayarnya==''){
-                $('button[type="submit"]').attr('disabled',true);
+            }else{
+                $('button[type="submit"]').attr('disabled',false);
             }
         });
         $('input[name=total_transcation_item]').mouseover(function(){
@@ -167,7 +176,7 @@
         });
         //json change functon price on transaction
         $(".category_service_cleaning").change(function(){
-            var getValue = $(this).val();
+            var getValue = $('.category_service_cleaning').find(':selected').data('val');
             if(getValue =='') {
                 $('.place-valueservice-cleaning').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
@@ -190,7 +199,7 @@
             }
         });
         $(".category_service_repaint").change(function(){
-            var getValue = $(this).val();
+            var getValue = $('.category_service_repaint').find(':selected').data('val');
             if(getValue =='') {
                 $('.place-valueservice-repaint').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
@@ -213,7 +222,7 @@
             }
         });
         $(".category_service_reglue").change(function(){
-            var getValue = $(this).val();
+            var getValue = $('.category_service_reglue').find(':selected').data('val');
             if(getValue =='') {
                 $('.place-valueservice-reglue').html("<option value=''>Pilih kamarnya dulu !!</option>");
             }else{
@@ -309,7 +318,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan" class="category_service_cleaning form-control">
+                                        <input type="text" name="x" value="" id="val-replace-cleaning">
+                                        <select name"servis_cleaning" class="category_service_cleaning form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Cleaning' GROUP BY jenis_layanan");
@@ -323,7 +333,7 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service" class="form-control place-valueservice-cleaning change_nama_layanan_cleaning">
+                                        <select name="category_layanan_cleaning" class="form-control place-valueservice-cleaning change_nama_layanan_cleaning" disabled>
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
@@ -337,7 +347,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan" class="category_service_repaint form-control">
+                                        <input type="text" name="y" value="" id="val-replace-repaint">
+                                        <select name="id_repaint" class="category_service_repaint form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Repaint' GROUP BY jenis_layanan");
@@ -351,7 +362,7 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service" class="form-control place-valueservice-repaint change_nama_layanan_repaint">
+                                        <select name="category_layanan_repaint" class="form-control place-valueservice-repaint change_nama_layanan_repaint" disabled>
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
@@ -365,7 +376,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <select name="jenis_layanan" class="category_service_reglue form-control">
+                                        <input type="text" name="z" value="" id="val-replace-reglue">
+                                        <select name="id_reglue" class="category_service_reglue form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
                                                 $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' GROUP BY jenis_layanan");
@@ -379,7 +391,7 @@
                                 <div class="col-md-5">
                                      <div class="form-group">
                                         <label>Nama Layanan</label>
-                                        <select name="id_layanan_service" class="form-control place-valueservice-reglue change_nama_layanan_reglue">
+                                        <select name="category_layanan_reglue" class="form-control place-valueservice-reglue change_nama_layanan_reglue" disabled>
                                             <option value="">Pilih Jenis Layanan Dulu !</option>
                                         </select>
                                     </div>
@@ -413,10 +425,10 @@
                 </div>
             </div><!-- row -->
             <div id="new-contain-inputshoes"></div>
-            <div class='form-actions'>
-                <button id='proses' class="btn btn-success" type="submit">Submit</button>
-                <button class="btn btn-danger" onclick="javascript:history.back();" type="reset">Cancel</button>
-            </div>
+        <div class='form-actions'>
+            <button id='proses' class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-danger" onclick="javascript:history.back();" type="reset">Cancel</button>
+        </div>
     </div>
     <!-- sidebar right-->
     <div class='col-md-5'>
@@ -506,9 +518,9 @@
                 </div>
                 <div class='form-inline'>
                     <div class="row">
-                        <div class="col-md-8 pull-right" style="padding-right:0;padding-left: 31px;">
+                        <div class="col-md-8 pull-right" style="padding-right:0;padding-left:50px;margin-bottom: 10px;">
                             <label class="form-group">
-                             Total <input type="text" name="total_transcation_item" id="subtotal" class="form-control">
+                             Total <input type="text" name="total_transcation_item" id="subtotal" class="form-control" style="width:194px;">
                             </label>
                         </div>
                         <div style="display:none;">
@@ -521,11 +533,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Jumlah Bayar</label>
-                        <input id="bayar" type="text" name="jum_bayar" class="form-control bayar validation-payment">
+                        <input id="bayar" type="number" name="jum_bayar" min="1" class="form-control bayar validation-payment">
                     </div> 
                     <div class="col-md-6">
                         <label>Kembalian</label>
-                        <input id="price-kembalian" type="text" name="kembalian" class="form-control" value=""></input>
+                        <input id="price-kembalian" type="number" min="1" name="kembalian" class="form-control" value=""></input>
                     </div>
                 </div>
             </div>

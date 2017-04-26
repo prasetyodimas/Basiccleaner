@@ -1,10 +1,18 @@
-<?php include "../config/koneksi.php";
+<?php include "../config/koneksi.php"; error_reporting(0);
 $act = $_GET['act'];
 //var date now
-$tgl_transaksi = date('Y-m-d');
-$array_jml_sepatu    = $_POST['jumlah_sepatu'];
-$array_nama_barang   = $_POST['nama_barangnonmember'];
-$array_jenis_layanan = $_POST['id_layanan_service'];
+$tgl_transaksi           = date('Y-m-d');
+$jumlah_sepatu           = $_POST['jumlah_sepatu'];
+$nama_barang             = $_POST['nama_barangnonmember'];
+//jenis layanan
+$jenis_layanan_cleaning  = $_POST['category_layanan_cleaning'];
+$jenis_layanan_repaint   = $_POST['category_layanan_repaint'];
+$jenis_layanan_reglue    = $_POST['category_layanan_reglue'];
+
+echo $_POST['x'];
+echo $_POST['y'];
+echo $_POST['z'];
+
 if($act=='add_transaksi') {
 	//var check member 
 	if ($_POST['status_member']=='member') {
@@ -59,48 +67,139 @@ if($act=='add_transaksi') {
 			echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 		}
 	}elseif($_POST['status_member']=='non-member') {
+		//check jenis layanan
+		if ($_POST['x']=='Cleaning') {
+			$add_transaksi_nonmember = "INSERT INTO transaksi_shoes (id_transaksi_shoes, 
+																  id_member,
+																  nama_lengkap, 
+																  alamat, 
+																  no_telp, 
+																  email,
+																  status_member,
+																  tgl_transaksi,
+																  status_pengambilan) 
+														  VALUES ('$_POST[kode_transaksi]',
+														  		  '-',
+														  		  '$_POST[nama_lengkap_nonmember]',
+														  		  '$_POST[alamat_nonmember]',
+														  		  '$_POST[notelp_nonmember]',
+														  		  '$_POST[email_nonmember]',
+														  		  '$_POST[status_member]',
+														  		  '$tgl_transaksi',
+														  		  'B')";
 
-		$add_transaksi_nonmember = "INSERT INTO transaksi_shoes (id_transaksi_shoes, 
-															  id_member,
-															  nama_lengkap, 
-															  alamat, 
-															  no_telp, 
-															  email,
-															  status_member,
-															  tgl_transaksi,
-															  status_pengambilan) 
-													  VALUES ('$_POST[kode_transaksi]',
-													  		  '-',
-													  		  '$_POST[nama_lengkap_nonmember]',
-													  		  '$_POST[alamat_nonmember]',
-													  		  '$_POST[notelp_nonmember]',
-													  		  '$_POST[email_nonmember]',
-													  		  '$_POST[status_member]',
-													  		  '$tgl_transaksi',
-													  		  'B')";
-
-		$succes_transaksi = mysqli_query($con,$add_transaksi_nonmember);
-		for ($i=0;$i<count($array_jenis_layanan);$i++) { 
+			$succes_transaksi = mysqli_query($con,$add_transaksi_nonmember);
 			//add detail transaksi baru
-			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_transaksi_shoes, 
+			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_detail_transaksi_shoes,
+																		id_transaksi_shoes, 
 																		id_kategori_layanan,
 																	    nama_barang,
 																	    harga,
 																	    jumlah_sepatu) 
-																VALUES ('$_POST[kode_transaksi]',
-																		'$array_jenis_layanan[$i]',
-																		'$array_nama_barang',
+																VALUES ('',
+																		'$_POST[kode_transaksi]',
+																		'$_POST[category_layanan_cleaning]',
+																		'$nama_barang',
 																		'$_POST[total_transcation_item]',
-																		'$array_jml_sepatu')";
+																		'$jumlah_sepatu')";
+			//echo $add_transaksi_detail;
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
-		}
-		if ($succes_transaksi && $succes_detail_transaksi) {
-		    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-			echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-		}else{
-		    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
-			echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-		}
+			if ($succes_transaksi && $succes_detail_transaksi) {
+			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}else{
+			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}
+
+		}elseif ($_POST['y']=='Repaint') {
+				$add_transaksi_nonmember = "INSERT INTO transaksi_shoes (id_transaksi_shoes, 
+																  id_member,
+																  nama_lengkap, 
+																  alamat, 
+																  no_telp, 
+																  email,
+																  status_member,
+																  tgl_transaksi,
+																  status_pengambilan) 
+														  VALUES ('$_POST[kode_transaksi]',
+														  		  '-',
+														  		  '$_POST[nama_lengkap_nonmember]',
+														  		  '$_POST[alamat_nonmember]',
+														  		  '$_POST[notelp_nonmember]',
+														  		  '$_POST[email_nonmember]',
+														  		  '$_POST[status_member]',
+														  		  '$tgl_transaksi',
+														  		  'B')";
+
+			$succes_transaksi = mysqli_query($con,$add_transaksi_nonmember);
+			//add detail transaksi baru
+			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_detail_transaksi_shoes,
+																		id_transaksi_shoes, 
+																		id_kategori_layanan,
+																	    nama_barang,
+																	    harga,
+																	    jumlah_sepatu) 
+																VALUES ('',
+																		'$_POST[kode_transaksi]',
+																		'$_POST[category_layanan_repaint]',
+																		'$nama_barang',
+																		'$_POST[total_transcation_item]',
+																		'$jumlah_sepatu')";
+			//echo $add_transaksi_detail;
+			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
+			if ($succes_transaksi && $succes_detail_transaksi) {
+			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}else{
+			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}
+		}elseif ($_POST['z']=='Reglue') {
+			$add_transaksi_nonmember = "INSERT INTO transaksi_shoes (id_transaksi_shoes, 
+																  id_member,
+																  nama_lengkap, 
+																  alamat, 
+																  no_telp, 
+																  email,
+																  status_member,
+																  tgl_transaksi,
+																  status_pengambilan) 
+														  VALUES ('$_POST[kode_transaksi]',
+														  		  '-',
+														  		  '$_POST[nama_lengkap_nonmember]',
+														  		  '$_POST[alamat_nonmember]',
+														  		  '$_POST[notelp_nonmember]',
+														  		  '$_POST[email_nonmember]',
+														  		  '$_POST[status_member]',
+														  		  '$tgl_transaksi',
+														  		  'B')";
+
+			$succes_transaksi = mysqli_query($con,$add_transaksi_nonmember);
+			//add detail transaksi baru
+			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_detail_transaksi_shoes,
+																		id_transaksi_shoes, 
+																		id_kategori_layanan,
+																	    nama_barang,
+																	    harga,
+																	    jumlah_sepatu) 
+																VALUES ('',
+																		'$_POST[kode_transaksi]',
+																		'$_POST[category_layanan_reglue]',
+																		'$nama_barang',
+																		'$_POST[total_transcation_item]',
+																		'$jumlah_sepatu')";
+			//echo $add_transaksi_detail;
+			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
+			if ($succes_transaksi && $succes_detail_transaksi) {
+			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}else{
+			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
+				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
+			}
+		}//end if reglue
+
 	}
 }//statement add_transaksi
 ?>
