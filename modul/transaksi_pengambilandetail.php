@@ -138,19 +138,20 @@
     				$get_transaction = mysqli_query($con,
     					"SELECT * FROM transaksi_shoes ts 
 					     JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+    					 JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan
+    					 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
 						 while ($result_transaction = mysqli_fetch_array($get_transaction)) { ?>
     			<tbody>
     				<tr>
 						<td><?php echo $no;?></td>
     					<td><?php echo $result_transaction['jenis_layanan'];?></td>
     					<td><?php echo $result_transaction['nama_layanan'];?></td>
-    					<td>Rp.<?php echo formatuang($result_transaction['harga']);?></td>
+    					<td>Rp.<?php echo formatuang($result_transaction['harga_layanan']);?></td>
     					<td><?php echo $result_transaction['deskripsi_layanan'];?></td>
     					<td><?php echo tgl_indo($shownon_member['tgl_transaksi']);?></td>
     					<td><?php echo tgl_indo(adding_days($result_transaction['tgl_transaksi'])).tgl_indo(split_month_year($result_transaction['tgl_transaksi']));?></td>
     				</tr>
-    			<?php } ?>
+    			<?php $no++; } ?>
     			</tbody>
     		</table>
 			<div style="margin-bottom:50px;"></div>
