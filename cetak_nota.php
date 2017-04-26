@@ -103,7 +103,7 @@
 			</thead>
 			<?php 
 				$getall_transaction = mysqli_query($con,
-					"SELECT * FROM transaksi_shoes ts 
+				   "SELECT * FROM transaksi_shoes ts 
 					INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
 					INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan 
 					WHERE ts.id_transaksi_shoes='$_GET[id_nota]'");
@@ -114,9 +114,10 @@
 					<td><?php echo $res_transaction['jumlah_sepatu']; ?></td>
 					<td><?php echo $res_transaction['nama_barang'];?></br></td>
 					<td><?php echo $res_transaction['jenis_layanan']." " .$res_transaction['nama_layanan'];?></td>
-					<td>Rp.<?php echo formatuang($res_transaction['harga']);?></td>
-					<td>Rp.<?php echo formatuang($res_transaction['harga']);?></td>
+					<td>Rp.<?php echo formatuang($res_transaction['harga_layanan']);?></td>
+					<td>Rp.<?php echo formatuang($res_transaction['harga_layanan']);?></td>
 				</tr>
+			<?php } ?>
 				<tr class="">
 					<td colspan="5" class="custom-td-nobordered">
 						<div class="row">
@@ -135,12 +136,17 @@
 								<p style="margin-top:45px;">....................</p>
 							</div>
 							<div class="col-md-2 col-md-push-2">
-								<p>Total : Rp.<?php echo formatuang($res_transaction['harga']);?></p>
+							<?php 
+								$gettotal = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM transaksi_shoes ts 
+								INNER JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
+								INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan 
+								WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));
+							 ?>
+								<p>Total : Rp.<?php echo formatuang($gettotal['harga']);?></p>
 							</div>
 						</div>
 					</td>
 				</tr>
-			<?php } ?>
 			</tbody>
 		</table>
 		<div class="">
