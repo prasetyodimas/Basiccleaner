@@ -117,12 +117,12 @@
 							<div class="col-md-8"> : <?php echo stat_pengambilan($shownon_member['status_pengambilan']);?></div> 
 						</div>
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<div class="row">
-							<div class="col-md-4"> Total Barang</div> 
-							<div class="col-md-8"> :</div> 
+							<div class="col-md-4"> Total Transaksi</div> 
+							<div class="col-md-8"> : Rp.<?php echo formatuang($shownon_member['harga']);?></div> 
 						</div>
-					</div> -->
+					</div>
 	    		</div>
 	    	</div>
 	    </div>

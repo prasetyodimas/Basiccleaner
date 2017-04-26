@@ -318,7 +318,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <input type="text" name="x" value="" id="val-replace-cleaning">
+                                        <input type="hidden" name="x" value="" id="val-replace-cleaning">
                                         <select name"servis_cleaning" class="category_service_cleaning form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
@@ -347,7 +347,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <input type="text" name="y" value="" id="val-replace-repaint">
+                                        <input type="hidden" name="y" value="" id="val-replace-repaint">
                                         <select name="id_repaint" class="category_service_repaint form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
@@ -376,7 +376,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Layanan</label>
-                                        <input type="text" name="z" value="" id="val-replace-reglue">
+                                        <input type="hidden" name="z" value="" id="val-replace-reglue">
                                         <select name="id_reglue" class="category_service_reglue form-control" disabled>
                                             <option value="">Pilih layanan</option>
                                             <?php 
