@@ -131,9 +131,9 @@
         $('button[type="submit"]').attr('disabled', true);
         $('#bayar').blur(function(){
             var vars      = 0;
-            var total     = $('#subtotal').val();
-            var bayarnya  = $('#bayar').val();
-            var get_returnprice = parseInt(bayarnya)-parseInt(total);
+            var total     = parseInt($('#subtotal').val());
+            var bayarnya  = parseInt($('#bayar').val());
+            var get_returnprice = bayarnya - total;
             var kembalian = $('#price-kembalian').val(get_returnprice);
             //jika pembayaran == null / kosong 
             if (bayarnya=='' || bayarnya== null) {
@@ -168,11 +168,6 @@
         $('#adding-services').click(function() {
             var new_services = $('div.cloning-jenislayanan .clone-jenis-service').clone();
             $('#new-contain-services').append(new_services);
-        });
-        //function counting subtotal transaaction
-        $('.temp_value').on("change", function(){
-            var price_trans = $(this).val();
-            console.log(price_trans);
         });
         //json change functon price on transaction
         $(".category_service_cleaning").change(function(){
@@ -267,6 +262,7 @@
         //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
         document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
     } 
+    displayServerTime();
 </script>
 <style type="text/css">
     .container-transaction{

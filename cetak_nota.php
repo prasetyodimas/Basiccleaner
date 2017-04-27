@@ -6,7 +6,7 @@
     <!--favicon-->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $site;?>frontend/logo/favicon-16x16.png">
     <link rel="stylesheet" href="<?php echo $site;?>frontend/css/style.css">
-    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="all">
     <!-- CSS -->
     <!-- JS -->
     <script src="<?php echo $site;?>frontend/js/jquery.js"></script>
