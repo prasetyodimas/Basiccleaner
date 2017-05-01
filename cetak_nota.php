@@ -1,4 +1,4 @@
-<?php include 'config/koneksi.php';
+<?php include 'config/koneksi.php'; error_reporting(0);
 	  include 'config/function_general.php';
 ?>
 <!DOCTYPE html>
@@ -189,14 +189,18 @@
 <body>
 <?php $get_datacustomer = mysqli_fetch_array(mysqli_query($con,
 						"SELECT * FROM transaksi_shoes ts JOIN detail_transaksi_shoes dts
-						 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));?>
+						 WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));
+$get_data_member = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member m
+					INNER JOIN transaksi_shoes ts ON m.id_member=ts.id_member 
+					WHERE ts.id_transaksi_shoes='$_GET[id_nota]'"));
+						 ?>
 <div class="col-lg-12">
 	<div class="row">
 		<?php if($get_datacustomer['status_member']!='non-member'){?>
 		<div class="col-md-9">
 			<div><label>Tanggal <span class="desain-laporan-tanggal">: <?php $date_nowing = date("Y-m-d"); echo tgl_indo($date_nowing);?></span></label></div>
-			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $show_member['nama_member'];?></span></label></div>
-			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $show_member['notelp_member']; ?></span></label></div>
+			<div><label>Nama <span class="desain-laporan-nama">: <?php echo $get_data_member['nama_member'];?></span></label></div>
+			<div><label>No telp <span class="desain-laporan-notelp">: <?php echo $get_data_member['notelp_member']; ?></span></label></div>
 		</div>
 		<?php }else{?>
 		<div class="col-md-9">

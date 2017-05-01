@@ -48,16 +48,22 @@
 		        	</div>
 		        </div>
 		        <div class="form-group">
-		        	<div class="col-md-3">No telp</div> 
-		        	<div class="col-md-9">: <?php echo $showmember['notelp_member'];?></div>
+		        	<div class="row">
+		        		<div class="col-md-3">No telp</div> 
+		        		<div class="col-md-9">: <?php echo $showmember['notelp_member'];?></div>
+		        	</div>
 		        </div>
 		        <div class="form-group">
-		        	<div class="col-md-3">Email</div>
-		        	<div class="col-md-9"> : <?php echo $showmember['email_member'];?></div> 
+		        	<div class="row">
+		        		<div class="col-md-3">Email</div>
+		        		<div class="col-md-9"> : <?php echo $showmember['email_member'];?></div> 
+		        	</div>
 		        </div>
 		        <div class="form-group">
-		        	<div class="col-md-3"> Status</div> 
-		        	<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
+		        	<div class="row">
+		        		<div class="col-md-3"> Status</div> 
+		        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
+		        	</div>
 		        </div>
 		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
 		    	<div class="form-group">

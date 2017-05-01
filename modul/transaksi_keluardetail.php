@@ -35,63 +35,70 @@
     			</div>
 	    	</div>
 	    	<?php if ($shownon_member['status_member']=='member') { ?>
-		        <div class="form-group">
-		        	<div class="row">
-		        		<div class="col-md-3"> Nama Pemesan </div> 
-		        		<div class="col-md-9">: <?php echo $showmember['nama_member'] ;?></div>
-		        	</div>
-		        	<div class="row">
-		        		<div class="col-md-3"> Alamat </div> 
-		        		<div class="col-md-9">: <?php echo $showmember['alamat_member'];?></div>
-		        	</div>
-		        	<div class="row">
-		        		<div class="col-md-3">No telp</div>
-		        		<div class="col-md-9">: <?php echo $showmember['notelp_member'];?></div>
-		        	</div>
-		        	<div class="row">
-			        	<div class="col-md-3">Email</div>
-			        	<div class="col-md-9">: <?php echo $showmember['email_member'];?></div>
-		        	</div>
-		        	<div class="row">
-		        		<div class="col-md-3">Status</div>
-		        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
-		        	</div>
-		        </div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3"> Nama Pemesan </div> 
+	        		<div class="col-md-9">: <?php echo $showmember['nama_member'] ;?></div>
+	        	</div>
+        	</div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3"> Alamat </div> 
+	        		<div class="col-md-9">: <?php echo $showmember['alamat_member'];?></div>
+	        	</div>
+        	</div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3">No telp</div>
+	        		<div class="col-md-9">: <?php echo $showmember['notelp_member'];?></div>
+	        	</div>
+        	</div>
+	        <div class="form-group">
+	        	<div class="row">
+		        	<div class="col-md-3">Email</div>
+		        	<div class="col-md-9">: <?php echo $showmember['email_member'];?></div>
+	        	</div>
+        	</div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3">Status</div>
+	        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
+	        	</div>
+	        </div>
 		</div>
-		<div class="box-detailtransaction_out">
-		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
-		    	<div class="form-group">
-		    		<div class="row">
-		        		<div class="col-md-3"> Nama Pemesan </div> 
-		        		<div class="col-md-9">: <?php echo $shownon_member['nama_lengkap'] ;?></div>
-		        	</div>
-		        </div>
-		        <div class="form-group">	
-		        	<div class="row">
-		        		<div class="col-md-3"> Alamat </div> 
-		        		<div class="col-md-9">: <?php echo $shownon_member['alamat'];?></div>
-		        	</div>
-		        </div>
-		        <div class="form-group">
-		        	<div class="row">
-		        		<div class="col-md-3">No telp</div>
-		        		<div class="col-md-9">: <?php echo $shownon_member['no_telp'];?></div>
-		        	</div>
-		        </div>
-		        <div class="form-group">
-		        	<div class="row">
-			        	<div class="col-md-3">Email</div>
-			        	<div class="col-md-9">: <?php echo $shownon_member['email'];?></div>
-		        	</div>
-		        </div>
-		        <div class="form-group">
-		        	<div class="row">
-		        		<div class="col-md-3">Status</div>
-		        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
-		        	</div>
-		        </div>
-		    <?php } ?>
-	    </div>
+	    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
+	    	<div class="form-group">
+	    		<div class="row">
+	        		<div class="col-md-3"> Nama Pemesan </div> 
+	        		<div class="col-md-9">: <?php echo $shownon_member['nama_lengkap'] ;?></div>
+	        	</div>
+	        </div>
+	        <div class="form-group">	
+	        	<div class="row">
+	        		<div class="col-md-3"> Alamat </div> 
+	        		<div class="col-md-9">: <?php echo $shownon_member['alamat'];?></div>
+	        	</div>
+	        </div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3">No telp</div>
+	        		<div class="col-md-9">: <?php echo $shownon_member['no_telp'];?></div>
+	        	</div>
+	        </div>
+	        <div class="form-group">
+	        	<div class="row">
+		        	<div class="col-md-3">Email</div>
+		        	<div class="col-md-9">: <?php echo $shownon_member['email'];?></div>
+	        	</div>
+	        </div>
+	        <div class="form-group">
+	        	<div class="row">
+	        		<div class="col-md-3">Status</div>
+	        		<div class="col-md-9">: <?php echo $shownon_member['status_member'];?></div>
+	        	</div>
+	        </div>
+        </div>
+	    <?php } ?>
 	    <div class="row">
 	    	<div class="col-md-6">
 	    		<div class="box-detailtransaction_out">

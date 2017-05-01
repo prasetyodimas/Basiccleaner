@@ -1,9 +1,9 @@
 <script type="text/javascript">
     $(window).load(function(){
         //hide element when load page
-        $('#cleaning-hide').hide('fast');
-        $('#repaint-hide').hide('fast');
-        $('#reglue-hide').hide('fast');
+        $('#cleaning-hide').hide();
+        $('#repaint-hide').hide();
+        $('#reglue-hide').hide();
         //when click checkbox show elem services
         $('#choose-cleaning').click(function(){
             if ($(this).is(':checked')){

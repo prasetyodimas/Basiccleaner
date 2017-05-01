@@ -1,9 +1,9 @@
 <script type="text/javascript">
     $(window).load(function(){
         //hide element when load page
-        $('#cleaning-hide').hide('fast');
-        $('#repaint-hide').hide('fast');
-        $('#reglue-hide').hide('fast');
+        $('#cleaning-hide').hide();
+        $('#repaint-hide').hide();
+        $('#reglue-hide').hide();
         //when click checkbox show elem services
         $('#choose-cleaning').click(function(){
             if ($(this).is(':checked')){
@@ -190,7 +190,7 @@
                         // Loop through Object and create peopleHTML
                         for (var key in JSONObject){
                             if (JSONObject.hasOwnProperty(key)) {
-                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                                all_service +="<option value="+JSONObject[key]['jenis_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
                             }
                         }
                     $('.place-valueservice-cleaning').html(all_service);
@@ -213,7 +213,7 @@
                         // Loop through Object and create peopleHTML
                         for (var key in JSONObject){
                             if (JSONObject.hasOwnProperty(key)) {
-                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                                all_service +="<option value="+JSONObject[key]['jenis_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
                             }
                         }
                     $('.place-valueservice-repaint').html(all_service);
@@ -236,7 +236,7 @@
                         // Loop through Object and create peopleHTML
                         for (var key in JSONObject){
                             if (JSONObject.hasOwnProperty(key)) {
-                                all_service +="<option value="+JSONObject[key]['id_kategori_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
+                                all_service +="<option value="+JSONObject[key]['jenis_layanan']+" data-jenis="+JSONObject[key]['jenis_layanan']+" data-name="+JSONObject[key]['nama_layanan']+" data-price="+JSONObject[key]['harga_layanan']+">"+JSONObject[key]['nama_layanan']+"</option>";
                             }
                         }
                     $('.place-valueservice-reglue').html(all_service);
@@ -319,7 +319,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="x" value="" id="val-replace-cleaning">
+                                    <input type="hidden" name="x" value="" id="val-replace-cleaning">
                                     <select name="id_cleaning" class="category_service_cleaning form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
@@ -348,7 +348,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="y" value="" id="val-replace-repaint">
+                                    <input type="hidden" name="y" value="" id="val-replace-repaint">
                                     <select name="id_repaint" class="category_service_repaint form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
@@ -377,13 +377,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="z" value="" id="val-replace-reglue">
+                                    <input type="hidden" name="z" value="" id="val-replace-reglue">
                                     <select name="id_reglue" class="category_service_reglue form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
                                             $get_services = mysqli_query($con,"SELECT * FROM kategori_layanan WHERE jenis_layanan='Reglue' GROUP BY jenis_layanan");
                                             while ($result = mysqli_fetch_array($get_services)) {
-                                                echo "<option value='".$result['jenis_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
+                                                echo "<option value='".$result['id_kategori_layanan']."' data-val='".$result['jenis_layanan']."'>".$result['jenis_layanan']."</option>";
                                             }
                                         ?>
                                     </select>
