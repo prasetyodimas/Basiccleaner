@@ -42,25 +42,32 @@
 		        		<div class="col-md-4"> Nama Pemesan </div> 
 		        		<div class="col-md-5">: <?php echo $showmember['nama_member'] ;?></div>
 		        	</div>
+		        </div>
+		        <div class="form-group">
 		        	<div class="row">
 		        		<div class="col-md-4"> Alamat </div> 
 		        		<div class="col-md-5">: <?php echo $showmember['alamat_member'];?></div>
 		        	</div>
+		        </div>
+		        <div class="form-group">
 		        	<div class="row">
 		        		<div class="col-md-4">No telp</div>
 		        		<div class="col-md-5">: <?php echo $showmember['notelp_member'];?></div>
 		        	</div>
+		        </div>
+		        <div class="form-group">
 		        	<div class="row">
 			        	<div class="col-md-4">Email</div>
 			        	<div class="col-md-5">: <?php echo $showmember['email_member'];?></div>
 		        	</div>
+		        </div>
+		        <div class="form-group">
 		        	<div class="row">
 		        		<div class="col-md-4">Status</div>
 		        		<div class="col-md-5">: <?php echo $shownon_member['status_member'];?></div>
 		        	</div>
 		        </div>
-		</div>
-		<div class="box-detailtransaction_out">
+			</div>
 		    <?php }elseif ($shownon_member['status_member']=='non-member') { ?>
 		    	<div class="form-group">
 		    		<div class="row">
