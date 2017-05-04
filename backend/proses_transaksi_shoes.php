@@ -5,11 +5,6 @@ $tgl_transaksi           = date('Y-m-d');
 $jumlah_sepatu           = $_POST['jumlah_sepatu'];
 $nama_barang_non_member  = $_POST['nama_barangnonmember'];
 $nama_barang  			 = $_POST['nama_barang'];
-//jenis layanan
-//$jenis_layanan_cleaning  = count($_POST['category_layanan_cleaning']);
-//$jenis_layanan_repaint   = count($_POST['category_layanan_repaint']);
-//$jenis_layanan_reglue    = count($_POST['category_layanan_reglue']);
-//$count_all = ($jenis_layanan_cleaning + $jenis_layanan_repaint + $jenis_layanan_reglue);
 
 if($act=='add_transaksi') {
 	//var check member 
@@ -417,7 +412,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_cleaning]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
@@ -432,7 +427,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_repaint]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
@@ -447,7 +442,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_reglue]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
@@ -488,7 +483,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_cleaning]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
@@ -533,7 +528,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_repaint]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
@@ -577,7 +572,7 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_reglue]',
-																	'$nama_barang',
+																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
