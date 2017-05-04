@@ -59,7 +59,7 @@
         $(".category_service_cleaning").change(function(){
             var getValue = $('.category_service_cleaning').find(':selected').data('val');
             if(getValue =='') {
-                $('.place-valueservice-cleaning').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-cleaning').html("<option value=''>Pilih layananan dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
@@ -82,7 +82,7 @@
         $(".category_service_repaint").change(function(){
             var getValue = $('.category_service_repaint').find(':selected').data('val');
             if(getValue =='') {
-                $('.place-valueservice-repaint').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-repaint').html("<option value=''>Pilih layananan dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
@@ -105,7 +105,7 @@
         $(".category_service_reglue").change(function(){
             var getValue = $('.category_service_reglue').find(':selected').data('val');
             if(getValue =='') {
-                $('.place-valueservice-reglue').html("<option value=''>Pilih kamarnya dulu !!</option>");
+                $('.place-valueservice-reglue').html("<option value=''>Pilih layananan dulu !!</option>");
             }else{
                 $.ajax({
                     url:'json/json_services.php',
