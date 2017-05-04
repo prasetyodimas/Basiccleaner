@@ -37,7 +37,7 @@
                         <td><?php echo $result_transaction['id_transaksi_shoes'];?></td>
                     <?php if($result_transaction['id_member']!='-'){ ?>
                         <td><?php echo $get_datamember['id_member'];?></td>
-                        <td><?php echo $get_datamember['nama_lengkap'];?></td>
+                        <td><?php echo $get_datamember['nama_member'];?></td>
                         <td><?php echo $get_datamember['notelp_member'];?></td>
                     <?php }else{ ?>
                         <td><?php echo $result_transaction['id_member'];?></td>
