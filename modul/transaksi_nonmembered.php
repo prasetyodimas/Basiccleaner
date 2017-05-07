@@ -416,9 +416,9 @@
                         <textarea name="nama_barangnonmember" cols="10" rows="1" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger adding-shoes" data-toggle="tooltip" title="tambah barang..?" data-placement="right">+</button>
-                </div>
+               <!--  <div class="col">
+                   <button type="button" class="btn btn-danger adding-shoes" data-toggle="tooltip" title="tambah barang..?" data-placement="right">+</button>
+               </div> -->
             </div><!-- row -->
             <div id="new-contain-inputshoes"></div>
         <div class='form-actions'>
