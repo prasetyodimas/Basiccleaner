@@ -82,12 +82,8 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered  && $succes_transaksi && $succes_detail_transaksi) {
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}
-			else{
-			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
 		}elseif($_POST['category_layanan_cleaning']!='' && $_POST['category_layanan_repaint']){
@@ -145,12 +141,8 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered  && $succes_transaksi && $succes_detail_transaksi) {
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}
-			else{
-			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
 
@@ -212,11 +204,8 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered  && $succes_transaksi && $succes_detail_transaksi) {
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}else{
-			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
 	
@@ -264,10 +253,7 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered && $succes_detail_transaksi) {
-			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}else{
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
@@ -315,10 +301,7 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered  && $succes_transaksi && $succes_detail_transaksi) {
-			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}else{
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
@@ -367,10 +350,7 @@ if($act=='add_transaksi') {
 			
 			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
 
-			if ($saved_membered  && $succes_transaksi && $succes_detail_transaksi) {
-			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			}else{
+			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
 			}
@@ -491,10 +471,6 @@ if($act=='add_transaksi') {
 			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			/*}else{
-			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			*/
 			}
 			
 		}elseif($_POST['y']=='Repaint') {
@@ -536,9 +512,6 @@ if($act=='add_transaksi') {
 			if ($succes_transaksi) {
 			    echo "<script>alert('Transaksi berhasil di simpan !!')</script>";
 				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";
-			/*}else{
-			    echo "<script>alert('Transaksi gagal di simpan !!')</script>";
-				echo "<meta http-equiv=refresh content=0;url=$site"."homeadmin.php?page=transaksi_keluar>";*/
 			}	
 
 		}elseif($_POST['z']=='Reglue') {
