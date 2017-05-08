@@ -7,10 +7,11 @@
         //when click checkbox show elem services
         $('#choose-cleaning').click(function(){
             if ($(this).is(':checked')){
-                var show_elem = $('#cleaning-hide').show(1000);
+                $('#cleaning-hide').show(1000);
                 $('.category_service_cleaning').removeAttr('disabled');
                 $('.change_nama_layanan_cleaning').removeAttr('disabled');
                 $('#val-replace-cleaning').val('Cleaning');
+                //alert(elem);
             }else{
                 var show_elem = $('#cleaning-hide').hide(1000);
             }

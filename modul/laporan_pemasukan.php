@@ -64,6 +64,7 @@
                                 dts.jumlah_sepatu, 
                                 kl.jenis_layanan, 
                                 kl.nama_layanan,
+                                kl.harga_layanan,
                                 kl.deskripsi_layanan 
                                 FROM transaksi_shoes ts
                                 JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
@@ -78,19 +79,19 @@
               <td><?php echo $no;?></td>
               <td><?php echo $result['id_transaksi_shoes'];?></td>
           <?php if($result['id_member']!='-'){ ?>
-              <td width="200"><?php echo $result['nama_member'];?></td>
+              <td width="200"><?php echo $showmember['nama_member'];?></td>
               <td><?php echo $result['nama_barang'];?></td>
               <td><?php echo $result['jumlah_sepatu'];?></td>
               <td><?php echo $result['jenis_layanan'];?></td>
               <td><?php echo $result['nama_layanan'];?></td>
-              <td>Rp.<?php echo formatuang($result['harga']);?></td>
+              <td>Rp.<?php echo formatuang($result['harga_layanan']);?></td>
           <?php }else{ ?>
               <td><?php echo $showmember['nama_lengkap'];?></td>
               <td><?php echo $result['nama_barang'];?></td>
               <td><?php echo $result['jumlah_sepatu'];?></td>
               <td><?php echo $result['jenis_layanan'];?></td>
               <td><?php echo $result['nama_layanan'];?></td>
-              <td>Rp.<?php echo formatuang($result['harga']);?></td>
+              <td>Rp.<?php echo formatuang($result['harga_layanan']);?></td>
           <?php } ?>
               <!-- <td>
                   <a href="<?php echo $site;?>homeadmin.php?page=">View</a>
@@ -98,8 +99,9 @@
           </tr>
           <?php $no++; } ?>
           <?php
-            $get_total = mysqli_query($con,"SELECT SUM(harga) AS total FROM detail_transaksi_shoes dts INNER JOIN transaksi_shoes ts 
-              ON dts.id_transaksi_shoes=ts.id_transaksi_shoes");
+            $get_total = mysqli_query($con,"SELECT SUM(kl.harga_layanan) AS total FROM detail_transaksi_shoes dts 
+              INNER JOIN transaksi_shoes ts ON dts.id_transaksi_shoes=ts.id_transaksi_shoes
+              INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan");
             while ($total_result = mysqli_fetch_array($get_total)) {?>
           <tr>
             <td></td>
