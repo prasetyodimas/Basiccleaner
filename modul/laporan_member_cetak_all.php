@@ -1,4 +1,6 @@
-<?php include '../config/koneksi.php';include'../config/function_general.php';?>
+<?php include '../config/koneksi.php';
+	  include'../config/function_general.php';
+?>
 <!DOCTYPE html>
 <html>
 	<head>
