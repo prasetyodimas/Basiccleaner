@@ -99,10 +99,11 @@
           </tr>
           <?php $no++; } ?>
           <?php
-            $get_total = mysqli_query($con,"SELECT SUM(kl.harga_layanan) AS total FROM detail_transaksi_shoes dts 
+            $get_total = mysqli_query($con,
+              "SELECT SUM(kl.harga_layanan) AS total FROM detail_transaksi_shoes dts 
               INNER JOIN transaksi_shoes ts ON dts.id_transaksi_shoes=ts.id_transaksi_shoes
               INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan");
-            while ($total_result = mysqli_fetch_array($get_total)) {?>
+              while ($total_result = mysqli_fetch_array($get_total)) {?>
           <tr>
             <td></td>
             <td></td>

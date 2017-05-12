@@ -14,6 +14,9 @@
                 //alert(elem);
             }else{
                 var show_elem = $('#cleaning-hide').hide(1000);
+                $('.container-category-services-cleaning').html('');
+                $('.container-name-services-cleaning').html('');
+                $('.container-price-services-cleaning').html('');
             }
         });
         $('#choose-repaint').click(function(){
@@ -24,6 +27,9 @@
                 $('#val-replace-repaint').val('Repaint');
             }else{
                 var show_elem = $('#repaint-hide').hide(1000);
+                $('.container-category-services-repaint').html('');
+                $('.container-name-services-repaint').html('');
+                $('.container-price-services-repaint').html('');
             }
         });
         $('#choose-reglue').click(function(){
@@ -34,6 +40,9 @@
                 $('#val-replace-reglue').val('Reglue');
             }else{
                 var show_elem = $('#reglue-hide').hide(1000);
+                $('.container-category-services-reglue').html('');
+                $('.container-name-services-reglue').html('');
+                $('.container-price-services-reglue').html('');
             }
         });
     });
@@ -242,28 +251,21 @@
         });
     });
     <?php date_default_timezone_set('Asia/Jakarta'); ?>
-    //buat object date berdasarkan waktu di server
-    var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
-    //buat object date berdasarkan waktu di client
-    var clientTime = new Date();
-    //hitung selisih
-    var Diff = serverTime.getTime() - clientTime.getTime();
-    //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
-    function displayServerTime(){
-        //buat object date berdasarkan waktu di client
-        var clientTime = new Date();
-        //buat object date dengan menghitung selisih waktu client dan server
-        var time = new Date(clientTime.getTime() + Diff);
-        //ambil nilai jam
-        var sh = time.getHours().toString();
-        //ambil nilai menit
-        var sm = time.getMinutes().toString();
-        //ambil nilai detik
-        var ss = time.getSeconds().toString();
-        //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
-        document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
-    } 
-    displayServerTime();
+        function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+                var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+                if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+                return i;
+        }
+        startTime();
 </script>
 <style type="text/css">
     .container-transaction{
