@@ -6,15 +6,15 @@ $jumlah_sepatu           = $_POST['jumlah_sepatu'];
 $nama_barang_non_member  = $_POST['nama_barangnonmember'];
 $nama_barang  			 = $_POST['nama_barang'];
 //var kategori layanan
-echo $x = $_POST['category_layanan_cleaning'];
-echo $y = $_POST['category_layanan_repaint'];
-echo $z = $_POST['category_layanan_reglue'];
+$x = $_POST['category_layanan_cleaning'];
+$y = $_POST['category_layanan_repaint'];
+$z = $_POST['category_layanan_reglue'];
 
 // var jenis layanan
-echo $_POST['x'];
+/*echo $_POST['x'];
 echo $_POST['y'];
 echo $_POST['z'];
-
+*/
 //die();
 
 if($act=='add_transaksi') {
@@ -531,6 +531,21 @@ if($act=='add_transaksi') {
 															VALUES ('',
 																	'$_POST[kode_transaksi]',
 																	'$_POST[category_layanan_repaint]',
+																	'$nama_barang_non_member',
+																	'$_POST[total_transcation_item]',
+																	'$jumlah_sepatu')";
+			$succes_detail_transaksi = mysqli_query($con,$add_transaksi_detail);
+
+			//add detail transaksi baru reglue
+			$add_transaksi_detail = "INSERT INTO detail_transaksi_shoes(id_detail_transaksi_shoes,
+																	id_transaksi_shoes, 
+																	id_kategori_layanan,
+																    nama_barang,
+																    harga,
+																    jumlah_sepatu) 
+															VALUES ('',
+																	'$_POST[kode_transaksi]',
+																	'$_POST[category_layanan_reglue]',
 																	'$nama_barang_non_member',
 																	'$_POST[total_transcation_item]',
 																	'$jumlah_sepatu')";
