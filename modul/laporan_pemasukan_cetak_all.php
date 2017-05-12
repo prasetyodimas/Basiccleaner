@@ -119,7 +119,7 @@
 				      <td><?php echo $result['nama_layanan'];?></td>
 				      <td>Rp.<?php echo formatuang($result['harga_layanan']);?></td>
 				  <?php }else{ ?>
-				      <td><?php echo $showmember['nama_lengkap'];?></td>
+				      <td><?php echo $result['nama_lengkap'];?></td>
 				      <td><?php echo $result['nama_barang'];?></td>
 				      <td><?php echo $result['jumlah_sepatu'];?></td>
 				      <td><?php echo $result['jenis_layanan'];?></td>
