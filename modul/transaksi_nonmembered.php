@@ -159,6 +159,7 @@
                 $('button[type="submit"]').attr('disabled',false);
             }
         });
+        //function count total trans
         $('input[name=total_transcation_item]').mouseover(function(){
             $('#subtotal').val(function(){
                 var harga1 = parseInt($('#count1').val());

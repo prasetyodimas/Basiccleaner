@@ -13,6 +13,10 @@
                 $('#val-replace-cleaning').val('Cleaning');
             }else{
                 var show_elem = $('#cleaning-hide').hide(1000);
+                $('#val-replace-cleaning').val('');
+                $('.container-category-services-cleaning').html('');
+                $('.container-name-services-cleaning').html('');
+                $('.container-price-services-cleaning').html('');
             }
         });
         $('#choose-repaint').click(function(){
@@ -23,6 +27,10 @@
                 $('#val-replace-repaint').val('Repaint');
             }else{
                 var show_elem = $('#repaint-hide').hide(1000);
+                $('#val-replace-repaint').val('');
+                $('.container-category-services-repaint').html('');
+                $('.container-name-services-repaint').html('');
+                $('.container-price-services-repaint').html('');
             }
         });
         $('#choose-reglue').click(function(){
@@ -33,23 +41,134 @@
                 $('#val-replace-reglue').val('Reglue');
             }else{
                 var show_elem = $('#reglue-hide').hide(1000);
+                $('#val-replace-reglue').val('');
+                $('.container-category-services-reglue').html('');
+                $('.container-name-services-reglue').html('');
+                $('.container-price-services-reglue').html('');
             }
         });
     });
     $(document).ready(function(){
-        $("input[type='number']").bind("input", function() {
-            var input_val = $("input[type='number']").val();
-            var subtotal  = $('#total_transaksi').val();
-            var counting_price_all_shoes = parseFloat(input_val)*parseFloat(subtotal);
-            $('#total_transaksi').val(counting_price_all_shoes);
-            //console.log(counting_price_all_shoes);
+        $('[data-toggle="tooltip"]').tooltip(); 
+        $("#filterform-member").validate({
+          rules: {
+              nama_lengkap:{
+                    required: true
+              },
+              notelp:{
+                    required: true,
+                    number : true,
+              },
+              email:{
+                    required :true,
+                    email : true,
+              },
+              alamat :{
+                    required :true,
+              },
+              jumlah_sepatu :{
+                    required : true,
+              },
+              nama_barang:{
+                    required :true,
+              },
+              jenis_layanan :{
+                    required :true,
+              }
+          },
+          messages: {
+                nama_lengkap_nonmember: "nama tidak boleh kosong !!",
+                notelp_nonmember:{
+                    required : "no telp tidak boleh kosong !!",
+                    number : "no telp tidak valid !!",
+                },
+                email_nonmember:{
+                    required: "email tidak boleh kosong !!",
+                    email : "email tidak valid !!",
+                },
+                alamat_nonmember :{
+                    required : "alamat tidak boleh kosong !!",
+                },
+                jumlah_sepatu :{
+                    required : "jumlah tidak boleh kosong !!",
+                },
+                nama_barang:{
+                    required : "nama barang tidak boleh kosong !!",
+                },
+                jenis_layanan :{
+                    required : "jenis layanan tidak boleh kosong !!",
+                },
+                nama_layanan :{
+                    required : "nama layanan tidak boleh kosong !!",
+                } 
+          },
         });
+        //onchange val nama layanan
+        $('select.change_nama_layanan_cleaning').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
+            var val_price_layanan = $(this).find(':selected').data('price');
+                $('.container-category-services-cleaning').html('<p>'+val_jenis_layanan+'</p>');
+                $('.container-name-services-cleaning').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+                $('.container-price-services-cleaning').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+                //replace this val to input total transaction
+                $('.temp_value-one').val(val_price_layanan);
+        });
+        //onchange val nama layanan
+        $('select.change_nama_layanan_repaint').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
+            var val_price_layanan = $(this).find(':selected').data('price');
+            $('.container-category-services-repaint').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-name-services-repaint').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-price-services-repaint').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            //replace this val to input total transaction
+            $('.temp_value-two').val(val_price_layanan);
+        });
+         //onchange val nama layanan
+        $('select.change_nama_layanan_reglue').on('change',function(){
+            var val_jenis_layanan = $(this).find(':selected').data('jenis');
+            var val_nama_layanan  = $(this).find(':selected').data('name');
+            var val_price_layanan = $(this).find(':selected').data('price');
+            $('.container-category-services-reglue').html('<p>'+val_jenis_layanan+'</p>');
+            $('.container-name-services-reglue').html('<p class=format-price-item>'+val_nama_layanan+'</p>');
+            $('.container-price-services-reglue').html('<p class=format-price-item>'+val_price_layanan+'</p>');
+            //replace this val to input total transaction
+            $('.temp_value-three').val(val_price_layanan);
+        });
+        //function jumlah bayar as total - jumlah bayar = kembalian / total
+        $('button[type="submit"]').attr('disabled', true);
         $('#bayar').blur(function(){
-            var total    = $('#total_transaksi').val();
-            var bayarnya = $('#bayar').val();
-            var get_returnprice = parseFloat(bayarnya)-parseFloat(total);
-            $('#price-kembalian').val(get_returnprice);
-            console.log(get_returnprice);
+            var vars      = 0;
+            var total     = parseInt($('#subtotal').val());
+            var bayarnya  = parseInt($('#bayar').val());
+            var get_returnprice = bayarnya - total;
+            var kembalian = $('#price-kembalian').val(get_returnprice);
+            //jika pembayaran == null / kosong 
+            if (bayarnya=='' || bayarnya== null) {
+                $('#price-kembalian').val(vars);
+                $('input[name="kembalian"]').attr('disabled',true);
+            }else{
+                $('button[type="submit"]').attr('disabled',true);
+            }
+            //statement jika pembayaran kurang dari total maka disable button
+            if(bayarnya <= total) {
+                $('button[type="submit"]').attr('disabled',true);
+            }else{
+                $('button[type="submit"]').attr('disabled',false);
+            }
+        });
+        //function count total trans
+        $('input[name=total_transcation_item]').mouseover(function(){
+            $('#subtotal').val(function(){
+                var harga1 = parseInt($('#count1').val());
+                var harga2 = parseInt($('#count2').val());
+                var harga3 = parseInt($('#count3').val());
+                    harga1 = isNaN(harga1) ? 0 :harga1;
+                    harga2 = isNaN(harga2) ? 0 :harga2;
+                    harga3 = isNaN(harga3) ? 0 :harga3;
+                    return harga1 + harga2 + harga3;
+            });
         });
         //format currency jquery
         $('#format_price_cleaning').number(true);
@@ -131,29 +250,29 @@
 <div class='main-containpages'>
     <div class="col-md-7">
         <h3>Transaksi masuk <span class="heading-notifier-transaction">(member)</span></h3>
-        <form action="<?php echo $site;?>backend/proses_transaksi_shoes.php?act=add_transaksi" method="post" enctype="multipart/form-data">
+        <form action="<?php echo $site;?>backend/proses_transaksi_shoes_check_member.php?act=add_transaksi" method="post" id="filterform-member" enctype="multipart/form-data">
             <input type="hidden" name="status_member" value="member">
             <div class="row">
                 <div class="col-md-6 form-group">
                     <label>Id member</label>
-                    <input type="text" name="id_member" class="form-control" autofocus required="" value="<?php echo $_GET['id_member'];?>">
+                    <input type="text" name="id_member" class="form-control" autofocus required="" readonly value="<?php echo $_GET['id_member'];?>">
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Nama Pemesan</label>
-                    <input type="text" name="nama_lengkap" class="form-control" autofocus required="" value="<?php echo $getdata_member['nama_member'];?>">
+                    <input type="text" name="nama_lengkap" class="form-control" autofocus required="" readonly value="<?php echo $getdata_member['nama_member'];?>">
                 </div>
                 <div class='col-md-6 form-group'>
                     <label>No Telp</label>
-                    <input type='text' name='notelp' class='form-control' autofocus required="" value="<?php echo $getdata_member['notelp_member'];?>">
+                    <input type='text' name='notelp' class='form-control' autofocus required="" readonly value="<?php echo $getdata_member['notelp_member'];?>">
                 </div>
                 <div class='col-md-6 form-group'>
                     <label>Email</label>
-                    <input type='text' name='email' class='form-control' autofocus required="" value="<?php echo $getdata_member['email_member'];?>">
+                    <input type='text' name='email' class='form-control' autofocus required="" readonly value="<?php echo $getdata_member['email_member'];?>">
                 </div>
             </div><!-- ROW -->
             <div class='form-group'>
                 <label>Alamat</label>
-                <textarea name="alamat" cols="10" rows="5" class="form-control" autofocus required=""><?php echo $getdata_member['alamat_member']; ?></textarea>
+                <textarea name="alamat" cols="10" rows="5" class="form-control" autofocus readonly required=""><?php echo $getdata_member['alamat_member']; ?></textarea>
             </div>
             <div class="row">
             <div class="cloning-jenislayanan">
@@ -177,7 +296,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="x" value="" id="val-replace-cleaning">
+                                    <input type="hidden" name="x" value="" id="val-replace-cleaning">
                                     <select name="id_cleaning" class="category_service_cleaning form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
@@ -206,7 +325,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="y" value="" id="val-replace-repaint">
+                                    <input type="hidden" name="y" value="" id="val-replace-repaint">
                                     <select name="id_repaint" class="category_service_repaint form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
@@ -235,7 +354,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <input type="text" name="z" value="" id="val-replace-reglue">
+                                    <input type="hidden" name="z" value="" id="val-replace-reglue">
                                     <select name="id_reglue" class="category_service_reglue form-control" disabled>
                                         <option value="">Pilih layanan</option>
                                         <?php 
@@ -273,9 +392,9 @@
                     <textarea name="nama_barang" cols="10" rows="1" class="form-control"></textarea>
                 </div>
             </div>
-            <div class="col">
-                <button type="button" class="btn btn-danger adding-shoes" data-toggle="tooltip" title="tambah barang..?" data-placement="right">+</button>
-            </div>
+           <!--  <div class="col">
+               <button type="button" class="btn btn-danger adding-shoes" data-toggle="tooltip" title="tambah barang..?" data-placement="right">+</button>
+           </div> -->
         </div><!-- row -->
         <div id="new-contain-inputshoes"></div>
         <div class='form-actions'>
