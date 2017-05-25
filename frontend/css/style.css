@@ -45,3 +45,4 @@
 .status-barang-belum-diambil{background-color: #ce0027; color: #fff; }
 .main-inner-services{border:1px solid #cccccc; padding:20px; } 
 .main-inner-services .heading-services h4{position: relative; left: 14px; }
+.dropdown-menu{top: 100%; left: 0; z-index: 1000; display: none; float: left; min-width: 160px; padding: 10px 10px !important; margin: 2px 0 0; font-size: 14px; text-align: left; list-style: none; background-color: #fff; -webkit-background-clip: padding-box; background-clip: padding-box; border: 1px solid #ccc; border: 1px solid rgba(0,0,0,.15); border-radius: 4px; -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175); box-shadow: 0 6px 12px rgba(0,0,0,.175);}
