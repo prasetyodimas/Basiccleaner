@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('#date_from').datepicker();
+      $('#date_to').datepicker();
+    });
+</script>
 <style type="text/css">
   .custom-headtables{
       background-color: #000;
@@ -34,6 +40,24 @@
           <h3 class="col-md-9 col-md-push-2">LAPORAN PEMASUKAN BASIC CLEANER</h3>
           <p class="col-md-8 custom-alamat-pemasukan">Jln. Seturan I / 139A, RT 11 RW 01, Olivine Music Studio, 55281</p>     
         </div>
+    </div>
+    <div class="pull-right">
+      <div class="form-inline form-group">
+        <label>Cari Berdasarkan</label>
+        <div class="form-group">
+          <div class="input-group input-daterange">
+            <div class="input-group-addon" id="datepicker">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+            <input type="text" id="date_from" class="form-control">
+            <div class="input-group-addon">S/d</div>
+            <input type="text" id="date_to" class="form-control">
+            <div class="input-group-addon" id="datepicker">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <table class="table table-hover">
         <thead class="custom-headtables">

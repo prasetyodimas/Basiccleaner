@@ -26,6 +26,9 @@
         case 'detail_member':
             include "modul/detail_member.php";
         break;
+        case 'edit_data_member':
+            include 'modul/edit_data_member.php';
+        break;
         // ===================  ALL MODUL TRANSAKSI START HERE ============================!!
         case "transaksi":
             include "modul/transaksi.php";
