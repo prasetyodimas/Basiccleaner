@@ -1,7 +1,13 @@
+<?php error_reporting(0);?>
 <script type="text/javascript">
     $(document).ready(function(){
-      $('#date_from').datepicker();
-      $('#date_to').datepicker();
+      $('#date_from').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn:true,
+      });
+      $('#date_to').datepicker({
+        format: 'yyyy-mm-dd',
+      });
     });
 </script>
 <style type="text/css">
@@ -42,22 +48,29 @@
         </div>
     </div>
     <div class="pull-right">
-      <div class="form-inline form-group">
-        <label>Cari Berdasarkan</label>
-        <div class="form-group">
-          <div class="input-group input-daterange">
-            <div class="input-group-addon" id="datepicker">
-              <span class="glyphicon glyphicon-calendar"></span>
-            </div>
-            <input type="text" id="date_from" class="form-control">
-            <div class="input-group-addon">S/d</div>
-            <input type="text" id="date_to" class="form-control">
-            <div class="input-group-addon" id="datepicker">
-              <span class="glyphicon glyphicon-calendar"></span>
+      <?php 
+           $var_datefrom = $_POST['dari_tanggal'];
+           $var_todate   = $_POST['sampai_tanggal'];
+      ?>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-inline form-group">
+          <label>Cari Berdasarkan</label>
+          <div class="form-group">
+            <div class="input-group input-daterange">
+              <div class="input-group-addon" id="datepicker">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </div>
+              <input type="text" name="dari_tanggal" id="date_from" class="form-control">
+              <div class="input-group-addon">S/d</div>
+              <input type="text" name="sampai_tanggal" id="date_to" class="form-control">
+              <div class="input-group-addon" id="datepicker">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </div>
             </div>
           </div>
+          <button class="btn btn-primary">Cari</button>
         </div>
-      </div>
+      </form>
     </div>
     <table class="table table-hover">
         <thead class="custom-headtables">
@@ -83,6 +96,7 @@
                                 ts.no_telp, 
                                 ts.email, 
                                 ts.tgl_transaksi,
+                                ts.tgl_pengambilan,
                                 dts.nama_barang, 
                                 dts.harga, 
                                 dts.jumlah_sepatu, 
@@ -92,7 +106,9 @@
                                 kl.deskripsi_layanan 
                                 FROM transaksi_shoes ts
                                 JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
-                                JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan");
+                                JOIN kategori_layanan kl ON dts.id_kategori_layanan=kl.id_kategori_layanan
+                                WHERE ts.tgl_transaksi BETWEEN '$var_datefrom' AND '$var_todate'
+                                ");
             while ($result = mysqli_fetch_array($get_datalaporan_transaction)) {
               $showmember = mysqli_fetch_array(mysqli_query($con,
                              "SELECT * FROM member m 
@@ -117,16 +133,14 @@
               <td><?php echo $result['nama_layanan'];?></td>
               <td>Rp.<?php echo formatuang($result['harga_layanan']);?></td>
           <?php } ?>
-              <!-- <td>
-                  <a href="<?php echo $site;?>homeadmin.php?page=">View</a>
-              </td> -->
           </tr>
           <?php $no++; } ?>
           <?php
             $get_total = mysqli_query($con,
               "SELECT SUM(kl.harga_layanan) AS total FROM detail_transaksi_shoes dts 
               INNER JOIN transaksi_shoes ts ON dts.id_transaksi_shoes=ts.id_transaksi_shoes
-              INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan");
+              INNER JOIN kategori_layanan kl ON kl.id_kategori_layanan=dts.id_kategori_layanan 
+              WHERE ts.tgl_transaksi BETWEEN '$var_datefrom' AND '$var_todate'");
               while ($total_result = mysqli_fetch_array($get_total)) {?>
           <tr>
             <td></td>

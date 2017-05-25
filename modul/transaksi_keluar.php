@@ -37,7 +37,7 @@
             FROM transaksi_shoes ts 
             JOIN detail_transaksi_shoes dts ON ts.id_transaksi_shoes=dts.id_transaksi_shoes
             GROUP BY ts.id_transaksi_shoes
-            ORDER BY id_transaksi_shoes DESC");
+            ORDER BY ts.tgl_transaksi DESC");
             while($res=mysqli_fetch_array($query)){
             $cek_member  = mysqli_fetch_array(mysqli_query($con,"SELECT * FROM member WHERE id_member='$res[id_member]'"));
         ?>
