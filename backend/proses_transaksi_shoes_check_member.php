@@ -2,6 +2,10 @@
 $act = $_GET['act'];
 //var date now
 $tgl_transaksi           = date('Y-m-d');
+$tgl_pengambilan         = date('Y-m-d');
+$potong_date             = substr($tgl_pengambilan,8)+3;
+$month_and_year          = substr($tgl_pengambilan, 0,7); 
+$gabung 				 = $month_and_year.'-'.$potong_date;
 $jumlah_sepatu           = $_POST['jumlah_sepatu'];
 $nama_barang_non_member  = $_POST['nama_barangnonmember'];
 $nama_barang  			 = $_POST['nama_barang'];
@@ -25,6 +29,7 @@ if($act=='add_transaksi') {
 																  email,
 																  status_member,
 																  tgl_transaksi,
+																  tgl_pengambilan,
 																  status_pengambilan) 
 														  VALUES ('$_POST[kode_transaksi]',
 														  		  '$_POST[id_member]',
@@ -34,6 +39,7 @@ if($act=='add_transaksi') {
 														  		  '$_POST[email]',
 														  		  '$_POST[status_member]',
 														  		  '$tgl_transaksi',
+														  		  '$gabung',
 														  		  'B')";
 
 			$succes_transaksi 		 = mysqli_query($con,$add_transaksi_member);
@@ -97,6 +103,7 @@ if($act=='add_transaksi') {
 																  email,
 																  status_member,
 																  tgl_transaksi,
+																  tgl_pengambilan,
 																  status_pengambilan) 
 														  VALUES ('$_POST[kode_transaksi]',
 														  		  '$_POST[id_member]',
@@ -106,6 +113,7 @@ if($act=='add_transaksi') {
 														  		  '$_POST[email]',
 														  		  '$_POST[status_member]',
 														  		  '$tgl_transaksi',
+														  		  '$gabung',
 														  		  'B')";	
 
 			$succes_transaksi 		 = mysqli_query($con,$add_transaksi_member);
@@ -160,6 +168,7 @@ if($act=='add_transaksi') {
 																  email,
 																  status_member,
 																  tgl_transaksi,
+																  tgl_pengambilan,
 																  status_pengambilan) 
 														  VALUES ('$_POST[kode_transaksi]',
 														  		  '$_POST[id_member]',
@@ -169,6 +178,7 @@ if($act=='add_transaksi') {
 														  		  '$_POST[email]',
 														  		  '$_POST[status_member]',
 														  		  '$tgl_transaksi',
+														  		  '$gabung',
 														  		  'B')";	
 
 			$succes_transaksi 		 = mysqli_query($con,$add_transaksi_member);
@@ -224,6 +234,7 @@ if($act=='add_transaksi') {
 																  email,
 																  status_member,
 																  tgl_transaksi,
+																  tgl_pengambilan,
 																  status_pengambilan) 
 														  VALUES ('$_POST[kode_transaksi]',
 														  		  '$_POST[id_member]',
@@ -233,6 +244,7 @@ if($act=='add_transaksi') {
 														  		  '$_POST[email]',
 														  		  '$_POST[status_member]',
 														  		  '$tgl_transaksi',
+														  		  '$gabung',
 														  		  'B')";	
 
 			$succes_transaksi 		 = mysqli_query($con,$add_transaksi_member);
@@ -272,6 +284,7 @@ if($act=='add_transaksi') {
 																  email,
 																  status_member,
 																  tgl_transaksi,
+																  tgl_pengambilan,
 																  status_pengambilan) 
 														  VALUES ('$_POST[kode_transaksi]',
 														  		  '$_POST[id_member]',
@@ -281,6 +294,7 @@ if($act=='add_transaksi') {
 														  		  '$_POST[email]',
 														  		  '$_POST[status_member]',
 														  		  '$tgl_transaksi',
+														  		  '$gabung',
 														  		  'B')";	
 
 			$succes_transaksi 		 = mysqli_query($con,$add_transaksi_member);
