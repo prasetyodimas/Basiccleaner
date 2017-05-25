@@ -19,6 +19,7 @@ if (empty($_SESSION['nama_admin'])) {
     <link rel="stylesheet" href="<?php echo $site;?>frontend/css/bootstrap.min.css" media="screen">
     <!-- <link rel="stylesheet" href="<?php echo $site;?>frontend/css/build.css"> -->
     <link rel="stylesheet" href="<?php echo $site;?>frontend/lib/data_tables/jquery.dataTables.css">
+    <link rel="stylesheet" href="<?php echo $site;?>frontend/lib/datepicker/datepicker.css">
     <!-- CSS -->
     <!-- JS -->
     <script src="<?php echo $site;?>frontend/js/jquery-1.11.1.min.js"></script>
@@ -26,6 +27,7 @@ if (empty($_SESSION['nama_admin'])) {
     <script src="<?php echo $site;?>frontend/lib/number/jquery.number.min.js"></script>
     <script src="<?php echo $site;?>frontend/lib/validate/jquery.validate.min.js"></script>
     <script src="<?php echo $site;?>frontend/lib/data_tables/jquery.dataTables.js"></script>
+    <script src="<?php echo $site;?>frontend/lib/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript">
         var txt="Basic Cleaner - Shoes Care -";
         var kecepatan=600;var segarkan=null;function bergerak() { document.title=txt;

@@ -51,7 +51,7 @@
             <div class="col-md-6" style="margin-bottom:50px;">
                 <div class="form-group">
                     <label>Id Member</label>
-                    <input type="text" name="id_member" class="form-control" value="MBSC<?php echo acakangkahuruf(3);?>">            
+                    <input type="text" name="id_member" class="form-control" value="MBSC<?php echo acakangkahuruf(3);?>" readonly>            
                 </div>           
                 <div class="form-group">
                     <label>Nama member</label>
@@ -70,6 +70,10 @@
                     <input type="text" name="email_member" class="form-control" autofocus required="">
                 </div>
                 <div class="form-group">
+                    <label>Status Member</label> 
+                    <input type="text" name="status_member" class="form-control" autofocus required="">                   
+                </div>
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>     
             </div>
@@ -86,14 +90,15 @@
                 <th>Alamat </th>
                 <th>No Telp</th>
                 <th>Email</th>
-                <th>Aksi</th>
+                <th>Status</th>
+                <th width="200">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php 
                 $no=1;
-                $query=mysqli_query($con,"SELECT * FROM member ORDER BY id_member DESC");
-                while($res=mysqli_fetch_array($query)){
+                $query=mysqli_query($con,"SELECT * FROM member WHERE status_member = 'Aktif' ORDER BY id_member DESC");
+                while($res=mysqli_fetch_array($query)) {
                 //menampilkan data member
             ?>
             <tr>
@@ -103,12 +108,22 @@
                 <td class="col-md-4"><?php echo $res['alamat_member']?></td>
                 <td><?php echo $res['notelp_member']?></td>
                 <td><?php echo $res['email_member']?></td>
-                <td class="col">
-                <?php if($_SESSION['level_admin']=='manajer'){ ?>
-                  <!--   <a href="homeadmin.php?page=cetak_kartu_member&id_member=<?php echo $res['id_member'];?>">Cetak </a> || -->
-                    <a href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>">View</a> ||
-                <?php } ?>
-                    <a href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>" onclick="return confirm('Anda Yakin Menghapus !!');">Delete</a>
+                <td><?php echo $res['status_member']?></td>
+                <td class="col-md-1" style="text-align:center;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <?php if ($_SESSION['level_admin']=='manajer') { ?>
+                                <div> <a class="dropdown-item" href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>"> <i class="glyphicon glyphicon-zoom-in" aria-hidden="true"></i> View</a> </div> 
+                                <div> <a class="dropdown-item" href="homeadmin.php?page=edit_data_member&id_mem=<?php echo $res['id_member'];?>"> <i class="glyphicon glyphicon-edit" aria-hidden="true"></i> Status Member</a> </div> 
+                                <div> <a class="dropdown-item" href="backend/proses_member.php?act=delete_member&id_member=<?php echo $res['id_member'];?>"> <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Delete</a> </div> 
+                            <?php }else{ ?>
+                                <div> <a class="dropdown-item" href="homeadmin.php?page=detail_member&id_mem=<?php echo $res['id_member'];?>"> <i class="glyphicon glyphicon-zoom-in" aria-hidden="true"></i> View</a> </div> 
+                            <?php } ?>
+                        </div>
+                    </div>
                 </td>
             </tr>
          <?php $no++; } ?>

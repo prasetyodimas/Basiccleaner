@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label>Level</label>
 					<select name="level_pengguna" class="form-control" autofocus required="">
-						<option value="">choose priority</option>
+						<option value="">Choose priority</option>
 						<option value="admin">admin</option>
 						<option value="manajer">manajer</option>
 					</select>
